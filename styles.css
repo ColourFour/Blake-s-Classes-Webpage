@@ -1,0 +1,104 @@
+*{
+    background-color: #1F2937;
+     font: Roboto, arial;
+     color: white;
+}
+
+.header {
+  background-color: #151A25;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;            
+  padding: 1rem; 
+}
+
+.logo{
+    font-size: 24px;
+    background-color: #151A25;
+
+}
+
+.nav {
+  display: flex;
+  gap: 1rem; 
+  list-style: none; 
+  padding: 0;
+  margin: 0;
+  background-color: #151A25;
+}
+
+a{
+    color: inherit;
+    background-color: #151A25;
+}
+
+h2{
+    font-size: 36px;
+}
+
+h3{
+    font-size: 36px;
+    background-color: #6B7280;
+}
+
+.introduction{
+display: flex;
+justify-content: space-between; 
+align-items: center;            
+padding: 1rem; 
+
+}
+
+.introduction-text{
+    width: 30%;
+    padding: 16px; 
+    text-align: left;
+    font-size: 18px;
+}
+
+.intro-image{
+    width: 70%;
+    height: auto;
+    padding: 16px;
+    float: right;
+    object-fit: contain;
+}
+
+.classes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #6B7280;
+}
+
+.class-options {
+  background-color: #1F2937;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.class-options:hover {
+  transform: translateY(-5px);
+}
+
+.class-art {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.class-text {
+  grid-column: span 4; 
+  margin-bottom: 1rem;
+  text-align: center;
+  background-color: #6B7280;
+}
+
+.motto{
+    width: 100%;
+}
