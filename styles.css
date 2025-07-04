@@ -23,9 +23,6 @@
   align-items: center;
 }
 
-#upper-box1 {
-  flex: 1 1 300px;
-}
 
 #upper-box1 h1 {
   font-size: 2rem;
@@ -35,7 +32,9 @@
 #upper-box1 p {
   font-size: 1.1rem;
   color: #555;
+  margin-bottom: -20px;
 }
+
 
 #upper-box2 {
   flex: 1 1 300px;
@@ -74,6 +73,14 @@
 #middle-box1 h2 {
   color: #003366;
 }
+
+#middle-box3 li {
+  font-size: .8rem;
+  padding-left: 2em;
+  padding-bottom: 8px;
+  list-style-type: none;
+}
+
 
 a {
   color: #0056b3;
