@@ -94,7 +94,7 @@ function playGame(){
 
         }
         
-        roundSummary.textContent =`You chose ${humanSelection}.  The computer chose ${computerScore} \n. The score is YOU: ${humanScore} COMPUTER: ${computerScore}`;
+        roundSummary.textContent =`You chose ${humanSelection}.  The computer chose ${computerSelection} \n. The score is YOU: ${humanScore} COMPUTER: ${computerScore}`;
         matchEnd();
         endingText.textContent = `${ending}`;
         });
