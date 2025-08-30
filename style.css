@@ -1,0 +1,229 @@
+/* Reset for consistency */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff; /* light mathy blue */
+    color: #333;
+    line-height: 1.6;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #003366; /* deep navy */
+    text-align: center;
+    color: white;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: #ff9933; /* orange accent */
+}
+
+.header ul {
+    list-style: none;
+    padding: 0;
+}
+
+.header li {
+    font-size: 1rem;
+    color: #e5e7eb;
+}
+
+/* Section 1 */
+.body-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 1rem;
+    background-color: #339966; /* green for STEM feel */
+    color: white;
+}
+
+.body-1 img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 12px;
+    border: 3px solid #ff9933; /* orange border */
+}
+
+/* Service Section */
+.body-2 {
+    padding: 2rem 0;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.body-2i h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #0056b3; /* math blue */
+}
+
+.body-2ii {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 0.5rem;
+}
+
+.body-2ii div {
+    flex: 1 1 250px;
+    max-width: 300px;
+    background: #f9f9f9;
+    border: 2px solid #339966;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.body-2ii div:hover {
+    transform: scale(1.03);
+}
+
+.body-2ii img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    background: #ddd;
+}
+
+.body-2ii p {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    padding: 0.75rem;
+    color: #333;
+}
+
+/* CTA button */
+.cta-button {
+    display: inline-block;
+    background-color: #ff6600; /* bold orange */
+    color: white;
+    padding: 10px 20px;
+    margin: 1rem auto;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.cta-button:hover {
+    background-color: #cc5200;
+}
+
+/* Section 3 */
+.body-3 {
+    background-color: #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    margin: 16px 32px;
+    padding: 32px;
+    border-left: 6px solid #339966;
+}
+
+h4 {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 28px;
+    color: #003366;
+}
+
+h5 {
+    font-size: 22px;
+    color: #0056b3;
+}
+
+/* Section 4 */
+.body-4 {
+    background-color: #003366; /* navy */
+    display: flex;
+    justify-content: space-evenly;
+    padding: 24px 32px;
+    margin: 18px 0;
+    border-radius: 15px;
+    align-items: center;
+    color: white;
+}
+
+.body-4a h2 {
+    color: #ff9933; /* orange heading */
+}
+
+.button-2 {
+    background-color: #339966;
+    border-radius: 12px;
+    padding: 12px 24px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.button-2:hover {
+    background-color: #26734d;
+}
+
+/* Footer */
+.footer {
+    background-color: #1f2937;
+    display: flex;
+    color: white;
+    justify-content: center;
+    padding: 32px;
+}
+
+.footer h6 {
+    color: #ff9933;
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+.footer p {
+    color: #e5e7eb;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Media query */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-right {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .body-1 {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .body-4 {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
