@@ -3,162 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Numerical Solutions of Equations – CAIE Pure Mathematics 3</title>
+<title>Numerical Solutions - Module 1</title>
+<!-- Load MathJax -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <style>
-  body { font-family: Arial, sans-serif; background: #f8f9fa; margin: 20px; }
-  h1 { text-align: center; }
-  table { border-collapse: collapse; width: 100%; margin-bottom: 30px; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-  caption { background: #003366; color: white; font-weight: bold; padding: 10px; font-size: 18px; }
-  th, td { border: 1px solid #ccc; padding: 10px; vertical-align: top; }
-  th { background: #e9ecef; text-align: left; }
-  button { padding: 5px 10px; border-radius: 5px; border: none; background: #003366; color: white; cursor: pointer; }
-  button:hover { background: #0055aa; }
-  input, textarea { border: 1px solid #ccc; border-radius: 4px; padding: 5px; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f9;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  th, td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    vertical-align: top;
+  }
+  th {
+    background-color: #f0f0f0;
+    text-align: left;
+    font-size: 18px;
+  }
+  button {
+    padding: 8px 12px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  .explanation {
+    display: none;
+    background-color: #eef5f9;
+    padding: 10px;
+    border-left: 4px solid #2196F3;
+    margin-top: 5px;
+    line-height: 1.5;
+  }
+  input {
+    margin: 5px 0;
+  }
 </style>
 </head>
 <body>
 
-<h1>Numerical Solutions of Equations</h1>
+<h1>Numerical Solutions to Equations - Module 1</h1>
 
-<!-- ==================== MODULE 1 ==================== -->
 <table>
-  <caption>Module 1: Locating Roots Graphically</caption>
-  <tr>
-    <th>Example Problem</th>
-    <th>Student Task</th>
-    <th>Explanation</th>
-  </tr>
-  <tr>
-    <td>
-      <p>Consider the equation <strong>x³ + x − 4 = 0</strong>.</p>
-      <p>Plot the graphs of <em>y = x³</em> (blue) and <em>y = 4 − x</em> (red).  
-      The intersection point shows that the equation has a root between <strong>x = 1</strong> and <strong>x = 2</strong>.</p>
-      <canvas id="graphCanvas" width="500" height="400" style="border:1px solid #ccc;"></canvas>
-    </td>
-    <td>
-      <p>Show that <strong>f(x) = x⁵ + x − 1</strong> has a root between 0 and 1.</p>
-      <textarea rows="4" cols="40" placeholder="Explain your reasoning..."></textarea><br><br>
-      Enter your estimated root: <input id="rootInput" type="text" size="10" placeholder="e.g. 0.75">
-      <button onclick="checkRoot()">Submit</button>
-      <p id="feedback" style="font-weight:bold;"></p>
-    </td>
-    <td>
-      <p>Graphs can reveal where functions cross the x-axis, indicating roots.  
-      When two functions, such as <em>y = x³</em> and <em>y = 4 − x</em>, intersect, the x-coordinate of the intersection satisfies both equations, so it’s a root of <em>x³ + x − 4 = 0</em>.</p>
-      <p>To verify a root exists between <em>a</em> and <em>b</em>, check that <em>f(a)</em> and <em>f(b)</em> have opposite signs.  
-      This guarantees at least one root in the interval.</p>
-    </td>
-  </tr>
-</table>
+<tr>
+  <th>Problem</th>
+  <th>Solution / Input</th>
+  <th>Explanation</th>
+</tr>
 
-<!-- ==================== MODULE 2 ==================== -->
-<table>
-  <caption>Module 2: The Change of Sign Method</caption>
-  <tr>
-    <th>Example Problem</th>
-    <th>Student Task</th>
-    <th>Explanation</th>
-  </tr>
-  <tr>
-    <td>
-      <p>Given <strong>f(x) = x³ − 5x + 1</strong>, show that there is a root between <strong>x = 0</strong> and <strong>x = 1</strong>.</p>
-      <p>Evaluate f(0) = 1 and f(1) = −3.  
-      Since the signs differ, a root exists between 0 and 1.  
-      Repeatedly bisect the interval to approximate the root to 2 decimal places.</p>
-    </td>
-    <td>
-      <p>Use the bisection method to find the root of <strong>x³ − 5x + 1 = 0</strong> correct to 2 decimal places.</p>
-      <p>Enter your estimate: <input type="text" size="10" placeholder="e.g. 0.2"></p>
-    </td>
-    <td>
-      <p>The <strong>change of sign method</strong> depends on the fact that if <em>f(a)</em> and <em>f(b)</em> have opposite signs, then a root must exist between them.</p>
-      <p>The <strong>bisection method</strong> repeatedly halves the interval [a,b], choosing the subinterval where a sign change occurs, until the interval is sufficiently small.</p>
-    </td>
-  </tr>
-</table>
+<tr>
+  <td>
+    Consider \(y = \frac{\arctan(x)}{\sqrt{x}}\). Let \(m\) be the maximum point at \(x = a\). <br><br>
+    <strong>Part a)</strong> Show that \(a\) satisfies \(a = \tan\Big(\frac{2a}{1 + a^2}\Big)\) <br>
+    <strong>Part b)</strong> Verify that \(a\) lies between 1.3 and 1.5 <br>
+    <strong>Part c)</strong> Use an iterative formula to determine \(a\) correct to 2 decimal places.
+  </td>
+  <td>
+    <button onclick="toggleExplanation('expA')">Show Explanation for Part a</button><br>
+    <button onclick="toggleExplanation('expB')">Show Explanation for Part b</button><br>
+    <button onclick="toggleExplanation('expC')">Show Explanation for Part c</button><br>
+    <div id="expCInput" style="margin-top:10px; display:none;">
+      Initial guess: <input type="number" id="guessC" value="1.4" step="0.01"><br>
+      Number of iterations: <input type="number" id="stepsC" value="5" min="1" max="20"><br>
+      <button onclick="iterateC()">Run Iteration</button>
+      <div id="iterationsC"></div>
+      <br>
+      Enter approximate root: <input type="number" id="rootC" step="0.01">
+      <button onclick="checkRootC()">Check Answer</button>
+      <div id="resultC"></div>
+    </div>
+  </td>
+  <td>
+    <div id="expA" class="explanation">
+      <strong>Part a Explanation:</strong><br>
+      To find the maximum of \(y = \frac{\arctan(x)}{\sqrt{x}}\), differentiate using the quotient rule:<br>
+      \[
+        y' = \frac{\sqrt{x} \cdot \frac{1}{1+x^2} - \arctan(x) \cdot \frac{1}{2\sqrt{x}}}{x}
+      \]<br>
+      Set \(y' = 0\) for maximum: <br>
+      \[
+        \sqrt{x} \cdot \frac{1}{1+x^2} - \frac{\arctan(x)}{2\sqrt{x}} = 0
+      \]<br>
+      Multiply through by \(2\sqrt{x}(1+x^2)\):<br>
+      \[
+        2x - (1+x^2)\arctan(x) = 0 \implies a = \tan\Big(\frac{2a}{1+a^2}\Big)
+      \]
+    </div>
 
-<!-- ==================== MODULE 3 ==================== -->
-<table>
-  <caption>Module 3: Fixed-Point Iteration and Convergence</caption>
-  <tr>
-    <th>Example Problem</th>
-    <th>Student Task</th>
-    <th>Explanation</th>
-  </tr>
-  <tr>
-    <td>
-      <p>Solve <strong>x³ + x − 4 = 0</strong> by rearranging into <em>x = (4 − x)^{1/3}</em>.</p>
-      <p>Use iteration starting from <em>x₀ = 1.5</em> to find an approximate root.</p>
-    </td>
-    <td>
-      <p>Using your calculator, iterate <strong>xₙ₊₁ = (4 − xₙ)^{1/3}</strong> three times from <em>x₀ = 1.5</em>.</p>
-      <p>Enter x₃: <input type="text" size="10" placeholder="e.g. 1.37"></p>
-    </td>
-    <td>
-      <p>Rearranging <em>f(x) = 0</em> into <em>x = g(x)</em> allows iterative substitution: <em>xₙ₊₁ = g(xₙ)</em>.</p>
-      <p>Convergence occurs if |g′(x)| &lt; 1 near the root.  
-      If |g′(x)| ≥ 1, the sequence diverges.</p>
-    </td>
-  </tr>
-</table>
+    <div id="expB" class="explanation">
+      <strong>Part b Explanation:</strong><br>
+      Using \(a = \tan\Big(\frac{2a}{1+a^2}\Big)\), check boundary values:<br>
+      - \(x = 1.3\) → \(\tan(2*1.3/(1+1.3^2)) \approx 1.39\) → slightly larger than 1.3<br>
+      - \(x = 1.5\) → \(\tan(2*1.5/(1+1.5^2)) \approx 1.41\) → slightly smaller than 1.5<br>
+      Hence, \(a\) lies between 1.3 and 1.5.
+    </div>
 
-<!-- ==================== MODULE 4 ==================== -->
-<table>
-  <caption>Module 4: Iteration extended</caption>
-  <tr>
-    <th>Example Problem</th>
-    <th>Student Task</th>
-    <th>Explanation</th>
-  </tr>
-  <tr>
-    <td>
-      <p>Find a root of <strong>f(x) = x³ − 2x − 5 = 0</strong> using iteration, starting from <em>x₀ = 2</em>.</p>
-      <p><em>f′(x) = 3x² − 2</em><br>Apply <strong>xₙ₊₁ = xₙ − f(xₙ)/f′(xₙ)</strong>.</p>
-    </td>
-    <td>
-      <p>Perform two iterations and enter your value of x₂:</p>
-      <input type="text" size="10" placeholder="e.g. 2.09">
-    </td>
-    <td>
-      <p>Placeholder text since I want to find a way to make a graph demonstrate why this works.</p>
-    </td>
-  </tr>
+    <div id="expC" class="explanation">
+      <strong>Part c Explanation:</strong><br>
+      Use the iterative formula:<br>
+      \[
+        a_{n+1} = \tan\Big(\frac{2 a_n}{1 + a_n^2}\Big)
+      \]<br>
+      Steps:<br>
+      1. Start with initial guess \(a_0 = 1.4\)<br>
+      2. Compute successive approximations using the formula<br>
+      3. Stop when desired accuracy (2 decimal places) is reached<br>
+      This method shows how the iteration converges to the maximum.
+    </div>
+  </td>
+</tr>
 </table>
-
 
 <script>
-// ============ Module 1 Graph and Interaction ============
+function toggleExplanation(id) {
+  const elem = document.getElementById(id);
+  elem.style.display = (elem.style.display === "block") ? "none" : "block";
+  if(id === 'expC') document.getElementById('expCInput').style.display = "block";
+}
 
-const canvas = document.getElementById("graphCanvas");
-const ctx = canvas.getContext("2d");
-const width = canvas.width, height = canvas.height;
-const xmin = -2, xmax = 3, ymin = -2, ymax = 6;
-function X(x){return (x - xmin)/(xmax - xmin)*width;}
-function Y(y){return height - (y - ymin)/(ymax - ymin)*height;}
-ctx.clearRect(0,0,width,height);
-ctx.lineWidth=1; ctx.strokeStyle="#000";
-ctx.beginPath(); ctx.moveTo(X(xmin),Y(0)); ctx.lineTo(X(xmax),Y(0));
-ctx.moveTo(X(0),Y(ymin)); ctx.lineTo(X(0),Y(ymax)); ctx.stroke();
-// ticks
-ctx.font="12px Arial"; ctx.fillStyle="#000";
-for(let x=Math.ceil(xmin);x<=xmax;x++){ctx.beginPath();ctx.moveTo(X(x),Y(0)-5);ctx.lineTo(X(x),Y(0)+5);ctx.stroke();if(x!=0)ctx.fillText(x,X(x),Y(0)+12);}
-for(let y=Math.ceil(ymin);y<=ymax;y++){ctx.beginPath();ctx.moveTo(X(0)-5,Y(y));ctx.lineTo(X(0)+5,Y(y));ctx.stroke();if(y!=0)ctx.fillText(y,X(0)-10,Y(y)+3);}
-// y=x^3
-ctx.strokeStyle="blue";ctx.beginPath();let started=false;
-for(let x=xmin;x<=xmax;x+=0.01){let y=x**3;let px=X(x),py=Y(y);if(!started){ctx.moveTo(px,py);started=true;}else ctx.lineTo(px,py);}ctx.stroke();
-// y=4-x
-ctx.strokeStyle="red";ctx.beginPath();ctx.moveTo(X(xmin),Y(4-xmin));ctx.lineTo(X(xmax),Y(4-xmax));ctx.stroke();
-ctx.fillStyle="blue";ctx.fillText("y = x³",X(1.5),Y(3.5));ctx.fillStyle="red";ctx.fillText("y = 4 - x",X(2),Y(2.5));
+function iterateC() {
+  const guess = parseFloat(document.getElementById('guessC').value);
+  const steps = parseInt(document.getElementById('stepsC').value);
+  let iterations = [guess];
 
-function checkRoot(){
-  const input=parseFloat(document.getElementById("rootInput").value);
-  const feedback=document.getElementById("feedback");
-  const trueRoot=0.7549;
-  if(isNaN(input)){feedback.textContent="Please enter a number.";feedback.style.color="red";return;}
-  const err=Math.abs(input-trueRoot);
-  if(err<0.05){feedback.textContent="✅ Correct! The root is approximately 0.7549.";feedback.style.color="green";}
-  else if(input>0&&input<1){feedback.textContent="Close! Try refining your estimate.";feedback.style.color="orange";}
-  else{feedback.textContent="❌ The root lies between 0 and 1.";feedback.style.color="red";}
+  for(let i=1;i<=steps;i++){
+    const last = iterations[i-1];
+    const next = Math.tan(2*last/(1 + last*last));
+    iterations.push(next);
+  }
+
+  // Build table
+  let table = '<table border="1" style="border-collapse: collapse; margin-top:5px;"><tr><th>Iteration</th><th>aₙ</th></tr>';
+  iterations.forEach((val, idx) => {
+    table += `<tr><td>${idx}</td><td>${val.toFixed(4)}</td></tr>`;
+  });
+  table += '</table>';
+  document.getElementById('iterationsC').innerHTML = table;
+}
+
+function checkRootC() {
+  const student = parseFloat(document.getElementById('rootC').value);
+  const correct = 1.39; // approx to 2 d.p.
+  const resultDiv = document.getElementById('resultC');
+  if(Math.abs(student - correct) <= 0.01){
+    resultDiv.textContent = "✅ Correct!";
+    resultDiv.style.color = "green";
+  } else {
+    resultDiv.textContent = "❌ Incorrect. Try again.";
+    resultDiv.style.color = "red";
+  }
 }
 </script>
 
