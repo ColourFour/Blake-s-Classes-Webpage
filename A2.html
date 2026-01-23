@@ -3,52 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A2 Math</title>
+    <title>A2 Holiday Homework Submission</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="header">
-        <h1>A2 Math</h1>
-        <ul>
-            <li>Mr. Rooker</li>
-        </ul>
+    <!-- Header / Hero section -->
+    <section class="hero">
+        <h1>A2 Mathematics</h1>
+        <p>Holiday Homework Submission</p>
+    </section>
+
+    <!-- Submission form section -->
+    <div class="form-section">
+        <h2>Download &amp; Submit Your Homework Scores</h2>
+        <p><a href="A2_Holiday_Homework.pdf" target="_blank">Download A2 Holiday Homework (PDF)</a></p>
+        <form id="scoreForm" action="https://formspree.io/f/xbdggggy" method="POST">
+            <!-- Student name input -->
+            <div class="form-group">
+                <label for="studentName">Your Name (English only)</label>
+                <input type="text" id="studentName" name="studentName"
+                       pattern="[A-Za-z ]+" required placeholder="Enter your English name">
+            </div>
+
+            <!-- Paper dropdown -->
+            <div class="form-group">
+                <label for="paperSelect">Select Paper</label>
+                <select id="paperSelect" name="paper" required>
+                    <option value="">-- Select Paper --</option>
+                    <option value="1">Paper 1 32/O/N/24</option>
+                    <option value="2">Paper 2 31/O/N/22</option>
+                    <option value="3">Paper 3 52/M/J/24</option>
+                    <option value="4">Paper 4 31/M/J/24</option>
+                    <option value="5">Paper 5 51/O/N/22</option>
+                    <option value="6">Paper 6 51/O/N/24</option>
+                    <option value="7">Paper 7 (redo)</option>
+                </select>
+            </div>
+
+            <!-- Container for dynamic question inputs -->
+            <div id="questionsContainer"></div>
+
+            <!-- Hidden fields for email body and metadata -->
+            <input type="hidden" name="_subject" value="Holiday Homework Scores">
+            <input type="hidden" id="emailMessage" name="message">
+            <input type="hidden" id="submissionDate" name="submissionDate">
+
+            <!-- Submit button -->
+            <button type="submit" class="submit-btn">Submit Scores</button>
+        </form>
     </div>
 
-    <div class="body-1">
-        <div class="body-1a">
-        <h2>Important Dates</h2>
-        <p>Quiz 1: 9/5</p>
-        <p>Quiz 2: updated later!</p>
-        <p>Quiz 3: updated later!</p>
-        </div>
-    <div class="body-1b">
-        <img src="https://plus.unsplash.com/premium_photo-1724800663657-3e57bf4f622c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWF0aHxlbnwwfHwwfHx8MA%3D%3D" alt="placeholder">
-    </div>
+    <!-- Confirmation message (hidden until submission) -->
+    <div class="confirmation" id="confirmationMessage">
+        <p>Thank you for submitting your scores. We have received your submission.</p>
     </div>
 
-    <div class="body-2">
-    <div class="body-2i"> 
-        <h3>Course Documents:</h3>
-    </div>
-    </div>   
-   <div class="body-2ii">
-     <div class="body-2a">  
-        <a href="Files/Course outline A2 .pdf" target="_blank" alt="this is a placeholder for image 1">
-        <p style="text-align: center;">Course Outline</p></a>
-    </div> 
-    <div class="body-2b">  
-        <a href="numerical_solutions.html" target="_blank" alt="this is a placeholder for image 1">
-        <p style="text-align: center;">Numerical Solutions Unit</p></a>
-    </div> 
-     <div class="body-2c">  
-        <a href="Files/Summer Homework 2026.pdf" target="_blank" alt="this is a placeholder for image 1">
-        <p style="text-align: center;">Summer Homework Solutions</p></a>
-    </div> 
-    </div>
-    
-</div>
+    <!-- Inline script to handle dynamic question fields and form submission -->
+    <script>
+    (function() {
+        const paperSelect = document.getElementById('paperSelect');
+        const questionsContainer = document.getElementById('questionsContainer');
+        const form = document.getElementById('scoreForm');
 
+        // Configuration for each paper: maximum points per question.
+        // Update these arrays to match the actual number of questions and max points for each paper.
+        const papers = {
+            '1': { maxPoints: [4, 8, 3, 4, 4, 6, 8, 11, 13, 14] },
+            '2': { maxPoints: [4, 4, 4, 5, 4, 7, 8, 8, 10, 10, 11] },
+            '3': { maxPoints: [5, 5, 6, 7, 7, 10, 10] },
+            '4': { maxPoints: [4, 4, 4, 4, 7, 9, 6, 7, 9, 10, 11] },
+            '5': { maxPoints: [4, 8, 9, 9, 10, 10] },
+            '6': { maxPoints: [4, 6, 8, 6, 9, 8, 9] },
+            '7': { maxPoints: [10, 10, 11, 10, 10, 11, 10, 10, 11, 10, 10, 11] }
+        };
+
+        /**
+         * Render input fields for questions based on the selected paper.
+         */
+        function renderQuestions() {
+            const selected = paperSelect.value;
+            // Clear existing fields
+            questionsContainer.innerHTML = '';
+            if (!selected) return;
+
+            // Determine configuration for this paper; default to five questions with max points of 5.
+            const config = papers[selected] || { maxPoints: [5, 5, 5, 5, 5] };
+            const numQuestions = config.maxPoints.length;
+            // Store the current paper's max points globally so we can reference it on submit
+            window.currentMaxPoints = config.maxPoints;
+
+            for (let i = 1; i <= numQuestions; i++) {
+                const maxPts = config.maxPoints[i - 1];
+                const group = document.createElement('div');
+                group.className = 'form-group';
+
+                const label = document.createElement('label');
+                label.textContent = `Question ${i} Score (0–${maxPts})`;
+
+                const input = document.createElement('input');
+                input.type = 'number';
+                input.name = `q${i}`;
+                input.className = 'questionField';
+                input.min = '0';
+                input.max = maxPts.toString();
+                input.placeholder = `0–${maxPts}`;
+
+                group.appendChild(label);
+                group.appendChild(input);
+                questionsContainer.appendChild(group);
+            }
+        }
+
+        // Re-render question fields when the user changes the paper selection
+        paperSelect.addEventListener('change', renderQuestions);
+        renderQuestions(); // Initial render with empty container
+
+        /**
+         * Before submitting the form, compile the data into a single message string
+         * and insert it into the hidden 'emailMessage' input. The submission date
+         * is also captured in ISO format. A confirmation prompt appears before sending.
+         */
+        form.addEventListener('submit', function(event) {
+            const name = document.getElementById('studentName').value.trim();
+            const paper = paperSelect.value;
+
+            if (!paper) {
+                alert('Please select a paper.');
+                event.preventDefault();
+                return;
+            }
+
+            // Build the email body text
+            let body = `Student: ${name}\\nPaper ${paper} Results\\n`;
+            const inputs = document.querySelectorAll('.questionField');
+            inputs.forEach((input, idx) => {
+                // Use max point information from currentMaxPoints
+                const maxPtsArray = window.currentMaxPoints || [];
+                const maxPts = maxPtsArray[idx] !== undefined ? maxPtsArray[idx] : '';
+                const value = input.value.trim() || '0';
+                body += \`Q\${idx + 1}: \${value}/\${maxPts}\\n\`;
+            });
+
+            document.getElementById('emailMessage').value = body;
+            document.getElementById('submissionDate').value = new Date().toISOString();
+
+            // Ask for final confirmation
+            if (!confirm('Submit your scores now?')) {
+                event.preventDefault();
+                return;
+            }
+
+            // After successful submission, show confirmation message
+            form.style.display = 'none';
+            document.getElementById('confirmationMessage').style.display = 'block';
+        });
+    })();
+    </script>
 </body>
-
 </html>
