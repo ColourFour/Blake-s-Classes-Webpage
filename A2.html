@@ -106,6 +106,22 @@
                 input.className = 'questionField';
                 input.min = '0';
                 input.max = maxPts.toString();
+                input.step = '1';
+                input.required = true;
+
+                // Clamp values to the allowed range as the student types
+                input.addEventListener('input', () => {
+                    if (input.value === '') return;
+                    const v = Number(input.value);
+                    const maxV = Number(maxPts);
+                    if (Number.isNaN(v)) {
+                        input.value = '';
+                        return;
+                    }
+                    if (v < 0) input.value = '0';
+                    if (v > maxV) input.value = String(maxV);
+                });
+
                 input.placeholder = `0–${maxPts}`;
 
                 group.appendChild(label);
@@ -124,6 +140,13 @@
          * is also captured in ISO format. A confirmation prompt appears before sending.
          */
         form.addEventListener('submit', function(event) {
+            // Ensure all required fields (including question scores) are filled in
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                form.reportValidity();
+                return;
+            }
+
             const name = document.getElementById('studentName').value.trim();
             const paper = paperSelect.value;
 
@@ -133,16 +156,16 @@
                 return;
             }
 
-            // Build the email body text
-            let body = `Student: ${name}\\nPaper ${paper} Results\\n`;
+            // Build a TSV (tab-separated) body so you can paste directly into Excel.
+            // Row 1: header (PaperX, q1, q2, ...)
+            // Row 2: student scores (Name, score1, score2, ...)
             const inputs = document.querySelectorAll('.questionField');
-            inputs.forEach((input, idx) => {
-                // Use max point information from currentMaxPoints
-                const maxPtsArray = window.currentMaxPoints || [];
-                const maxPts = maxPtsArray[idx] !== undefined ? maxPtsArray[idx] : '';
-                const value = input.value.trim() || '0';
-                body += \`Q\${idx + 1}: \${value}/\${maxPts}\\n\`;
-            });
+            const scores = Array.from(inputs).map((input) => (input.value.trim() === '' ? '0' : input.value.trim()));
+
+            const header = [`Paper${paper}`, ...scores.map((_, i) => `q${i + 1}`)].join('\t');
+            const row = [name, ...scores].join('\t');
+
+            const body = `${header}\n${row}`;
 
             document.getElementById('emailMessage').value = body;
             document.getElementById('submissionDate').value = new Date().toISOString();
