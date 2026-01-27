@@ -40,6 +40,13 @@
                 </select>
             </div>
 
+            <!-- Work PDF (required, NOT uploaded/sent) -->
+            <div class="form-group">
+                <label for="workPdf">Work PDF (required, max 10MB)</label>
+                <input type="file" id="workPdf" accept="application/pdf" required>
+                <small style="opacity:.8;">Ensure this is a pdf and the size is smaller than 10mb. If you need help, send me a message!</small>
+            </div>
+
             <!-- Container for dynamic question inputs -->
             <div id="questionsContainer"></div>
 
@@ -64,6 +71,28 @@
         const paperSelect = document.getElementById('paperSelect');
         const questionsContainer = document.getElementById('questionsContainer');
         const form = document.getElementById('scoreForm');
+        const workPdf = document.getElementById('workPdf');
+        const MAX_FILE_MB = 10;
+        const MAX_FILE_BYTES = MAX_FILE_MB * 1024 * 1024;
+
+        // Validate chosen PDF locally (type + size)
+        workPdf.addEventListener('change', () => {
+            const file = workPdf.files && workPdf.files[0];
+            if (!file) return;
+
+            // best-effort PDF check
+            if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                alert('Please choose a PDF file.');
+                workPdf.value = '';
+                return;
+            }
+
+            if (file.size > MAX_FILE_BYTES) {
+                alert(`File too large. Please keep it under ${MAX_FILE_MB}MB.`);
+                workPdf.value = '';
+                return;
+            }
+        });
 
         // Configuration for each paper: maximum points per question.
         // Update these arrays to match the actual number of questions and max points for each paper.
@@ -144,6 +173,25 @@
             if (!form.checkValidity()) {
                 event.preventDefault();
                 form.reportValidity();
+                return;
+            }
+
+            const file = workPdf.files && workPdf.files[0];
+            if (!file) {
+                alert('Please choose your work PDF before submitting.');
+                event.preventDefault();
+                return;
+            }
+            if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+                alert('Please choose a PDF file.');
+                workPdf.value = '';
+                event.preventDefault();
+                return;
+            }
+            if (file.size > MAX_FILE_BYTES) {
+                alert(`File too large. Please keep it under ${MAX_FILE_MB}MB.`);
+                workPdf.value = '';
+                event.preventDefault();
                 return;
             }
 
