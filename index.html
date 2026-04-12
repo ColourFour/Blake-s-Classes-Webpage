@@ -1,28 +1,564 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Rooker's Class</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>20以内加减法冒险城</title>
+  <style>
+    :root{
+      --bg1:#fff7e6;
+      --bg2:#e9f7ff;
+      --ink:#24405a;
+      --pink:#ff7eb6;
+      --blue:#67b7ff;
+      --green:#7cd992;
+      --yellow:#ffd966;
+      --purple:#b59cff;
+      --card:#ffffffdd;
+      --shadow:0 12px 30px rgba(36,64,90,.14);
+      --ok:#28a745;
+      --bad:#d9534f;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, #fff 0 7%, transparent 8%),
+        radial-gradient(circle at 90% 8%, #fff 0 5%, transparent 6%),
+        linear-gradient(180deg,var(--bg2),var(--bg1));
+      min-height:100vh;
+    }
+    .wrap{max-width:1150px;margin:0 auto;padding:22px 16px 44px}
+    .hero{
+      position:relative; overflow:hidden;
+      background:linear-gradient(135deg,#8ddcff,#ffe08a 55%, #ffc1df);
+      border-radius:28px;
+      padding:26px 22px 20px;
+      box-shadow:var(--shadow);
+      margin-bottom:18px;
+    }
+    .hero h1{margin:0 0 10px;font-size:clamp(28px,5vw,48px);line-height:1.05}
+    .hero p{max-width:760px;font-size:18px;margin:8px 0}
+    .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .badge{
+      background:#fff;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:700;
+      box-shadow:0 4px 10px rgba(0,0,0,.08);
+    }
+    .cloud,.star,.balloon{
+      position:absolute;opacity:.9;pointer-events:none;
+    }
+    .cloud{
+      width:110px;height:46px;background:#fff;border-radius:999px;
+      top:20px;right:90px;
+      box-shadow:-22px 10px 0 0 #fff,22px 8px 0 0 #fff;
+    }
+    .balloon{
+      width:54px;height:68px;border-radius:55% 55% 50% 50%;
+      right:20px;top:24px;background:var(--pink);
+      box-shadow:inset -10px -8px 0 rgba(255,255,255,.26);
+    }
+    .balloon::after{
+      content:"";position:absolute;left:26px;top:68px;width:2px;height:70px;background:#916a3c;
+    }
+    .star{font-size:24px}
+    .s1{right:210px;top:25px}
+    .s2{right:160px;top:78px}
+    .layout{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 920px){
+      .layout{grid-template-columns:1fr}
+    }
+    .panel,.room{
+      background:var(--card);
+      backdrop-filter: blur(6px);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+    }
+    .panel{padding:18px}
+    .panel h2,.room h2{margin:0 0 10px}
+    .progress{
+      height:18px;background:#eef4fa;border-radius:999px;overflow:hidden;margin:12px 0 10px;
+      border:2px solid #d6e5f2;
+    }
+    .bar{
+      height:100%;width:0%;
+      background:linear-gradient(90deg,var(--green),#4ecdc4,var(--blue));
+      transition:width .35s ease;
+    }
+    .room-list{display:grid;gap:10px;margin-top:12px}
+    .room-btn{
+      width:100%;text-align:left;border:none;background:#fff;padding:13px 14px;border-radius:16px;
+      font-size:16px;font-weight:700;color:var(--ink);cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.06);
+    }
+    .room-btn small{display:block;font-weight:500;opacity:.75;margin-top:4px}
+    .room-btn.active{outline:3px solid var(--blue);transform:translateY(-1px)}
+    .room-btn.done{background:linear-gradient(135deg,#eaffef,#f3fffb)}
+    .guide{
+      margin-top:14px;padding:14px;border-radius:18px;background:#f8fbff;border:2px dashed #bddcff;
+      font-size:14px;line-height:1.65;
+    }
+    .room{padding:22px}
+    .scene{
+      position:relative;border-radius:24px;padding:18px;margin-bottom:18px;
+      background:linear-gradient(180deg,#fefefe,#f8fcff);
+      min-height:120px;overflow:hidden;border:2px solid #e6f1fa;
+    }
+    .scene .floor{
+      position:absolute;left:0;right:0;bottom:0;height:30px;background:linear-gradient(90deg,#c9f0b2,#ffe18e,#c4e1ff);
+    }
+    .scene .castle{
+      position:absolute;right:24px;bottom:30px;width:120px;height:88px;background:#b59cff;border-radius:14px 14px 0 0;
+      box-shadow: inset 0 -12px 0 rgba(255,255,255,.18);
+    }
+    .castle:before,.castle:after{
+      content:"";position:absolute;width:28px;height:56px;top:-34px;background:#b59cff;border-radius:10px 10px 0 0;
+    }
+    .castle:before{left:10px}
+    .castle:after{right:10px}
+    .door{
+      position:absolute;left:45px;bottom:0;width:30px;height:44px;background:#6f4d3f;border-radius:16px 16px 0 0;
+    }
+    .scene .title{
+      position:relative;z-index:2;font-size:28px;font-weight:900;margin:0 0 6px;
+    }
+    .scene .subtitle{
+      position:relative;z-index:2;font-size:17px;max-width:70%;
+      line-height:1.6;margin:0;
+    }
+    .question-card{
+      background:#fff;border-radius:22px;padding:18px;margin-bottom:14px;border:2px solid #edf3f8;
+    }
+    .story{font-size:18px;line-height:1.8;margin:0 0 10px}
+    .formula{
+      font-size:22px;font-weight:900;background:#f9fbff;border-radius:16px;padding:10px 12px;
+      display:inline-block;margin:8px 0 14px;border:2px dashed #d8e8f8;
+    }
+    .objects{
+      display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 8px;
+    }
+    .object{
+      font-size:28px;background:#fff9e8;padding:8px 10px;border-radius:14px;border:2px solid #ffe29d;
+    }
+    .answer-area{
+      display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;margin-top:10px;
+    }
+    @media(max-width:700px){.answer-area{grid-template-columns:1fr}}
+    input[type="number"]{
+      width:100%;font-size:24px;padding:14px 16px;border-radius:16px;border:2px solid #cfe4f6;outline:none;
+      background:#fcfeff;
+    }
+    .btn{
+      border:none;border-radius:16px;padding:14px 18px;font-size:17px;font-weight:800;cursor:pointer;color:#16324a;
+      background:linear-gradient(135deg,#ffd966,#ffc676);
+      box-shadow:0 7px 14px rgba(255,193,7,.24);
+    }
+    .btn.secondary{
+      background:linear-gradient(135deg,#d9efff,#bcdfff);
+      box-shadow:0 7px 14px rgba(103,183,255,.18);
+    }
+    .btn:active{transform:translateY(1px)}
+    .feedback{
+      margin-top:12px;padding:14px 16px;border-radius:16px;font-weight:700;display:none;
+    }
+    .feedback.ok{display:block;background:#ecfff0;color:#1b6b31;border:2px solid #b8efc3}
+    .feedback.bad{display:block;background:#fff0ef;color:#9f2f2b;border:2px solid #ffc5c2}
+    .tips{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px;
+    }
+    .tip{
+      background:#f9fcff;border:2px dashed #cde5f7;border-radius:18px;padding:12px 14px;line-height:1.7;
+    }
+    .result{
+      display:none;margin-top:18px;padding:18px;border-radius:20px;background:linear-gradient(135deg,#eefcff,#fff6df);
+      border:2px solid #d7eefa;
+    }
+    .result.show{display:block}
+    .code{
+      display:inline-block;font-size:28px;font-weight:900;letter-spacing:3px;background:#fff;padding:10px 14px;border-radius:16px;margin:10px 0;
+      border:2px solid #dbe7f3;
+    }
+    .celebrate{
+      position:fixed;inset:0;pointer-events:none;overflow:hidden;
+    }
+    .confetti{
+      position:absolute;width:12px;height:18px;opacity:.9;animation:fall 2.8s linear forwards;
+    }
+    @keyframes fall{
+      0%{transform:translateY(-10vh) rotate(0deg)}
+      100%{transform:translateY(110vh) rotate(620deg)}
+    }
+    .footer-note{
+      text-align:center;margin-top:18px;opacity:.75;font-size:14px
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero section with Chinese New Year inspired design -->
+  <div class="wrap">
     <section class="hero">
-        <h1>Welcome to Mr. Rooker's Class</h1>
-        <p>Happy Chinese New Year! Please select your class to download the holiday homework and submit your scores.</p>
+      <div class="cloud"></div>
+      <div class="balloon"></div>
+      <div class="star s1">⭐</div>
+      <div class="star s2">✨</div>
+      <h1>20以内加减法冒险城</h1>
+      <p>欢迎来到数学冒险城！每解开一个房间，就会学会一种新的应用题说法。今天的任务不是只会算，而是学会看懂题目在说什么。</p>
+      <div class="badge-row">
+        <div class="badge">🎯 适合：一年级</div>
+        <div class="badge">🧠 重点：看懂“加法还是减法”</div>
+        <div class="badge">🏰 8个闯关房间</div>
+      </div>
     </section>
 
-    <!-- Class selection cards -->
-    <section class="cards">
-        <a class="card" href="A2.html">
-            <h2>A2 Mathematics</h2>
-            <p>Holiday Homework &amp; Score Submission</p>
-        </a>
-        <a class="card" href="AS.html">
-            <h2>AS Mathematics</h2>
-            <p>Holiday Homework &amp; Score Submission</p>
-        </a>
-    </section>
+    <div class="layout">
+      <aside class="panel">
+        <h2>冒险地图</h2>
+        <div>完成进度：<strong id="doneCount">0</strong> / 8</div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <div class="room-list" id="roomList"></div>
+
+        <div class="guide">
+          <strong>家长小提示</strong><br>
+          1. 先别急着讲答案，先问孩子：<br>
+          “这是变多了，还是变少了？”<br>
+          “谁多？谁少？”<br>
+          “我们要求的是谁？”<br><br>
+          2. 如果孩子做错，不要马上说“错了”。可以先问：<br>
+          “你能把这题讲成一个故事吗？”<br><br>
+          3. 这套网页重点不是速度，而是理解题意。
+        </div>
+      </aside>
+
+      <main class="room">
+        <div class="scene">
+          <div class="castle"><div class="door"></div></div>
+          <h2 class="title" id="sceneTitle">准备出发</h2>
+          <p class="subtitle" id="sceneSubtitle">点击左边的房间，开始今天的数学冒险吧！</p>
+          <div class="floor"></div>
+        </div>
+
+        <div class="question-card">
+          <p class="story" id="story">这里会显示题目。</p>
+          <div class="formula" id="formula">请先选择一个房间</div>
+
+          <div class="objects" id="objects"></div>
+
+          <div class="answer-area">
+            <input id="answer" type="number" inputmode="numeric" placeholder="把答案填在这里" />
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn" id="checkBtn">提交答案</button>
+              <button class="btn secondary" id="hintBtn">看提示</button>
+              <button class="btn secondary" id="resetBtn">重新开始</button>
+            </div>
+          </div>
+
+          <div class="feedback" id="feedback"></div>
+
+          <div class="tips">
+            <div class="tip">
+              <strong>读题口诀</strong><br>
+              先看事情是变多还是变少；<br>
+              再看谁多谁少；<br>
+              最后看要求的是谁。
+            </div>
+            <div class="tip" id="roomTip">
+              <strong>本关提示</strong><br>
+              选一个房间后，这里会出现专属提示。
+            </div>
+            <div class="tip" id="parentTip">
+              <strong>家长引导句</strong><br>
+              可以问孩子：<br>
+              “你能把题目说给我听吗？”
+            </div>
+          </div>
+
+          <div class="result" id="resultBox">
+            <h3 style="margin:0 0 6px;">恭喜你，数学冒险城通关啦！</h3>
+            <div class="code" id="finalCode">888</div>
+            <p style="margin:6px 0 0; line-height:1.8;">
+              你已经认识了 20 以内加减法最常见的几种说法：一共、剩下、比多多少、比少多少、已知少的求多的、已知多的求少的、排队变化、两步小故事。
+            </p>
+            <p style="line-height:1.8;">
+              家长可以继续做的事情：把同一种题，换个说法再问一次，让孩子真正理解“题意”，不是只记题型。
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="footer-note">本页面为单文件离线版，可直接保存使用。进度会自动保存在本设备中。</div>
+  </div>
+
+  <div class="celebrate" id="celebrate"></div>
+
+  <script>
+    const rooms = [
+      {
+        id: 1,
+        name: "房间1：宝石合体",
+        subtitle: "学会看见“一共多少”",
+        sceneTitle: "宝石合体谷",
+        sceneSubtitle: "两堆宝石合起来，问一共有多少。",
+        story: "乐乐有 7 颗蓝宝石，米米有 5 颗粉宝石。他们把宝石放在一起，现在一共有多少颗宝石？",
+        formula: "7 + 5 = ?",
+        answer: 12,
+        objects: ["💎","💎","💎","💎","💎","💎","💎","💖","💖","💖","💖","💖"],
+        hint: "看到“一共”“总共”“合起来”，通常是在变多，用加法。",
+        parent: "先问：是两堆东西合在一起了吗？如果是合在一起，数量会变多还是变少？",
+        buttonLabel: "练习合起来",
+        bad: "再想一想：题目里是把两个人的宝石放在一起，不是拿走哦。"
+      },
+      {
+        id: 2,
+        name: "房间2：饼干消失术",
+        subtitle: "学会看见“还剩多少”",
+        sceneTitle: "饼干消失厨房",
+        sceneSubtitle: "原来有一些，被吃掉一部分，问还剩多少。",
+        story: "盘子里原来有 14 块小饼干，小熊吃掉了 6 块。现在盘子里还剩多少块饼干？",
+        formula: "14 - 6 = ?",
+        answer: 8,
+        objects: ["🍪","🍪","🍪","🍪","🍪","🍪","🍪","🍪","🍪","🍪","🍪","🍪","🍪","🍪"],
+        hint: "看到“吃掉了”“用了”“还剩”，通常是在变少，用减法。",
+        parent: "先问：原来有多少？后来发生了什么？是东西变多了还是变少了？",
+        buttonLabel: "练习剩下多少",
+        bad: "想一想：饼干被吃掉以后，是不是变少了？"
+      },
+      {
+        id: 3,
+        name: "房间3：谁更多",
+        subtitle: "学会看见“比……多多少”",
+        sceneTitle: "风车比较坡",
+        sceneSubtitle: "比较两个人谁多，问差多少。",
+        story: "小兔有 15 朵小花，小猫有 9 朵小花。小兔比小猫多多少朵小花？",
+        formula: "15 - 9 = ?",
+        answer: 6,
+        objects: ["🌼","🌼","🌼","🌼","🌼","🌼","🌼","🌼","🌼","🌼","🌼","🌼","🌼","🌼","🌼"],
+        hint: "“比……多多少”不是加法，是在比差距。要用大的减小的。",
+        parent: "先问：谁更多？谁更少？我们现在不是把它们合起来，而是在比较差多少。",
+        buttonLabel: "练习多多少",
+        bad: "重点不是合起来，而是比较相差多少。先找出谁多。"
+      },
+      {
+        id: 4,
+        name: "房间4：谁更少",
+        subtitle: "学会看见“比……少多少”",
+        sceneTitle: "月亮比较桥",
+        sceneSubtitle: "换个说法，但本质还是比较差多少。",
+        story: "小鸭有 8 颗糖，小猴有 13 颗糖。小鸭比小猴少多少颗糖？",
+        formula: "13 - 8 = ?",
+        answer: 5,
+        objects: ["🍬","🍬","🍬","🍬","🍬","🍬","🍬","🍬"],
+        hint: "“少多少”和“多多少”本质一样，都是在比差多少，还是用大的减小的。",
+        parent: "可以问：虽然题目写的是‘少多少’，但我们是不是还是在比较两个数的差？",
+        buttonLabel: "练习少多少",
+        bad: "别被‘少’这个字骗了。这里不是看到少就直接减前面那个数，而是比较差距。"
+      },
+      {
+        id: 5,
+        name: "房间5：找更多",
+        subtitle: "已知少的，求多的",
+        sceneTitle: "彩虹升级台",
+        sceneSubtitle: "在原来的基础上再多一些。",
+        story: "朵朵有 7 张贴纸，星星比朵朵多 4 张。星星有多少张贴纸？",
+        formula: "7 + 4 = ?",
+        answer: 11,
+        objects: ["🌟","🌟","🌟","🌟","🩷","🩷","🩷"],
+        hint: "已知少的，求多的，就是在原来的基础上再增加一些，用加法。",
+        parent: "可以问：谁少？谁多？我们现在要求的是多的那个，还是少的那个？",
+        buttonLabel: "练习求多的",
+        bad: "想一想：题目已经告诉你朵朵有 7 张，星星比她还要多 4 张，所以是比 7 更多。"
+      },
+      {
+        id: 6,
+        name: "房间6：找更少",
+        subtitle: "已知多的，求少的",
+        sceneTitle: "云朵回退台",
+        sceneSubtitle: "从较多的数量里退回去。",
+        story: "果果有 16 个气球，比安安多 5 个。安安有多少个气球？",
+        formula: "16 - 5 = ?",
+        answer: 11,
+        objects: ["🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈","🎈"],
+        hint: "已知多的，求少的，就要从多的里面退回去，用减法。",
+        parent: "可以问：16 个是谁的？这个人是多的还是少的？如果要求少的，是不是要退回去？",
+        buttonLabel: "练习求少的",
+        bad: "先抓住一句：‘果果比安安多 5 个’。那 16 个是较多的数量。"
+      },
+      {
+        id: 7,
+        name: "房间7：排队魔法",
+        subtitle: "生活里的前后变化",
+        sceneTitle: "操场排队门",
+        sceneSubtitle: "有人来了，队伍变长；有人走了，队伍变短。",
+        story: "操场上原来排着 9 个小朋友做游戏，后来又来了 6 个小朋友。现在一共有多少个小朋友？",
+        formula: "9 + 6 = ?",
+        answer: 15,
+        objects: ["🧒","🧒","🧒","🧒","🧒","🧒","🧒","🧒","🧒"],
+        hint: "生活题也一样，先看人数是变多还是变少。",
+        parent: "让孩子自己演：原来站 9 个，再来 6 个，是不是队伍变长了？",
+        buttonLabel: "练习队伍变化",
+        bad: "“又来了”通常表示数量增加了。"
+      },
+      {
+        id: 8,
+        name: "房间8：小侦探终点站",
+        subtitle: "两步理解小故事",
+        sceneTitle: "星光侦探站",
+        sceneSubtitle: "先看谁有多少，再看比较关系。",
+        story: "小米有 6 本故事书，小航有 10 本故事书。后来妈妈又送给小米 3 本。现在小米比小航少多少本故事书？",
+        formula: "(6 + 3) 和 10 比较，10 - 9 = ?",
+        answer: 1,
+        objects: ["📚","📚","📚","📚","📚","📚","🎁","🎁","🎁"],
+        hint: "先不要急着比较。先算小米现在有多少，再和小航比较差多少。",
+        parent: "这是两步题。第一步先问：送了 3 本后，小米现在有几本？第二步再问：和小航比，还少多少？",
+        buttonLabel: "练习两步小故事",
+        bad: "这题要先更新小米的数量，再比较。不要看到‘少多少’就立刻只做一步。"
+      }
+    ];
+
+    const roomList = document.getElementById('roomList');
+    const sceneTitle = document.getElementById('sceneTitle');
+    const sceneSubtitle = document.getElementById('sceneSubtitle');
+    const storyEl = document.getElementById('story');
+    const formulaEl = document.getElementById('formula');
+    const objectsEl = document.getElementById('objects');
+    const answerInput = document.getElementById('answer');
+    const feedbackEl = document.getElementById('feedback');
+    const roomTipEl = document.getElementById('roomTip');
+    const parentTipEl = document.getElementById('parentTip');
+    const bar = document.getElementById('bar');
+    const doneCountEl = document.getElementById('doneCount');
+    const resultBox = document.getElementById('resultBox');
+
+    const STORAGE_KEY = 'grade1_math_adventure_progress_v1';
+    let currentRoom = 0;
+    let progress = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"done":[]}');
+
+    function saveProgress(){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    }
+
+    function isDone(id){
+      return progress.done.includes(id);
+    }
+
+    function renderList(){
+      roomList.innerHTML = '';
+      rooms.forEach((room, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'room-btn' + (currentRoom === index ? ' active' : '') + (isDone(room.id) ? ' done' : '');
+        btn.innerHTML = `${isDone(room.id) ? '✅ ' : '🔐 '}${room.name}<small>${room.subtitle}</small>`;
+        btn.onclick = () => loadRoom(index);
+        roomList.appendChild(btn);
+      });
+      const done = progress.done.length;
+      doneCountEl.textContent = done;
+      bar.style.width = `${done / rooms.length * 100}%`;
+      resultBox.classList.toggle('show', done === rooms.length);
+      if(done === rooms.length){
+        document.getElementById('finalCode').textContent = '' + rooms.reduce((a,r)=>a+r.answer,0);
+      }
+    }
+
+    function loadRoom(index){
+      currentRoom = index;
+      const room = rooms[index];
+      sceneTitle.textContent = room.sceneTitle;
+      sceneSubtitle.textContent = room.sceneSubtitle;
+      storyEl.textContent = room.story;
+      formulaEl.textContent = room.formula;
+      roomTipEl.innerHTML = `<strong>本关提示</strong><br>${room.hint}`;
+      parentTipEl.innerHTML = `<strong>家长引导句</strong><br>${room.parent}`;
+      objectsEl.innerHTML = '';
+      room.objects.forEach(obj => {
+        const div = document.createElement('div');
+        div.className = 'object';
+        div.textContent = obj;
+        objectsEl.appendChild(div);
+      });
+      answerInput.value = '';
+      answerInput.focus();
+      feedbackEl.className = 'feedback';
+      feedbackEl.style.display = 'none';
+      feedbackEl.textContent = '';
+      renderList();
+    }
+
+    function celebrate(){
+      const box = document.getElementById('celebrate');
+      const colors = ['#ffd966','#67b7ff','#ff7eb6','#7cd992','#b59cff','#ff9f68'];
+      for(let i=0;i<40;i++){
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random()*100 + 'vw';
+        c.style.background = colors[Math.floor(Math.random()*colors.length)];
+        c.style.animationDelay = (Math.random()*0.6)+'s';
+        c.style.transform = `translateY(-10vh) rotate(${Math.random()*180}deg)`;
+        box.appendChild(c);
+        setTimeout(()=>c.remove(), 3200);
+      }
+    }
+
+    function checkAnswer(){
+      const room = rooms[currentRoom];
+      const val = Number(answerInput.value);
+      if(Number.isNaN(val) || answerInput.value === ''){
+        feedbackEl.className = 'feedback bad';
+        feedbackEl.style.display = 'block';
+        feedbackEl.textContent = '先填一个答案再提交哦。';
+        return;
+      }
+      if(val === room.answer){
+        feedbackEl.className = 'feedback ok';
+        feedbackEl.style.display = 'block';
+        let extra = '';
+        if(room.id === 8){
+          extra = '太棒啦！你已经会先算一步，再比较差多少了。';
+        }else{
+          extra = '答对啦！继续前进，去解锁下一个房间吧。';
+        }
+        feedbackEl.textContent = extra;
+        if(!isDone(room.id)){
+          progress.done.push(room.id);
+          saveProgress();
+          celebrate();
+        }
+        renderList();
+      }else{
+        feedbackEl.className = 'feedback bad';
+        feedbackEl.style.display = 'block';
+        feedbackEl.textContent = room.bad;
+      }
+    }
+
+    document.getElementById('checkBtn').onclick = checkAnswer;
+    document.getElementById('hintBtn').onclick = () => {
+      if(currentRoom !== null){
+        feedbackEl.className = 'feedback ok';
+        feedbackEl.style.display = 'block';
+        feedbackEl.textContent = '提示：' + rooms[currentRoom].hint;
+      }
+    };
+    document.getElementById('resetBtn').onclick = () => {
+      if(confirm('要清空全部闯关进度，重新开始吗？')){
+        progress = {done:[]};
+        saveProgress();
+        renderList();
+        loadRoom(0);
+      }
+    };
+    answerInput.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') checkAnswer();
+    });
+
+    renderList();
+    loadRoom(0);
+  </script>
 </body>
 </html>
