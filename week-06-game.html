@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 6 Reward Game - Odd/Even Sort</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#4d8b4a;--week-accent:#f6bd60">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🧺 <span class="lang zh">森林野餐会</span><span class="lang en">Forest Picnic</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-06-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🧺 <span class="lang zh">森林野餐会</span><span class="lang en">Forest Picnic</span></p>
+      <h1><span class="lang zh">单双小屋</span><span class="lang en">Odd/Even Sort</span></h1>
+      <p><span class="lang zh">把数字送到奇数或偶数小屋。</span><span class="lang en">Send numbers to odd or even houses.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":6,"titleZh":"单双小屋","titleEn":"Odd/Even Sort","instructionZh":"把数字送到奇数或偶数小屋。","instructionEn":"Send numbers to odd or even houses.","themeZh":"森林野餐会","themeEn":"Forest Picnic","icon":"🧺","rounds":[{"promptZh":"6 是？","promptEn":"6 is?","visual":"<div class=\"dot-row\"><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span></div>","choices":[{"zh":"奇","en":"odd","value":"奇"},{"zh":"偶","en":"even","value":"偶"}],"answer":"偶"},{"promptZh":"7 是？","promptEn":"7 is?","visual":"<div class=\"dot-row\"><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span></div>","choices":[{"zh":"奇","en":"odd","value":"奇"},{"zh":"偶","en":"even","value":"偶"}],"answer":"奇"},{"promptZh":"8 是？","promptEn":"8 is?","visual":"<div class=\"ten-frame\"><span class=\"filled\"></span><span class=\"filled\"></span><span class=\"filled\"></span><span class=\"filled\"></span><span class=\"filled\"></span><span class=\"filled\"></span><span class=\"filled\"></span><span class=\"filled\"></span><span class=\"\"></span><span class=\"\"></span></div>","choices":[{"zh":"奇","en":"odd","value":"奇"},{"zh":"偶","en":"even","value":"偶"}],"answer":"偶"},{"promptZh":"5 能两两配对吗？","promptEn":"Can 5 pair up?","visual":"<div class=\"dot-row\"><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span></div>","choices":[{"zh":"能","en":"yes","value":"yes"},{"zh":"不能","en":"no","value":"no"}],"answer":"no"},{"promptZh":"下一个偶数？","promptEn":"Next even number?","visual":"<div class=\"number-path\"><span>2</span><span>4</span><span>6</span><span>?</span></div>","choices":[{"zh":"7","en":"7","value":"7"},{"zh":"8","en":"8","value":"8"},{"zh":"9","en":"9","value":"9"}],"answer":"8"},{"promptZh":"11 配对剩几个？","promptEn":"Pair 11. Left?","visual":"<div class=\"dot-row\"><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span></div>","choices":[{"zh":"0","en":"0","value":"0"},{"zh":"1","en":"1","value":"1"},{"zh":"2","en":"2","value":"2"}],"answer":"1"}]}</script>
+</body>
+</html>

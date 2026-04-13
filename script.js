@@ -1,7 +1,17 @@
 (() => {
   const langKey = "grade1-math-adventure-lang";
   const body = document.body;
-  const saved = localStorage.getItem(langKey);
+  const storage = {
+    get(key) {
+      try { return localStorage.getItem(key); }
+      catch (_) { return null; }
+    },
+    set(key, value) {
+      try { localStorage.setItem(key, value); }
+      catch (_) {}
+    }
+  };
+  const saved = storage.get(langKey);
   if (saved === "zh" || saved === "en") {
     body.dataset.lang = saved;
     document.documentElement.lang = saved === "zh" ? "zh-CN" : "en";
@@ -14,18 +24,148 @@
       const next = body.dataset.lang === "zh" ? "en" : "zh";
       body.dataset.lang = next;
       document.documentElement.lang = next === "zh" ? "zh-CN" : "en";
-      localStorage.setItem(langKey, next);
+      storage.set(langKey, next);
     });
   });
 
+  const completeButtons = document.querySelectorAll("[data-complete-day]");
+  const stampBoxes = document.querySelectorAll("[data-stamp-box]");
+  function updateCompleteState(isComplete) {
+    if (!isComplete) return;
+    completeButtons.forEach((completeButton) => {
+      completeButton.innerHTML = bilingual("完成章已盖！", "Marked complete!");
+    });
+    stampBoxes.forEach((stampBox) => {
+      stampBox.innerHTML = bilingual("今日印章到手！", "Today's stamp earned!");
+    });
+  }
+  if (body.dataset.week && body.dataset.day) {
+    updateCompleteState(storage.get("grade1-week-" + body.dataset.week + "-day-" + body.dataset.day + "-complete") === "1");
+  }
+  completeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const week = body.dataset.week;
+      const day = body.dataset.day;
+      if (!week || !day) return;
+      storage.set("grade1-week-" + week + "-day-" + day + "-complete", "1");
+      updateCompleteState(true);
+    });
+  });
+
+  document.querySelectorAll("[data-week-progress]").forEach((node) => {
+    const week = node.dataset.weekProgress;
+    let days = 0;
+    for (let d = 1; d <= 5; d++) {
+      if (storage.get("grade1-week-" + week + "-day-" + d + "-complete") === "1") days += 1;
+    }
+    const challenge = storage.get("grade1-week-" + week + "-challenge-complete") === "1";
+    node.innerHTML = bilingual("进度：" + days + "/5 天" + (challenge ? " · 挑战完成" : ""), "Progress: " + days + "/5 days" + (challenge ? " · challenge done" : ""));
+  });
+
+  document.querySelectorAll("[data-buddy-status]").forEach((node) => {
+    let completedDays = 0;
+    let completedChallenges = 0;
+    for (let w = 1; w <= 12; w++) {
+      for (let d = 1; d <= 5; d++) {
+        if (storage.get("grade1-week-" + w + "-day-" + d + "-complete") === "1") completedDays += 1;
+      }
+      if (storage.get("grade1-week-" + w + "-challenge-complete") === "1") completedChallenges += 1;
+    }
+    node.innerHTML = bilingual("已收集：" + completedDays + "枚日印章 · " + completedChallenges + "个挑战游戏", "Collected: " + completedDays + " day stamps · " + completedChallenges + " challenge games");
+  });
+
+  document.querySelectorAll("[data-game-link]").forEach((link) => {
+    const week = link.dataset.gameLink;
+    const unlocked = storage.get("grade1-week-" + week + "-challenge-complete") === "1";
+    const nameZh = link.dataset.gameNameZh || "奖励游戏";
+    const nameEn = link.dataset.gameNameEn || "Reward Game";
+    if (unlocked) {
+      link.innerHTML = bilingual("🎮 " + nameZh, "🎮 " + nameEn);
+    } else {
+      link.innerHTML = bilingual("🔒 " + nameZh, "🔒 " + nameEn);
+    }
+  });
+
+  function initRewardGame(game) {
+    const locked = document.querySelector("[data-game-locked]");
+    const ready = document.querySelector("[data-game-ready]");
+    const play = document.querySelector("[data-reward-play]");
+    const results = document.querySelector("[data-reward-results]");
+    const start = document.querySelector("[data-reward-start]");
+    const progress = document.querySelector("[data-reward-progress]");
+    const scoreNode = document.querySelector("[data-reward-score]");
+    const promptNode = document.querySelector("[data-reward-prompt]");
+    const visualNode = document.querySelector("[data-reward-visual]");
+    const choicesNode = document.querySelector("[data-reward-choices]");
+    const feedback = document.querySelector("[data-reward-feedback]");
+    if (!ready || !start) return;
+    const unlocked = storage.get("grade1-week-" + game.week + "-challenge-complete") === "1";
+    if (unlocked) {
+      locked.classList.add("is-hidden");
+      ready.classList.remove("is-hidden");
+    }
+    let index = 0;
+    let score = 0;
+    function renderRound() {
+      const round = game.rounds[index];
+      progress.innerHTML = bilingual("第 " + (index + 1) + " / " + game.rounds.length + " 轮", "Round " + (index + 1) + " of " + game.rounds.length);
+      scoreNode.innerHTML = bilingual("星星 " + score, "Stars " + score);
+      promptNode.innerHTML = bilingual(round.promptZh, round.promptEn);
+      visualNode.innerHTML = round.visual;
+      feedback.innerHTML = bilingual("选一个答案。", "Choose one answer.");
+      choicesNode.innerHTML = round.choices.map((choice) => '<button type="button" data-choice="' + choice.value + '">' + bilingual(choice.zh, choice.en) + '</button>').join("");
+      choicesNode.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const correct = normalize(button.dataset.choice) === normalize(round.answer);
+          if (correct) {
+            score += 1;
+            feedback.innerHTML = bilingual("答对啦！", "Nice match!");
+            choicesNode.querySelectorAll("button").forEach((b) => b.disabled = true);
+            setTimeout(() => {
+              index += 1;
+              if (index >= game.rounds.length) finishGame();
+              else renderRound();
+            }, 650);
+          } else {
+            feedback.innerHTML = bilingual("差一点，换一个试试。", "Almost. Try another one.");
+            button.disabled = true;
+          }
+        });
+      });
+    }
+    function finishGame() {
+      play.classList.add("is-hidden");
+      results.innerHTML = '<div class="result-top"><div class="praise-gif">' + game.icon + '</div><div><p class="eyebrow">' + bilingual(game.themeZh, game.themeEn) + '</p><h1>' + bilingual("游戏完成！", "Game Complete!") + '</h1><p>' + bilingual("你收集了 " + score + " 颗星星。", "You collected " + score + " stars.") + '</p></div></div><button class="reward-button" type="button" data-replay-game>' + bilingual("再玩一次", "Play Again") + '</button>';
+      results.classList.remove("is-hidden");
+      results.querySelector("[data-replay-game]").addEventListener("click", () => {
+        results.classList.add("is-hidden");
+        index = 0;
+        score = 0;
+        play.classList.remove("is-hidden");
+        renderRound();
+      });
+    }
+    start.addEventListener("click", () => {
+      ready.classList.add("is-hidden");
+      play.classList.remove("is-hidden");
+      index = 0;
+      score = 0;
+      renderRound();
+    });
+  }
+
   const dataNode = document.getElementById("challengeData");
-  if (!dataNode) return;
+  const gameDataNode = document.getElementById("rewardGameData");
+  if (!dataNode && !gameDataNode) return;
+  if (gameDataNode) {
+    initRewardGame(JSON.parse(gameDataNode.textContent));
+    if (!dataNode) return;
+  }
   const data = JSON.parse(dataNode.textContent);
   const app = document.getElementById("challengeApp");
   const startPanel = app.querySelector("[data-challenge-start]");
   const card = app.querySelector("[data-challenge-card]");
   const results = app.querySelector("[data-results]");
-  const gamePanel = app.querySelector("[data-game]");
   const progress = app.querySelector("[data-progress]");
   const timer = app.querySelector("[data-timer]");
   const meter = app.querySelector("[data-meter]");
@@ -35,9 +175,6 @@
   const form = app.querySelector("[data-answer-form]");
   const input = app.querySelector("[data-answer-input]");
   const startButton = app.querySelector("[data-start-challenge]");
-  const gameButton = app.querySelector("[data-game-start]");
-  const gameInfo = app.querySelector("[data-game-info]");
-  const canvas = app.querySelector("[data-game-canvas]");
 
   let index = 0;
   let startedAt = 0;
@@ -102,8 +239,9 @@
 
   function revisitSuggestion(missed) {
     if (!missed.length) return bilingual("保持手感：下周继续先看图、再说想法。", "Keep the rhythm: next week, look first and explain your thinking.");
-    const concepts = [...new Set(missed.map((m) => body.dataset.lang === "en" ? m.conceptEn : m.conceptZh))].slice(0, 3).join("、");
-    return bilingual("建议回看：" + concepts + "。用小物品摆一摆会更稳。", "Revisit: " + concepts + ". Building with small objects will help.");
+    const zhConcepts = [...new Set(missed.map((m) => m.conceptZh))].slice(0, 3).join("、");
+    const enConcepts = [...new Set(missed.map((m) => m.conceptEn))].slice(0, 3).join(", ");
+    return bilingual("建议回看：" + zhConcepts + "。用小物品摆一摆会更稳。", "Revisit: " + enConcepts + ". Building with small objects will help.");
   }
 
   function finishChallenge() {
@@ -115,6 +253,7 @@
     const correct = responses.filter((r) => r.correct).length;
     const missed = responses.filter((r) => !r.correct);
     const passed = correct >= data.threshold;
+    storage.set("grade1-week-" + data.week + "-challenge-complete", "1");
     const praiseZh = passed ? "红星到手！你又勇敢又认真。" : "完成就是进步！小伙伴为你鼓掌。";
     const praiseEn = passed ? "Red star earned! Brave and careful work." : "Finishing is progress! Your buddy is cheering.";
     const missedHtml = missed.length
@@ -130,7 +269,7 @@
       '<div class="score-line">' + (passed ? '<span class="red-star">★</span>' : "") + correct + " / " + data.questions.length + '</div>' +
       '<p><strong>' + bilingual("总时间：", "Total time: ") + '</strong>' + fmt(totalSeconds) + '</p>' +
       '<div class="avatar-reward">' + data.icon + " " + bilingual("小伙伴获得：" + data.rewardZh, "Buddy reward: " + data.rewardEn) + '</div>' +
-      '<button class="reward-button" type="button" data-unlock-game>' + bilingual("解锁奖励小游戏", "Unlock Mini Reward Game") + '</button>' +
+      '<a class="reward-button" href="week-' + String(data.week).padStart(2, "0") + '-game.html">' + bilingual("解锁奖励小游戏", "Unlock Mini Reward Game") + '</a>' +
       '<section class="parent-summary"><h2>' + bilingual("家长小结", "Parent Summary") + '</h2>' +
         '<p><strong>' + bilingual("检查内容：", "Concepts checked: ") + '</strong>' + bilingual(data.conceptsZh, data.conceptsEn) + '</p>' +
         '<p><strong>' + bilingual("完成情况：", "Completion: ") + '</strong>' + responses.length + " / " + data.questions.length + '</p>' +
@@ -139,11 +278,6 @@
         '<p><strong>' + bilingual("建议：", "Suggestion: ") + '</strong>' + revisitSuggestion(missed) + '</p>' +
       '</section>';
     results.classList.remove("is-hidden");
-    results.querySelector("[data-unlock-game]").addEventListener("click", () => {
-      gamePanel.classList.remove("is-hidden");
-      gamePanel.scrollIntoView({ behavior: "smooth", block: "start" });
-      updateGamePlays();
-    });
   }
 
   form.addEventListener("submit", (event) => {
@@ -164,127 +298,4 @@
     else showQuestion();
   });
   startButton.addEventListener("click", startChallenge);
-
-  const gameKey = "grade1-week-" + data.week + "-reward-plays";
-  const ctx = canvas.getContext("2d");
-  const cols = 10;
-  const rows = 16;
-  const size = 20;
-  const colors = ["#ef476f", "#ffd166", "#06d6a0", "#118ab2", "#f78c6b"];
-  const shapes = [
-    [[1,1,1,1]],
-    [[1,1],[1,1]],
-    [[0,1,0],[1,1,1]],
-    [[1,0,0],[1,1,1]],
-    [[0,0,1],[1,1,1]]
-  ];
-  let board, piece, gameTimer, dropTimer, gameEndsAt, gameScore;
-
-  function playsUsed() {
-    return Number(localStorage.getItem(gameKey) || "0");
-  }
-  function updateGamePlays() {
-    const left = Math.max(0, 2 - playsUsed());
-    if (piece) {
-      gameInfo.textContent = text("游戏进行中", "Game in progress");
-      gameButton.disabled = true;
-      return;
-    }
-    gameInfo.textContent = text("还可以玩 " + left + " 次", left + " play(s) left");
-    gameButton.disabled = left <= 0;
-  }
-  function newPiece() {
-    const shape = shapes[Math.floor(Math.random() * shapes.length)].map((r) => r.slice());
-    return { shape, x: 3, y: 0, color: colors[Math.floor(Math.random() * colors.length)] };
-  }
-  function collide(p, offX, offY, shape) {
-    const s = shape || p.shape;
-    for (let y = 0; y < s.length; y++) {
-      for (let x = 0; x < s[y].length; x++) {
-        if (!s[y][x]) continue;
-        const nx = p.x + x + offX;
-        const ny = p.y + y + offY;
-        if (nx < 0 || nx >= cols || ny >= rows || (ny >= 0 && board[ny][nx])) return true;
-      }
-    }
-    return false;
-  }
-  function merge() {
-    piece.shape.forEach((row, y) => row.forEach((cell, x) => {
-      if (cell && piece.y + y >= 0) board[piece.y + y][piece.x + x] = piece.color;
-    }));
-    for (let y = rows - 1; y >= 0; y--) {
-      if (board[y].every(Boolean)) {
-        board.splice(y, 1);
-        board.unshift(Array(cols).fill(null));
-        gameScore += 10;
-        y += 1;
-      }
-    }
-    piece = newPiece();
-    if (collide(piece, 0, 0)) endGame();
-  }
-  function rotate(shape) {
-    return shape[0].map((_, i) => shape.map((row) => row[i]).reverse());
-  }
-  function drawCell(x, y, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x * size + 1, y * size + 1, size - 2, size - 2);
-  }
-  function drawGame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#111827";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    board.forEach((row, y) => row.forEach((color, x) => { if (color) drawCell(x, y, color); }));
-    if (piece) piece.shape.forEach((row, y) => row.forEach((cell, x) => { if (cell) drawCell(piece.x + x, piece.y + y, piece.color); }));
-    ctx.fillStyle = "white";
-    ctx.font = "12px Arial";
-    ctx.fillText(text("分数 ", "Score ") + gameScore, 8, 16);
-    ctx.fillText(text("时间 ", "Time ") + Math.max(0, Math.ceil((gameEndsAt - Date.now()) / 1000)), 136, 16);
-  }
-  function step() {
-    if (!piece) return;
-    if (!collide(piece, 0, 1)) piece.y += 1;
-    else merge();
-    drawGame();
-  }
-  function endGame() {
-    clearInterval(dropTimer);
-    clearInterval(gameTimer);
-    piece = null;
-    drawGame();
-    gameInfo.textContent = text("游戏结束，分数 " + gameScore, "Game over, score " + gameScore);
-    gameButton.disabled = playsUsed() >= 2;
-  }
-  function startGame() {
-    if (playsUsed() >= 2) return;
-    localStorage.setItem(gameKey, String(playsUsed() + 1));
-    board = Array.from({ length: rows }, () => Array(cols).fill(null));
-    piece = newPiece();
-    gameScore = 0;
-    gameEndsAt = Date.now() + 60000;
-    clearInterval(dropTimer);
-    clearInterval(gameTimer);
-    dropTimer = setInterval(step, 650);
-    gameTimer = setInterval(() => {
-      if (Date.now() >= gameEndsAt) endGame();
-      else drawGame();
-    }, 250);
-    updateGamePlays();
-    drawGame();
-  }
-  document.addEventListener("keydown", (event) => {
-    if (!piece || gamePanel.classList.contains("is-hidden")) return;
-    if (event.key === "ArrowLeft" && !collide(piece, -1, 0)) piece.x -= 1;
-    if (event.key === "ArrowRight" && !collide(piece, 1, 0)) piece.x += 1;
-    if (event.key === "ArrowDown") step();
-    if (event.key === "ArrowUp") {
-      const r = rotate(piece.shape);
-      if (!collide(piece, 0, 0, r)) piece.shape = r;
-    }
-    if (event.key.startsWith("Arrow")) event.preventDefault();
-    drawGame();
-  });
-  gameButton.addEventListener("click", startGame);
-  updateGamePlays();
 })();

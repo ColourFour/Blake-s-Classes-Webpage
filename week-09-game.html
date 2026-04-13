@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 9 Reward Game - Balance Swap</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#32746d;--week-accent:#80ed99">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">⚖️ <span class="lang zh">彩虹天平屋</span><span class="lang en">Rainbow Balance House</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-09-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">⚖️ <span class="lang zh">彩虹天平屋</span><span class="lang en">Rainbow Balance House</span></p>
+      <h1><span class="lang zh">天平换一换</span><span class="lang en">Balance Swap</span></h1>
+      <p><span class="lang zh">让天平两边一样多。</span><span class="lang en">Make both sides equal.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":9,"titleZh":"天平换一换","titleEn":"Balance Swap","instructionZh":"让天平两边一样多。","instructionEn":"Make both sides equal.","themeZh":"彩虹天平屋","themeEn":"Rainbow Balance House","icon":"⚖️","rounds":[{"promptZh":"1苹果=2星。2苹果？","promptEn":"1 apple=2 stars. 2 apples?","visual":"<div class=\"balance\"><div>🍎</div><div class=\"beam\">=</div><div>⭐ ⭐</div></div>","choices":[{"zh":"3","en":"3","value":"3"},{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"}],"answer":"4"},{"promptZh":"◆=5，◆+2","promptEn":"◆=5, ◆+2","visual":"<div class=\"equation\"><span>◆</span><span>=</span><span>5</span><span>◆+2=?</span></div>","choices":[{"zh":"6","en":"6","value":"6"},{"zh":"7","en":"7","value":"7"},{"zh":"8","en":"8","value":"8"}],"answer":"7"},{"promptZh":"熊=3块。2熊？","promptEn":"Bear=3 blocks. 2 bears?","visual":"<div class=\"balance\"><div>🐻</div><div class=\"beam\">=</div><div>■ ■ ■</div></div>","choices":[{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"},{"zh":"7","en":"7","value":"7"}],"answer":"6"},{"promptZh":"4 和 2+2 一样吗？","promptEn":"Are 4 and 2+2 equal?","visual":"<div class=\"equation\"><span>4</span><span>=</span><span>2</span><span>+</span><span>2</span></div>","choices":[{"zh":"是","en":"yes","value":"yes"},{"zh":"不是","en":"no","value":"no"}],"answer":"yes"},{"promptZh":"●=4，●-1","promptEn":"●=4, ●-1","visual":"<div class=\"equation\"><span>●</span><span>=</span><span>4</span><span>●-1=?</span></div>","choices":[{"zh":"2","en":"2","value":"2"},{"zh":"3","en":"3","value":"3"},{"zh":"4","en":"4","value":"4"}],"answer":"3"},{"promptZh":"两边一样多？","promptEn":"Same amount?","visual":"<div class=\"balance\"><div>●●●</div><div class=\"beam\">=</div><div>●●●</div></div>","choices":[{"zh":"是","en":"yes","value":"yes"},{"zh":"不是","en":"no","value":"no"}],"answer":"yes"}]}</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 8 Reward Game - Direction Maze</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#2f7f98;--week-accent:#ffb703">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🗺️ <span class="lang zh">小小飞行地图</span><span class="lang en">Tiny Flight Map</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-08-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🗺️ <span class="lang zh">小小飞行地图</span><span class="lang en">Tiny Flight Map</span></p>
+      <h1><span class="lang zh">方向迷宫</span><span class="lang en">Direction Maze</span></h1>
+      <p><span class="lang zh">按方向走到星星。</span><span class="lang en">Follow directions to reach the star.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":8,"titleZh":"方向迷宫","titleEn":"Direction Maze","instructionZh":"按方向走到星星。","instructionEn":"Follow directions to reach the star.","themeZh":"小小飞行地图","themeEn":"Tiny Flight Map","icon":"🗺️","rounds":[{"promptZh":"← 是？","promptEn":"← means?","visual":"<div class=\"equation\"><span>←</span></div>","choices":[{"zh":"左","en":"left","value":"左"},{"zh":"右","en":"right","value":"右"}],"answer":"左"},{"promptZh":"↑ 是？","promptEn":"↑ means?","visual":"<div class=\"equation\"><span>↑</span></div>","choices":[{"zh":"上","en":"up","value":"上"},{"zh":"下","en":"down","value":"下"}],"answer":"上"},{"promptZh":"猫左边？","promptEn":"Left of cat?","visual":"<div class=\"position-row\"><span>🍎</span><span class=\"center\">🐱</span><span>🧁</span></div>","choices":[{"zh":"苹果","en":"apple","value":"苹果"},{"zh":"蛋糕","en":"cake","value":"蛋糕"}],"answer":"苹果"},{"promptZh":"向右到哪里？","promptEn":"Go right to what?","visual":"<div class=\"map-grid\"><span>🏠</span><span>→</span><span>🌳</span><span>↑</span><span>⭐</span><span>←</span><span>🧁</span><span>↓</span><span>🏁</span></div>","choices":[{"zh":"树","en":"tree","value":"树"},{"zh":"终点","en":"finish","value":"终点"}],"answer":"树"},{"promptZh":"蛋糕在猫右边吗？","promptEn":"Cake right of cat?","visual":"<div class=\"position-row\"><span>🍎</span><span class=\"center\">🐱</span><span>🧁</span></div>","choices":[{"zh":"是","en":"yes","value":"yes"},{"zh":"不是","en":"no","value":"no"}],"answer":"yes"},{"promptZh":"终点在哪里？","promptEn":"Where is finish?","visual":"<div class=\"map-grid\"><span>🏠</span><span>→</span><span>🌳</span><span>↑</span><span>⭐</span><span>←</span><span>🧁</span><span>↓</span><span>🏁</span></div>","choices":[{"zh":"右下","en":"bottom right","value":"右下"},{"zh":"左上","en":"top left","value":"左上"}],"answer":"右下"}]}</script>
+</body>
+</html>

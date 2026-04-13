@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 12 Reward Game - Detective Logic Hunt</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#a15c38;--week-accent:#7bdff2">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🎉 <span class="lang zh">星光庆典</span><span class="lang en">Starlight Celebration</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-12-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🎉 <span class="lang zh">星光庆典</span><span class="lang en">Starlight Celebration</span></p>
+      <h1><span class="lang zh">侦探线索寻宝</span><span class="lang en">Detective Logic Hunt</span></h1>
+      <p><span class="lang zh">根据线索选答案。</span><span class="lang en">Use the clue to choose the answer.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":12,"titleZh":"侦探线索寻宝","titleEn":"Detective Logic Hunt","instructionZh":"根据线索选答案。","instructionEn":"Use the clue to choose the answer.","themeZh":"星光庆典","themeEn":"Starlight Celebration","icon":"🎉","rounds":[{"promptZh":"A>B>C，谁最多？","promptEn":"A>B>C. Most?","visual":"<div class=\"equation\"><span>A</span><span>></span><span>B</span><span>></span><span>C</span></div>","choices":[{"zh":"A","en":"A","value":"A"},{"zh":"B","en":"B","value":"B"},{"zh":"C","en":"C","value":"C"}],"answer":"A"},{"promptZh":"下一个？","promptEn":"Next?","visual":"<div class=\"pattern-row\"><span>●</span><span>▲</span><span>▲</span><span>●</span><span>▲</span><span>▲</span><span class=\"blank-tile\">?</span></div>","choices":[{"zh":"圆","en":"circle","value":"圆"},{"zh":"三角","en":"triangle","value":"三角"}],"answer":"圆"},{"promptZh":"16 - 7","promptEn":"16 - 7","visual":"<div class=\"equation\"><span>16</span><span>-</span><span>7</span></div>","choices":[{"zh":"8","en":"8","value":"8"},{"zh":"9","en":"9","value":"9"},{"zh":"10","en":"10","value":"10"}],"answer":"9"},{"promptZh":"◆=4，◆+3","promptEn":"◆=4, ◆+3","visual":"<div class=\"equation\"><span>◆</span><span>=</span><span>4</span><span>◆+3=?</span></div>","choices":[{"zh":"6","en":"6","value":"6"},{"zh":"7","en":"7","value":"7"},{"zh":"8","en":"8","value":"8"}],"answer":"7"},{"promptZh":"9 是？","promptEn":"9 is?","visual":"<div class=\"dot-row\"><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span></div>","choices":[{"zh":"奇","en":"odd","value":"奇"},{"zh":"偶","en":"even","value":"偶"}],"answer":"奇"},{"promptZh":"2,4,6,?","promptEn":"2,4,6,?","visual":"<div class=\"number-path\"><span>2</span><span>4</span><span>6</span><span>?</span></div>","choices":[{"zh":"7","en":"7","value":"7"},{"zh":"8","en":"8","value":"8"},{"zh":"9","en":"9","value":"9"}],"answer":"8"}]}</script>
+</body>
+</html>

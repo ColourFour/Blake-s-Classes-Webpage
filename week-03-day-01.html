@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="print.css" media="print" />
   <script defer src="script.js"></script>
 </head>
-<body data-lang="zh" style="--week-color:#4e72b8;--week-accent:#f7d774">
+<body data-lang="zh" data-week="3" data-day="1" style="--week-color:#4e72b8;--week-accent:#f7d774">
   <header class="site-bar no-print">
     <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
     <button class="lang-toggle" type="button" data-lang-toggle>
@@ -22,24 +22,28 @@
         <h1>🌙 <span class="lang zh">第1天：认识新想法</span><span class="lang en">Day 1: Meet the New Idea</span></h1>
         <p><span class="lang zh">加减应用·20以内</span><span class="lang en">Story Problems Within 20</span></p>
         <p class="tiny-note"><span class="lang zh">看图、摆一摆、直接表示。</span><span class="lang en">Use pictures, objects, and direct models.</span></p>
+        <div class="skill-strip compact"><span><b>👀</b><small><span class="lang zh">看</span><span class="lang en">See</span></small><i></i></span><span><b>🍎</b><small><span class="lang zh">分</span><span class="lang en">Split</span></small><i></i></span><span><b>⚖️</b><small><span class="lang zh">比</span><span class="lang en">Compare</span></small><i></i></span><span><b>➖</b><small><span class="lang zh">算</span><span class="lang en">Solve</span></small><i></i></span><span><b>✅</b><small><span class="lang zh">验</span><span class="lang en">Check</span></small></span></div>
       </div>
       <aside class="avatar-card">
         <div class="avatar" aria-hidden="true"><span class="avatar-face">🐾</span><span class="avatar-item">🌙</span></div>
         <strong><span class="lang zh">今日完成奖励</span><span class="lang en">Today's Completion Reward</span></strong>
         <p><span class="lang zh">给小伙伴添上：月亮发夹</span><span class="lang en">Add to your buddy: moon clip</span></p>
-        <div class="stamp-box"><span class="lang zh">完成印章</span><span class="lang en">Completion Stamp</span></div>
+        <div class="stamp-box" data-stamp-box><span class="lang zh">完成印章</span><span class="lang en">Completion Stamp</span></div>
+        <button class="mini-complete no-print" type="button" data-complete-day><span class="lang zh">我完成啦</span><span class="lang en">I Finished</span></button>
       </aside>
     </section>
 
     <section class="parent-note top-note">
       <h2><span class="lang zh">给家长 / 老师</span><span class="lang en">For Parent / Teacher</span></h2>
       <p><span class="lang zh">这套12周练习把一年级数学做成每天一页的小冒险。每页先热身，再练本周重点，最后混合复习。请先让孩子看图、指一指、说一说，再写答案。打印前可用右上角切换语言；打印时会保留当前语言、答题空格和奖励框。</span><span class="lang en">This 12-week program turns Grade 1 math into a one-page daily adventure. Each page starts with warm-ups, practices the weekly focus, then reviews earlier ideas. Let the child look, point, and talk before writing. Use the top-right button to choose a language before printing; print keeps the current language, writing spaces, and reward box.</span></p>
+      <div class="flow-reminder"><span>🧱 <span class="lang zh">摆一摆</span><span class="lang en">Build</span></span><span>👀 <span class="lang zh">看一看</span><span class="lang en">See</span></span><span>✏️ <span class="lang zh">写一写</span><span class="lang en">Write</span></span></div>
     </section>
 
     <section class="task-section">
       <h2><span class="lang zh">今天的8个小任务</span><span class="lang en">Today's 8 Little Tasks</span></h2>
-      <div class="task-grid">
-        <article class="problem-card">
+      <section class="task-group warm">
+        <div class="task-group-head"><span>🌤️</span><div><h3><span class="lang zh">热身小跑</span><span class="lang en">Warm-Up Run</span></h3><p><span class="lang zh">先放松，找信心。</span><span class="lang en">Start easy and feel ready.</span></p></div></div>
+        <div class="task-grid"><article class="problem-card">
     <div class="problem-top"><span class="problem-number">1</span><span class="problem-kind"><span class="lang zh">热身</span><span class="lang en">Warm-Up</span></span></div>
     <p class="prompt"><span class="lang zh">快数一数。</span><span class="lang en">Quick count.</span></p>
     <div class="visual"><div class="ten-frame"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class=""></span><span class=""></span></div></div>
@@ -50,8 +54,11 @@
     <p class="prompt"><span class="lang zh">哪边更多？</span><span class="lang en">Which side has more?</span></p>
     <div class="visual"><div class="compare-bars"><div><b>A</b><span style="--w:7">7</span></div><div><b>B</b><span style="--w:6">6</span></div></div></div>
     <div class="answer-line"><span><span class="lang zh">答案</span><span class="lang en">Answer</span></span></div>
-  </article>
-        <article class="problem-card">
+  </article></div>
+      </section>
+      <section class="task-group core">
+        <div class="task-group-head"><span>✨</span><div><h3><span class="lang zh">今日新能力</span><span class="lang en">Today's New Power</span></h3><p><span class="lang zh">用今天的新方法。</span><span class="lang en">Use today's new idea.</span></p></div></div>
+        <div class="task-grid"><article class="problem-card">
     <div class="problem-top"><span class="problem-number">3</span><span class="problem-kind"><span class="lang zh">本周重点</span><span class="lang en">Main Idea</span></span></div>
     <p class="prompt"><span class="lang zh">月亮花园有 10 朵花，又开了 5 朵。现在几朵？</span><span class="lang en">The moon garden has 10 flowers. 5 more bloom. How many now?</span></p>
     <div class="visual"><div class="visual-groups"><span class="pill"><div class="dot-row"><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span></div></span><span class="big-op">+</span><span class="pill"><div class="dot-row"><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span><span class="dot">🌼</span></div></span></div></div>
@@ -68,8 +75,11 @@
     <p class="prompt"><span class="lang zh">蓝花 13 朵，黄花 9 朵。蓝花多几朵？</span><span class="lang en">13 blue flowers, 9 yellow flowers. How many more blue?</span></p>
     <div class="visual"><div class="compare-bars"><div><b>A</b><span style="--w:13">13</span></div><div><b>B</b><span style="--w:9">9</span></div></div></div>
     <div class="answer-line"><span><span class="lang zh">答案</span><span class="lang en">Answer</span></span></div>
-  </article>
-        <article class="problem-card">
+  </article></div>
+      </section>
+      <section class="task-group mixed">
+        <div class="task-group-head"><span>🎒</span><div><h3><span class="lang zh">记得旧朋友</span><span class="lang en">Remember Old Ideas</span></h3><p><span class="lang zh">把旧朋友也叫来。</span><span class="lang en">Bring back old ideas too.</span></p></div></div>
+        <div class="task-grid"><article class="problem-card">
     <div class="problem-top"><span class="problem-number">6</span><span class="problem-kind"><span class="lang zh">复习</span><span class="lang en">Review</span></span></div>
     <p class="prompt"><span class="lang zh">哪边少？</span><span class="lang en">Which side has fewer?</span></p>
     <div class="visual"><div class="compare-bars"><div><b>A</b><span style="--w:5">5</span></div><div><b>B</b><span style="--w:8">8</span></div></div></div>
@@ -86,8 +96,8 @@
     <p class="prompt"><span class="lang zh">合起来是多少？</span><span class="lang en">How many in all?</span></p>
     <div class="visual"><div class="visual-groups"><span class="pill"><div class="dot-row"><span class="dot">🍎</span><span class="dot">🍎</span><span class="dot">🍎</span><span class="dot">🍎</span></div></span><span class="big-op">+</span><span class="pill"><div class="dot-row"><span class="dot">🍎</span><span class="dot">🍎</span><span class="dot">🍎</span></div></span></div></div>
     <div class="answer-line"><span><span class="lang zh">答案</span><span class="lang en">Answer</span></span></div>
-  </article>
-      </div>
+  </article></div>
+      </section>
     </section>
 
     <section class="bonus-card">
@@ -101,15 +111,16 @@
     <section class="adult-support">
       <h2><span class="lang zh">成人引导小站</span><span class="lang en">Adult Support Station</span></h2>
       <div class="support-grid">
-        <div><h3><span class="lang zh">重点帮什么</span><span class="lang en">What to Emphasize</span></h3><p><span class="lang zh">先让孩子看图和指出关键变化，再写答案。</span><span class="lang en">Let the child point to the picture and name the key change before writing.</span></p></div>
-        <div><h3><span class="lang zh">留意什么误会</span><span class="lang en">Misconception to Watch</span></h3><p><span class="lang zh">容易把“比较差多少”误当成“合起来”。</span><span class="lang en">Watch for treating “how many more” as “total.”</span></p></div>
-        <div><h3><span class="lang zh">可以这样问</span><span class="lang en">Guiding Questions</span></h3><ul><li><span class="lang zh">什么变了？什么没变？</span><span class="lang en">What changed? What stayed the same?</span></li><li><span class="lang zh">数量变多了还是变少了？</span><span class="lang en">Is the amount getting bigger or smaller?</span></li><li><span class="lang zh">你先知道了什么？</span><span class="lang en">What do you know first?</span></li></ul></div>
-        <div><h3><span class="lang zh">今日小技巧</span><span class="lang en">Teaching Tip</span></h3><p><span class="lang zh">如果卡住，先遮住文字，只看图说故事；再回到题目找关键词。</span><span class="lang en">If stuck, cover the words, tell the picture story first, then return to the key words.</span></p></div>
+        <div><h3><span class="lang zh">重点</span><span class="lang en">Emphasize</span></h3><p><span class="lang zh">20以内仍然要看故事结构。</span><span class="lang en">Within 20, keep reading the story structure.</span></p></div>
+        <div><h3><span class="lang zh">易混点</span><span class="lang en">Watch For</span></h3><p><span class="lang zh">数变大后忘记比较不是合并。</span><span class="lang en">Watch for treating comparison as combining when numbers get larger.</span></p></div>
+        <div><h3><span class="lang zh">引导问题</span><span class="lang en">Ask</span></h3><ul><li><span class="lang zh">什么变了？什么没变？</span><span class="lang en">What changed? What stayed the same?</span></li><li><span class="lang zh">数量变多了还是变少了？</span><span class="lang en">Is the amount getting bigger or smaller?</span></li><li><span class="lang zh">你先知道了什么？</span><span class="lang en">What do you know first?</span></li></ul></div>
+        <div><h3><span class="lang zh">小技巧</span><span class="lang en">Tip</span></h3><p><span class="lang zh">把两组排齐，一一对应找差距。</span><span class="lang en">Line groups up one-to-one to see the gap.</span></p></div>
       </div>
     </section>
 
     <nav class="page-nav no-print">
       <a href="week-02-day-05.html"><span class="lang zh">上一页</span><span class="lang en">Previous</span></a>
+      <button type="button" data-complete-day><span class="lang zh">盖完成章</span><span class="lang en">Mark Complete</span></button>
       <button type="button" onclick="window.print()"><span class="lang zh">打印这一页</span><span class="lang en">Print This Page</span></button>
       <a href="week-03-day-02.html"><span class="lang zh">下一页</span><span class="lang en">Next</span></a>
     </nav>

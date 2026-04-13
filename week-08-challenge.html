@@ -22,6 +22,7 @@
         <div><strong><span class="lang zh">题目数量</span><span class="lang en">Questions</span></strong><p>12</p></div>
         <div><strong><span class="lang zh">红星目标</span><span class="lang en">Red Star Goal</span></strong><p><span class="lang zh">答对9题或更多</span><span class="lang en">9 or more correct</span></p></div>
       </div>
+      <p class="challenge-soft"><a href="week-08-game.html"><span class="lang zh">奖励游戏入口（完成挑战后解锁）</span><span class="lang en">Reward game entrance, unlocked after the challenge</span></a></p>
       <button class="challenge-primary" type="button" data-start-challenge><span class="lang zh">开始挑战</span><span class="lang en">Start Challenge</span></button>
     </section>
     <section class="challenge-card is-hidden" data-challenge-card>
@@ -39,19 +40,7 @@
       </form>
       <p class="challenge-soft"><span class="lang zh">想一想、指一指、再回答。</span><span class="lang en">Think, point, then answer.</span></p>
     </section>
-    <section class="challenge-results is-hidden" data-results></section>
-    <section class="reward-game is-hidden" data-game>
-      <div class="game-head">
-        <h2><span class="lang zh">星星方块奖励游戏</span><span class="lang en">Star Blocks Reward Game</span></h2>
-        <p><span class="lang zh">每次60秒，最多玩2次。</span><span class="lang en">60 seconds each, up to 2 plays.</span></p>
-      </div>
-      <canvas width="200" height="320" data-game-canvas></canvas>
-      <div class="game-controls">
-        <button type="button" data-game-start><span class="lang zh">开始游戏</span><span class="lang en">Start Game</span></button>
-        <span data-game-info></span>
-      </div>
-      <p class="game-tip"><span class="lang zh">键盘：← → 移动，↑ 旋转，↓ 加速。</span><span class="lang en">Keyboard: ← → move, ↑ rotate, ↓ faster.</span></p>
-    </section>
+    <section class="challenge-results is-hidden" data-results aria-live="polite"></section>
   </main>
   <script type="application/json" id="challengeData">{"week":8,"titleZh":"第 8 周每周挑战","titleEn":"Week 8 Weekly Challenge","topicZh":"位置与方向 + 观察物体","topicEn":"Position, Direction, and Viewing Objects","themeZh":"小小飞行地图","themeEn":"Tiny Flight Map","icon":"🗺️","rewardZh":"指南针背包","rewardEn":"compass backpack","threshold":9,"conceptsZh":"上下左右、前后、移动路线、从哪里看","conceptsEn":"up, down, left, right, front, back, paths, and viewpoints","questions":[{"conceptZh":"方向","conceptEn":"Direction","zh":"从房子向右到哪里？","en":"Go right from the house. Where?","visual":"<div class=\"map-grid\"><span>🏠</span><span>→</span><span>🌳</span><span>↑</span><span>⭐</span><span>←</span><span>🧁</span><span>↓</span><span>🏁</span></div>","answers":["树","tree","🌳"]},{"conceptZh":"左右","conceptEn":"Left/Right","zh":"猫左边是什么？","en":"What is left of the cat?","visual":"<div class=\"position-row\"><span>🍎</span><span class=\"center\">🐱</span><span>🧁</span></div>","answers":["苹果","apple","🍎"]},{"conceptZh":"上下","conceptEn":"Up/Down","zh":"星星在房子的上面还是下面？","en":"Is the star above or below the house?","visual":"<div class=\"map-grid\"><span></span><span>⭐</span><span></span><span></span><span>🏠</span><span></span></div>","answers":["上","上面","above","up"]},{"conceptZh":"路线","conceptEn":"Path","zh":"向右，再向下，终点？","en":"Right, then down. Finish?","visual":"<div class=\"map-grid\"><span>🏠</span><span>→</span><span>🌳</span><span>↑</span><span>⭐</span><span>←</span><span>🧁</span><span>↓</span><span>🏁</span></div>","answers":["终点","finish","🏁"]},{"conceptZh":"观察","conceptEn":"View","zh":"从正面看像哪个？写 A/B/C。","en":"Front view. A/B/C?","visual":"<div class=\"shape-set\"><span class=\"shape-token\">🏠</span><span class=\"shape-token\">⬜</span><span class=\"shape-token\">🔺</span></div>","answers":["A"]},{"conceptZh":"前后","conceptEn":"Front/Back","zh":"排队第1个在前还是后？","en":"Number 1 is front or back?","visual":"<div class=\"queue\"><span class=\"marked\">🐥</span><span class=\"\">○</span><span class=\"\">○</span><span class=\"\">○</span><span class=\"\">○</span></div>","answers":["前","front"]},{"conceptZh":"方向","conceptEn":"Direction","zh":"箭头 ↑ 是向哪？","en":"Arrow ↑ points where?","visual":"<div class=\"equation\"><span>↑</span></div>","answers":["上","up"]},{"conceptZh":"方向","conceptEn":"Direction","zh":"箭头 ← 是向哪？","en":"Arrow ← points where?","visual":"<div class=\"equation\"><span>←</span></div>","answers":["左","left"]},{"conceptZh":"位置","conceptEn":"Position","zh":"蛋糕在猫右边吗？写 是/不是。","en":"Is cake right of cat? yes/no.","visual":"<div class=\"position-row\"><span>🍎</span><span class=\"center\">🐱</span><span>🧁</span></div>","answers":["是","yes","y"]},{"conceptZh":"观察","conceptEn":"View","zh":"从上面看杯子像什么？","en":"From above, a cup looks like what?","visual":"<div class=\"shape-set\"><span class=\"shape-token\">🥤</span><span class=\"shape-token\">○</span></div>","answers":["圆","circle","○"]},{"conceptZh":"累计复习","conceptEn":"Cumulative Review","zh":"数一数。","en":"Count.","visual":"<div class=\"dot-row\"><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span></div>","answers":["7"]},{"conceptZh":"累计复习","conceptEn":"Cumulative Review","zh":"3 + 4 = ?","en":"3 + 4 = ?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span></div>","answers":["7"]}]}</script>
 </body>

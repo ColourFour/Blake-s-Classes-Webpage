@@ -27,6 +27,36 @@ const dayInfo = [
   { zh: "第5天：本周小庆祝", en: "Day 5: Week Review", rhythmZh: "综合复习，完成本周收藏。", rhythmEn: "Review, integrate, and collect the weekly reward." }
 ];
 
+const skillJourneys = {
+  1: [["数", "Count", "🔢"], ["配", "Match", "🔗"], ["比", "Compare", "⚖️"], ["找", "Find", "🔎"], ["写", "Write", "✏️"]],
+  2: [["看", "See", "👀"], ["说", "Tell", "💬"], ["摆", "Build", "🧱"], ["算", "Solve", "➕"], ["讲", "Explain", "⭐"]],
+  3: [["看", "See", "👀"], ["分", "Split", "🍎"], ["比", "Compare", "⚖️"], ["算", "Solve", "➖"], ["验", "Check", "✅"]],
+  4: [["看", "Look", "👀"], ["排", "Order", "🚂"], ["找", "Find", "🔎"], ["补", "Fill", "✏️"], ["造", "Make", "✨"]],
+  5: [["看", "Look", "👀"], ["试", "Try", "🧪"], ["换", "Switch", "➕"], ["补", "Fill", "□"], ["验", "Check", "✅"]],
+  6: [["摆", "Pair", "🧺"], ["圈", "Circle", "⭕"], ["分", "Sort", "🏠"], ["说", "Name", "💬"], ["用", "Use", "⭐"]],
+  7: [["找", "Find", "🔎"], ["名", "Name", "🏷️"], ["比", "Compare", "⚖️"], ["画", "Draw", "✏️"], ["用", "Use", "🏰"]],
+  8: [["看", "Look", "👀"], ["走", "Move", "➡️"], ["跟", "Follow", "🗺️"], ["说", "Describe", "💬"], ["解", "Solve", "🏁"]],
+  9: [["看", "Look", "👀"], ["等", "Equal", "⚖️"], ["换", "Swap", "🔁"], ["算", "Solve", "✏️"], ["证", "Prove", "✅"]],
+  10: [["排", "Line", "🐥"], ["数", "Count", "🔢"], ["标", "Mark", "📍"], ["重", "Overlap", "🔗"], ["解", "Solve", "⭐"]],
+  11: [["捆", "Bundle", "🪢"], ["分", "Tens/Ones", "🏠"], ["凑", "Make Ten", "🔟"], ["退", "Regroup", "↩️"], ["还", "Restore", "🔎"]],
+  12: [["读", "Read", "🔎"], ["找", "Find", "🧩"], ["试", "Try", "✏️"], ["推", "Reason", "🕵️"], ["庆", "Celebrate", "🎉"]]
+};
+
+const rewardGames = {
+  1: { nameZh: "数字泡泡", nameEn: "Number Pop", type: "number-pop", instructionZh: "点中目标数字泡泡。", instructionEn: "Click the target number bubble." },
+  2: { nameZh: "苹果接接乐", nameEn: "Apple Catch", type: "apple-catch", instructionZh: "接住等于目标的苹果。", instructionEn: "Catch apples that match the target." },
+  3: { nameZh: "宝藏数数冲刺", nameEn: "Treasure Count Dash", type: "treasure-dash", instructionZh: "点选数量正确的宝箱。", instructionEn: "Pick the chest with the right amount." },
+  4: { nameZh: "规律小工坊", nameEn: "Pattern Builder", type: "pattern-builder", instructionZh: "选择能接上的图案。", instructionEn: "Choose what continues the pattern." },
+  5: { nameZh: "符号换换看", nameEn: "Sign Switch", type: "sign-switch", instructionZh: "选 + 或 − 让等式成立。", instructionEn: "Choose + or - to make it true." },
+  6: { nameZh: "单双小屋", nameEn: "Odd/Even Sort", type: "odd-even-sort", instructionZh: "把数字送到奇数或偶数小屋。", instructionEn: "Send numbers to odd or even houses." },
+  7: { nameZh: "图形配对冲刺", nameEn: "Shape Match Sprint", type: "shape-match", instructionZh: "把名称和图形配起来。", instructionEn: "Match the name to the shape." },
+  8: { nameZh: "方向迷宫", nameEn: "Direction Maze", type: "direction-maze", instructionZh: "按方向走到星星。", instructionEn: "Follow directions to reach the star." },
+  9: { nameZh: "天平换一换", nameEn: "Balance Swap", type: "balance-swap", instructionZh: "让天平两边一样多。", instructionEn: "Make both sides equal." },
+  10: { nameZh: "排队修理员", nameEn: "Queue Fixer", type: "queue-fixer", instructionZh: "把小伙伴放到正确位置。", instructionEn: "Put the buddy in the right place." },
+  11: { nameZh: "十个一建造师", nameEn: "Tens and Ones Builder", type: "tens-builder", instructionZh: "用十和一搭出目标数。", instructionEn: "Build the target with tens and ones." },
+  12: { nameZh: "侦探线索寻宝", nameEn: "Detective Logic Hunt", type: "logic-hunt", instructionZh: "根据线索选答案。", instructionEn: "Use the clue to choose the answer." }
+};
+
 const icons = {
   treasure: ["⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐", "⭐"],
   fruit: ["🍎", "🍐", "🍊", "🍓", "🍇", "🍒"],
@@ -50,6 +80,14 @@ function esc(str) {
 
 function t(zh, en) {
   return `<span class="lang zh">${zh}</span><span class="lang en">${en}</span>`;
+}
+
+function skillStrip(week, compact = false) {
+  return `<div class="skill-strip${compact ? " compact" : ""}">${skillJourneys[week.n].map(([zh, en, icon], i) => `<span><b>${icon}</b><small>${t(zh, en)}</small>${i < 4 ? "<i></i>" : ""}</span>`).join("")}</div>`;
+}
+
+function flowReminder() {
+  return `<div class="flow-reminder"><span>🧱 ${t("摆一摆", "Build")}</span><span>👀 ${t("看一看", "See")}</span><span>✏️ ${t("写一写", "Write")}</span></div>`;
 }
 
 function line(labelZh = "答案", labelEn = "Answer") {
@@ -276,13 +314,27 @@ function adultGuide(week, day) {
     ["这个图形/位置有什么线索？", "What clue do you see in the shape or position?"]
   ];
   const q = [questions[(week.n + day) % questions.length], questions[(week.n + day + 2) % questions.length], questions[(week.n + day + 4) % questions.length]];
+  const topicGuide = {
+    1: ["数字要和真实数量连起来。", "Connect numerals to real amounts.", "容易只认数字，不检查数量。", "Watch for naming numerals without checking the amount.", "让孩子先点数，再写数字。", "Let the child touch-count before writing the numeral."],
+    2: ["先判断合起来、拿走，还是比较。", "Decide whether the story is joining, taking away, or comparing.", "看到两个数就直接相加。", "Watch for adding any two numbers automatically.", "用小物品演出故事，再写算式。", "Act out the story with objects before writing."],
+    3: ["20以内仍然要看故事结构。", "Within 20, keep reading the story structure.", "数变大后忘记比较不是合并。", "Watch for treating comparison as combining when numbers get larger.", "把两组排齐，一一对应找差距。", "Line groups up one-to-one to see the gap."],
+    4: ["规律来自位置和变化，不是猜。", "Patterns come from position and change, not guessing.", "只看最后一个，不看整串规律。", "Watch for looking only at the last item instead of the whole pattern.", "让孩子大声说：每次变了什么？", "Ask the child to say what changes each time."],
+    5: ["等式两边要一样，符号要为关系服务。", "Both sides of an equation must match; signs show the relationship.", "把□当装饰，或随便选 + / -。", "Watch for treating the box as decoration or guessing the sign.", "先试一个数，再检查等式是否成立。", "Try a number, then check whether the equation is true."],
+    6: ["奇偶看能不能两两配对。", "Odd/even depends on whether everything can pair up.", "只背单双，不实际配对。", "Watch for memorizing labels without pairing.", "用两列摆物品，看有没有剩下。", "Make two columns and check for leftovers."],
+    7: ["图形由边、角、面和物体特征来判断。", "Shapes are identified by sides, corners, faces, and object features.", "只凭颜色或朝向判断形状。", "Watch for judging by color or rotation.", "先摸/描边，再说名称。", "Trace the outline before naming the shape."],
+    8: ["方向词要和身体、地图、视角连起来。", "Direction words connect to body, map, and viewpoint.", "左右混淆，或换视角后仍按自己方向说。", "Watch for left/right confusion or ignoring viewpoint changes.", "让孩子用手指在图上走路线。", "Have the child walk the path with a finger."],
+    9: ["等量代换是用一样多的东西替换。", "Substitution means replacing with an equal amount.", "把等号看成“算答案”的箭头。", "Watch for seeing equals as an answer arrow.", "遮住一个图，问：它可以换成什么？", "Cover one picture and ask what can replace it."],
+    10: ["排队题要数位置，也要记得数自己。", "Line-up problems need position counting, including the child/item itself.", "漏数自己，或重叠部分加两次。", "Watch for forgetting self or counting overlap twice.", "先标出目标，再数前后和共同部分。", "Mark the target first, then count front/back or overlap."],
+    11: ["十位和个位是不同单位。", "Tens and ones are different units.", "把14看成普通的1和4，而不是1个十和4个一。", "Watch for reading 14 as just 1 and 4 instead of 1 ten and 4 ones.", "先捆十个，再写十位个位。", "Bundle ten first, then write tens and ones."],
+    12: ["推理要按线索一步一步排除。", "Reasoning works by using clues one step at a time.", "凭感觉选答案，不回到线索检查。", "Watch for guessing without checking the clues.", "每用一条线索，就做一个小标记。", "Make a small mark after using each clue."]
+  }[week.n];
   return {
-    emphasizeZh: day <= 2 ? `先让孩子看图和指出关键变化，再写答案。` : day <= 4 ? `鼓励孩子说出“为什么”，不追求速度。` : `把本周新方法和以前会的数数、比较、画图连起来。`,
-    emphasizeEn: day <= 2 ? `Let the child point to the picture and name the key change before writing.` : day <= 4 ? `Invite a short “why” without pushing speed.` : `Connect this week's idea to counting, comparing, and drawing.`,
-    watchZh: week.n <= 3 ? `容易把“比较差多少”误当成“合起来”。` : week.n <= 6 ? `容易只看符号或表面图案，忘了检查规律。` : week.n <= 9 ? `容易混淆左右、形状名称或等号两边的关系。` : `容易漏掉自己、重叠部分或故事中的“原来/后来”。`,
-    watchEn: week.n <= 3 ? `Watch for treating “how many more” as “total.”` : week.n <= 6 ? `Watch for guessing from the surface instead of checking the pattern.` : week.n <= 9 ? `Watch for left/right confusion, shape names, or equality as a relationship.` : `Watch for forgetting to count self, overlap, or before/after in a story.`,
-    tipZh: `如果卡住，先遮住文字，只看图说故事；再回到题目找关键词。`,
-    tipEn: `If stuck, cover the words, tell the picture story first, then return to the key words.`,
+    emphasizeZh: topicGuide[0],
+    emphasizeEn: topicGuide[1],
+    watchZh: topicGuide[2],
+    watchEn: topicGuide[3],
+    tipZh: day <= 2 ? topicGuide[4] : `先摆一摆，再画一画，最后写答案。`,
+    tipEn: day <= 2 ? topicGuide[5] : `Build it first, draw it next, then write the answer.`,
     questions: q
   };
 }
@@ -313,7 +365,7 @@ function pageHtml(week, day) {
   <link rel="stylesheet" href="print.css" media="print" />
   <script defer src="script.js"></script>
 </head>
-<body data-lang="zh" style="--week-color:${week.color};--week-accent:${week.accent}">
+<body data-lang="zh" data-week="${week.n}" data-day="${day}" style="--week-color:${week.color};--week-accent:${week.accent}">
   <header class="site-bar no-print">
     <a class="home-link" href="index.html">${t("数学冒险地图", "Math Adventure Map")}</a>
     <button class="lang-toggle" type="button" data-lang-toggle>
@@ -327,25 +379,28 @@ function pageHtml(week, day) {
         <h1>${week.icon} ${t(dayMeta.zh, dayMeta.en)}</h1>
         <p>${t(week.zh, week.en)}</p>
         <p class="tiny-note">${t(dayMeta.rhythmZh, dayMeta.rhythmEn)}</p>
+        ${skillStrip(week, true)}
       </div>
       <aside class="avatar-card">
         <div class="avatar" aria-hidden="true"><span class="avatar-face">🐾</span><span class="avatar-item">${week.icon}</span></div>
         <strong>${t("今日完成奖励", "Today's Completion Reward")}</strong>
         <p>${t(`给小伙伴添上：${week.itemZh}`, `Add to your buddy: ${week.itemEn}`)}</p>
-        <div class="stamp-box">${t("完成印章", "Completion Stamp")}</div>
+        <div class="stamp-box" data-stamp-box>${t("完成印章", "Completion Stamp")}</div>
+        <button class="mini-complete no-print" type="button" data-complete-day>${t("我完成啦", "I Finished")}</button>
       </aside>
     </section>
 
     <section class="parent-note top-note">
       <h2>${t("给家长 / 老师", "For Parent / Teacher")}</h2>
       <p>${t("这套12周练习把一年级数学做成每天一页的小冒险。每页先热身，再练本周重点，最后混合复习。请先让孩子看图、指一指、说一说，再写答案。打印前可用右上角切换语言；打印时会保留当前语言、答题空格和奖励框。", "This 12-week program turns Grade 1 math into a one-page daily adventure. Each page starts with warm-ups, practices the weekly focus, then reviews earlier ideas. Let the child look, point, and talk before writing. Use the top-right button to choose a language before printing; print keeps the current language, writing spaces, and reward box.")}</p>
+      ${flowReminder()}
     </section>
 
     <section class="task-section">
       <h2>${t("今天的8个小任务", "Today's 8 Little Tasks")}</h2>
-      <div class="task-grid">
-        ${tasks.map((task, i) => problemCard(task, i + 1)).join("\n        ")}
-      </div>
+      ${taskGroup("warm", "热身小跑", "Warm-Up Run", "🌤️", tasks)}
+      ${taskGroup("core", "今日新能力", "Today's New Power", "✨", tasks)}
+      ${taskGroup("mixed", "记得旧朋友", "Remember Old Ideas", "🎒", tasks)}
     </section>
 
     <section class="bonus-card">
@@ -357,15 +412,16 @@ function pageHtml(week, day) {
     <section class="adult-support">
       <h2>${t("成人引导小站", "Adult Support Station")}</h2>
       <div class="support-grid">
-        <div><h3>${t("重点帮什么", "What to Emphasize")}</h3><p>${t(guide.emphasizeZh, guide.emphasizeEn)}</p></div>
-        <div><h3>${t("留意什么误会", "Misconception to Watch")}</h3><p>${t(guide.watchZh, guide.watchEn)}</p></div>
-        <div><h3>${t("可以这样问", "Guiding Questions")}</h3><ul>${guide.questions.map(([zh, en]) => `<li>${t(zh, en)}</li>`).join("")}</ul></div>
-        <div><h3>${t("今日小技巧", "Teaching Tip")}</h3><p>${t(guide.tipZh, guide.tipEn)}</p></div>
+        <div><h3>${t("重点", "Emphasize")}</h3><p>${t(guide.emphasizeZh, guide.emphasizeEn)}</p></div>
+        <div><h3>${t("易混点", "Watch For")}</h3><p>${t(guide.watchZh, guide.watchEn)}</p></div>
+        <div><h3>${t("引导问题", "Ask")}</h3><ul>${guide.questions.map(([zh, en]) => `<li>${t(zh, en)}</li>`).join("")}</ul></div>
+        <div><h3>${t("小技巧", "Tip")}</h3><p>${t(guide.tipZh, guide.tipEn)}</p></div>
       </div>
     </section>
 
     <nav class="page-nav no-print">
       <a href="${prev}">${t("上一页", "Previous")}</a>
+      <button type="button" data-complete-day>${t("盖完成章", "Mark Complete")}</button>
       <button type="button" onclick="window.print()">${t("打印这一页", "Print This Page")}</button>
       <a href="${next}">${t("下一页", "Next")}</a>
     </nav>
@@ -386,6 +442,23 @@ function problemCard(task, num) {
   </article>`;
 }
 
+function taskGroup(section, zh, en, icon, tasks) {
+  const captions = {
+    warm: ["先放松，找信心。", "Start easy and feel ready."],
+    core: ["用今天的新方法。", "Use today's new idea."],
+    mixed: ["把旧朋友也叫来。", "Bring back old ideas too."]
+  };
+  const cards = tasks
+    .map((task, i) => ({ task, num: i + 1 }))
+    .filter(({ task }) => task.section === section)
+    .map(({ task, num }) => problemCard(task, num))
+    .join("\n        ");
+  return `<section class="task-group ${section}">
+        <div class="task-group-head"><span>${icon}</span><div><h3>${t(zh, en)}</h3><p>${t(captions[section][0], captions[section][1])}</p></div></div>
+        <div class="task-grid">${cards}</div>
+      </section>`;
+}
+
 function problemInner(task, includeLine) {
   return `<p class="prompt">${t(task.zh, task.en)}</p>
     <div class="visual">${task.visual}</div>
@@ -398,10 +471,13 @@ function indexHtml() {
     <strong>${t(`第 ${w.n} 周`, `Week ${w.n}`)}</strong>
     <span>${t(w.zh, w.en)}</span>
     <small>${t(w.themeZh, w.themeEn)}</small>
+    ${skillStrip(w, true)}
+    <div class="week-progress" data-week-progress="${w.n}">${t("进度：还没开始", "Progress: not started")}</div>
     <div class="week-actions">
       <a href="week-${pad(w.n)}-day-01.html">${t("开始本周", "Start Week")}</a>
       <a href="week-${pad(w.n)}-challenge.html">${t("每周挑战", "Weekly Challenge")}</a>
       <a href="week-${pad(w.n)}-print.html">${t("打印本周", "Print This Week")}</a>
+      <a href="week-${pad(w.n)}-game.html" data-game-link="${w.n}" data-game-name-zh="${esc(rewardGames[w.n].nameZh)}" data-game-name-en="${esc(rewardGames[w.n].nameEn)}">${t(`🔒 ${rewardGames[w.n].nameZh}`, `🔒 ${rewardGames[w.n].nameEn}`)}</a>
     </div>
   </article>`).join("\n      ");
   return `<!DOCTYPE html>
@@ -428,14 +504,28 @@ function indexHtml() {
       </div>
       <div class="home-mascot"><span>🐾</span><b>+</b><span>🎒</span></div>
     </section>
+    <section class="buddy-panel">
+      <div class="buddy-avatar"><span>🐾</span></div>
+      <div>
+        <h2>${t("我的数学小伙伴", "My Math Buddy")}</h2>
+        <p>${t("完成一天得小印章，完成一周得主题配饰，完成彩蛋得小贴纸，完成每周挑战会解锁奖励游戏。", "Complete a day for a stamp, finish a week for a themed accessory, do a bonus for a sticker, and complete the weekly challenge to unlock a reward game.")}</p>
+        <div class="buddy-slots">
+          <span>${t("日印章", "Day Stamp")}</span>
+          <span>${t("周配饰", "Week Item")}</span>
+          <span>${t("彩蛋贴纸", "Bonus Sticker")}</span>
+          <span>${t("红星挑战", "Red Star")}</span>
+        </div>
+        <div class="buddy-status" data-buddy-status>${t("已收集：0枚日印章 · 0个挑战游戏", "Collected: 0 day stamps · 0 challenge games")}</div>
+      </div>
+    </section>
     <section class="print-actions">
       <div>
         <h2>${t("打印学习包", "Print Packets")}</h2>
         <p>${t("想一次打印更多页面？这里会打开专门的打印版，不会直接打印首页。每一天会排成2页：第1页是第1–4题，第2页是第5–8题和亲子彩蛋。", "Need to print more at once? These open dedicated print-first pages instead of printing the home page. Each day becomes 2 pages: Page 1 has Questions 1-4, Page 2 has Questions 5-8 plus the parent-child wild card.")}</p>
       </div>
       <div class="print-action-buttons">
-        <a href="week-01-print.html">${t("打印本周", "Print This Week")}</a>
-        <a href="full-program-print.html">${t("打印完整12周", "Print Full Program")}</a>
+        <a href="week-01-print.html">${t("打印第1周学习包", "Print Week 1 Packet")}</a>
+        <a href="full-program-print.html">${t("打印完整12周学习包", "Print Full Program")}</a>
       </div>
     </section>
     <section class="parent-note">
@@ -450,6 +540,47 @@ function indexHtml() {
       <h2>${t("选择一周开始", "Choose a Week")}</h2>
       <div class="week-grid">
       ${weekLinks}
+      </div>
+    </section>
+  </main>
+</body>
+</html>`;
+}
+
+function legacyPrintableHtml() {
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Printable Math Adventure / 可打印数学冒险</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="print.css" media="print" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html">${t("数学冒险地图", "Math Adventure Map")}</a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="home">
+    <section class="home-hero">
+      <div>
+        <p class="eyebrow">${t("旧入口 · 继续可用", "Legacy Door · Still Useful")}</p>
+        <h1>${t("请选择新的打印页面", "Choose the New Print Page")}</h1>
+        <p>${t("这个旧文件名现在带你进入新版一年级数学冒险。新版页面有双语切换、每日打印、每周学习包和奖励挑战。", "This older filename now leads into the updated Grade 1 Math Adventure. The new pages include bilingual mode, daily printing, weekly packets, and reward challenges.")}</p>
+      </div>
+      <div class="home-mascot"><span>🐾</span><b>→</b><span>🖨️</span></div>
+    </section>
+    <section class="print-actions">
+      <div>
+        <h2>${t("常用入口", "Helpful Starting Points")}</h2>
+        <p>${t("如果你想打印第一关，建议打开第1周学习包；如果想先看孩子每天怎么做，打开第1天。", "For the first packet, open the Week 1 print packet. To preview the daily child page first, open Day 1.")}</p>
+      </div>
+      <div class="print-action-buttons">
+        <a href="week-01-day-01.html">${t("打开第1天", "Open Day 1")}</a>
+        <a href="week-01-print.html">${t("打印第1周", "Print Week 1")}</a>
+        <a href="index.html">${t("回到12周地图", "Back to 12-Week Map")}</a>
       </div>
     </section>
   </main>
@@ -515,6 +646,7 @@ function compiledGuide(guide) {
     <div><strong>${t("重点", "Emphasize")}</strong><p>${t(guide.emphasizeZh, guide.emphasizeEn)}</p></div>
     <div><strong>${t("留意", "Watch")}</strong><p>${t(guide.watchZh, guide.watchEn)}</p></div>
     <div><strong>${t("提问", "Ask")}</strong><ul>${guide.questions.map(([zh, en]) => `<li>${t(zh, en)}</li>`).join("")}</ul></div>
+    <div><strong>${t("小技巧", "Tip")}</strong><p>${t(guide.tipZh, guide.tipEn)}</p></div>
   </aside>`;
 }
 
@@ -778,6 +910,7 @@ function challengeHtml(week) {
         <div><strong>${t("题目数量", "Questions")}</strong><p>12</p></div>
         <div><strong>${t("红星目标", "Red Star Goal")}</strong><p>${t("答对9题或更多", "9 or more correct")}</p></div>
       </div>
+      <p class="challenge-soft"><a href="week-${pad(week.n)}-game.html">${t("奖励游戏入口（完成挑战后解锁）", "Reward game entrance, unlocked after the challenge")}</a></p>
       <button class="challenge-primary" type="button" data-start-challenge>${t("开始挑战", "Start Challenge")}</button>
     </section>
     <section class="challenge-card is-hidden" data-challenge-card>
@@ -795,21 +928,157 @@ function challengeHtml(week) {
       </form>
       <p class="challenge-soft">${t("想一想、指一指、再回答。", "Think, point, then answer.")}</p>
     </section>
-    <section class="challenge-results is-hidden" data-results></section>
-    <section class="reward-game is-hidden" data-game>
-      <div class="game-head">
-        <h2>${t("星星方块奖励游戏", "Star Blocks Reward Game")}</h2>
-        <p>${t("每次60秒，最多玩2次。", "60 seconds each, up to 2 plays.")}</p>
-      </div>
-      <canvas width="200" height="320" data-game-canvas></canvas>
-      <div class="game-controls">
-        <button type="button" data-game-start>${t("开始游戏", "Start Game")}</button>
-        <span data-game-info></span>
-      </div>
-      <p class="game-tip">${t("键盘：← → 移动，↑ 旋转，↓ 加速。", "Keyboard: ← → move, ↑ rotate, ↓ faster.")}</p>
-    </section>
+    <section class="challenge-results is-hidden" data-results aria-live="polite"></section>
   </main>
   <script type="application/json" id="challengeData">${JSON.stringify(data)}</script>
+</body>
+</html>`;
+}
+
+function gr(promptZh, promptEn, visual, choices, answer) {
+  return { promptZh, promptEn, visual, choices: choices.map(c => typeof c === "string" ? { zh: c, en: c, value: c } : c), answer: String(answer) };
+}
+
+function gameRounds(week) {
+  const n = week.n;
+  if (n === 1) return [
+    gr("点 5。", "Tap 5.", numberPath([3, 5, 8]), ["3", "5", "8"], 5),
+    gr("有几颗星？", "How many stars?", dots(7, "⭐"), ["6", "7", "9"], 7),
+    gr("点更大的数。", "Tap the bigger number.", equation([4, "?", 9]), ["4", "9"], 9),
+    gr("少了几？", "What is missing?", numberPath([6, 7, null, 9]), ["7", "8", "9"], 8),
+    gr("点 10。", "Tap 10.", numberPath([10, 6, 8]), ["10", "6", "8"], 10),
+    gr("哪边更多？", "Which side has more?", compareBars(5, 8, ["A", "B"]), ["A", "B"], "B")
+  ];
+  if (n === 2) return [
+    gr("3 + 2 = ?", "3 + 2 = ?", groups(3, 2, "🍎", "🍎"), ["4", "5", "6"], 5),
+    gr("7 - 3 = ?", "7 - 3 = ?", dots(7, "🍪", 4), ["3", "4", "5"], 4),
+    gr("哪边多？", "Which has more?", compareBars(4, 6, ["A", "B"]), ["A", "B"], "B"),
+    gr("2 + 6 = ?", "2 + 6 = ?", groups(2, 6, "🍎", "🍎"), ["7", "8", "9"], 8),
+    gr("9 - 4 = ?", "9 - 4 = ?", dots(9, "🍪", 5), ["5", "6", "7"], 5),
+    gr("变多用什么？", "Bigger amount uses?", equation(["变多", "?", "+ / -"]), ["+", "-"], "+")
+  ];
+  if (n === 3) return [
+    gr("12 + 4 = ?", "12 + 4 = ?", groups(12, 4, "💎", "💎"), ["14", "16", "18"], 16),
+    gr("15 - 5 = ?", "15 - 5 = ?", dots(15, "⭐", 10), ["9", "10", "11"], 10),
+    gr("14 比 9 多几？", "14 is how many more than 9?", compareBars(14, 9, ["A", "B"]), ["3", "5", "7"], 5),
+    gr("9 + 5 = ?", "9 + 5 = ?", groups(9, 5, "📚", "📚"), ["12", "14", "15"], 14),
+    gr("18 - 6 = ?", "18 - 6 = ?", dots(18, "🌙", 12), ["11", "12", "13"], 12),
+    gr("16 和 12 差几？", "Difference between 16 and 12?", compareBars(16, 12, ["A", "B"]), ["3", "4", "5"], 4)
+  ];
+  if (n === 4) return [
+    gr("少了几？", "What is missing?", grid([6, 7, null, 9, 10]), ["7", "8", "9"], 8),
+    gr("下一个？", "What comes next?", pattern(["🚂", "⭐", "🚂", "⭐", "🚂"]), [{ zh: "星", en: "star", value: "星" }, { zh: "车", en: "train", value: "车" }], "星"),
+    gr("2,4,6,?", "2,4,6,?", numberPath([2, 4, 6, null]), ["7", "8", "9"], 8),
+    gr("9,8,?,6", "9,8,?,6", numberPath([9, 8, null, 6]), ["5", "6", "7"], 7),
+    gr("ABAB 下一个？", "ABAB next?", pattern(["A", "B", "A", "B"]), ["A", "B"], "A"),
+    gr("21,22,?,24", "21,22,?,24", numberPath([21, 22, null, 24]), ["22", "23", "25"], 23)
+  ];
+  if (n === 5) return [
+    gr("7 ○ 2 = 9", "7 ○ 2 = 9", equation([7, "○", 2, "=", 9]), ["+", "-"], "+"),
+    gr("8 ○ 3 = 5", "8 ○ 3 = 5", equation([8, "○", 3, "=", 5]), ["+", "-"], "-"),
+    gr("□ + 3 = 8", "□ + 3 = 8", equation(["□", "+", 3, "=", 8]), ["4", "5", "6"], 5),
+    gr("10 ○ 4 = 6", "10 ○ 4 = 6", equation([10, "○", 4, "=", 6]), ["+", "-"], "-"),
+    gr("3 + □ = 7", "3 + □ = 7", equation([3, "+", "□", "=", 7]), ["3", "4", "5"], 4),
+    gr("6 + □ = 10", "6 + □ = 10", equation([6, "+", "□", "=", 10]), ["3", "4", "5"], 4)
+  ];
+  if (n === 6) return [
+    gr("6 是？", "6 is?", dots(6, "●"), [{ zh: "奇", en: "odd", value: "奇" }, { zh: "偶", en: "even", value: "偶" }], "偶"),
+    gr("7 是？", "7 is?", dots(7, "●"), [{ zh: "奇", en: "odd", value: "奇" }, { zh: "偶", en: "even", value: "偶" }], "奇"),
+    gr("8 是？", "8 is?", tenFrame(8), [{ zh: "奇", en: "odd", value: "奇" }, { zh: "偶", en: "even", value: "偶" }], "偶"),
+    gr("5 能两两配对吗？", "Can 5 pair up?", dots(5, "🍪"), [{ zh: "能", en: "yes", value: "yes" }, { zh: "不能", en: "no", value: "no" }], "no"),
+    gr("下一个偶数？", "Next even number?", numberPath([2, 4, 6, null]), ["7", "8", "9"], 8),
+    gr("11 配对剩几个？", "Pair 11. Left?", dots(11, "⭐"), ["0", "1", "2"], 1)
+  ];
+  if (n === 7) return [
+    gr("3个角？", "3 corners?", shapeSet(["●", "▲", "■"]), [{ zh: "圆", en: "circle", value: "圆" }, { zh: "三角", en: "triangle", value: "三角" }, { zh: "方形", en: "square", value: "方形" }], "三角"),
+    gr("4条边？", "4 sides?", shapeSet(["●", "■", "▲"]), [{ zh: "圆", en: "circle", value: "圆" }, { zh: "方形", en: "square", value: "方形" }, { zh: "三角", en: "triangle", value: "三角" }], "方形"),
+    gr("像球？", "Like a sphere?", shapeSet(["🥫", "🎲", "⚽"]), ["A", "B", "C"], "C"),
+    gr("五边形有几个角？", "Pentagon corners?", shapeSet(["⬟"]), ["4", "5", "6"], 5),
+    gr("圆有角吗？", "Circle corners?", shapeSet(["●"]), [{ zh: "有", en: "yes", value: "yes" }, { zh: "没有", en: "no", value: "no" }], "no"),
+    gr("门像什么？", "Door looks like?", shapeSet(["🚪", "▭"]), [{ zh: "长方形", en: "rectangle", value: "长方形" }, { zh: "圆", en: "circle", value: "圆" }], "长方形")
+  ];
+  if (n === 8) return [
+    gr("← 是？", "← means?", equation(["←"]), [{ zh: "左", en: "left", value: "左" }, { zh: "右", en: "right", value: "右" }], "左"),
+    gr("↑ 是？", "↑ means?", equation(["↑"]), [{ zh: "上", en: "up", value: "上" }, { zh: "下", en: "down", value: "下" }], "上"),
+    gr("猫左边？", "Left of cat?", `<div class="position-row"><span>🍎</span><span class="center">🐱</span><span>🧁</span></div>`, [{ zh: "苹果", en: "apple", value: "苹果" }, { zh: "蛋糕", en: "cake", value: "蛋糕" }], "苹果"),
+    gr("向右到哪里？", "Go right to what?", mapPath(), [{ zh: "树", en: "tree", value: "树" }, { zh: "终点", en: "finish", value: "终点" }], "树"),
+    gr("蛋糕在猫右边吗？", "Cake right of cat?", `<div class="position-row"><span>🍎</span><span class="center">🐱</span><span>🧁</span></div>`, [{ zh: "是", en: "yes", value: "yes" }, { zh: "不是", en: "no", value: "no" }], "yes"),
+    gr("终点在哪里？", "Where is finish?", mapPath(), [{ zh: "右下", en: "bottom right", value: "右下" }, { zh: "左上", en: "top left", value: "左上" }], "右下")
+  ];
+  if (n === 9) return [
+    gr("1苹果=2星。2苹果？", "1 apple=2 stars. 2 apples?", balance("🍎", "⭐ ⭐"), ["3", "4", "5"], 4),
+    gr("◆=5，◆+2", "◆=5, ◆+2", equation(["◆", "=", 5, "◆+2=?"]), ["6", "7", "8"], 7),
+    gr("熊=3块。2熊？", "Bear=3 blocks. 2 bears?", balance("🐻", "■ ■ ■"), ["5", "6", "7"], 6),
+    gr("4 和 2+2 一样吗？", "Are 4 and 2+2 equal?", equation([4, "=", 2, "+", 2]), [{ zh: "是", en: "yes", value: "yes" }, { zh: "不是", en: "no", value: "no" }], "yes"),
+    gr("●=4，●-1", "●=4, ●-1", equation(["●", "=", 4, "●-1=?"]), ["2", "3", "4"], 3),
+    gr("两边一样多？", "Same amount?", balance("●●●", "●●●"), [{ zh: "是", en: "yes", value: "yes" }, { zh: "不是", en: "no", value: "no" }], "yes")
+  ];
+  if (n === 10) return [
+    gr("小鸭第几？", "What number is duck?", queue(7, 4), ["3", "4", "5"], 4),
+    gr("前2后3，总共？", "2 front, 3 behind. Total?", queue(6, 3), ["5", "6", "7"], 6),
+    gr("红6蓝5共同2，总共？", "Red 6, blue 5, both 2. Total?", `<div class="overlap"><span>红 6</span><b>共同 2</b><span>蓝 5</span></div>`, ["9", "11", "13"], 9),
+    gr("第5前面几人？", "How many before 5th?", queue(7, 5), ["4", "5", "6"], 4),
+    gr("前3后2，总共？", "3 front, 2 behind. Total?", queue(6, 4), ["5", "6", "7"], 6),
+    gr("共同部分算几次？", "Count overlap how many times?", `<div class="overlap"><span>A</span><b>共同</b><span>B</span></div>`, ["1", "2"], 1)
+  ];
+  if (n === 11) return [
+    gr("这个数？", "What number?", tensOnes(1, 5), ["14", "15", "16"], 15),
+    gr("18 + 3", "18 + 3", equation([18, "+", 3]), ["20", "21", "22"], 21),
+    gr("22 - 5", "22 - 5", equation([22, "-", 5]), ["16", "17", "18"], 17),
+    gr("? - 3 = 12", "? - 3 = 12", equation(["?", "-", 3, "=", 12]), ["14", "15", "16"], 15),
+    gr("2十4一", "2 tens 4 ones", tensOnes(2, 4), ["24", "42", "6"], 24),
+    gr("27 的个位？", "Ones digit in 27?", equation([27]), ["2", "7", "9"], 7)
+  ];
+  return [
+    gr("A>B>C，谁最多？", "A>B>C. Most?", equation(["A", ">", "B", ">", "C"]), ["A", "B", "C"], "A"),
+    gr("下一个？", "Next?", pattern(["●", "▲", "▲", "●", "▲", "▲"]), [{ zh: "圆", en: "circle", value: "圆" }, { zh: "三角", en: "triangle", value: "三角" }], "圆"),
+    gr("16 - 7", "16 - 7", equation([16, "-", 7]), ["8", "9", "10"], 9),
+    gr("◆=4，◆+3", "◆=4, ◆+3", equation(["◆", "=", 4, "◆+3=?"]), ["6", "7", "8"], 7),
+    gr("9 是？", "9 is?", dots(9, "●"), [{ zh: "奇", en: "odd", value: "奇" }, { zh: "偶", en: "even", value: "偶" }], "奇"),
+    gr("2,4,6,?", "2,4,6,?", numberPath([2, 4, 6, null]), ["7", "8", "9"], 8)
+  ];
+}
+
+function gameHtml(week) {
+  const game = rewardGames[week.n];
+  const data = { week: week.n, titleZh: game.nameZh, titleEn: game.nameEn, instructionZh: game.instructionZh, instructionEn: game.instructionEn, themeZh: week.themeZh, themeEn: week.themeEn, icon: week.icon, rounds: gameRounds(week) };
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${esc(`Week ${week.n} Reward Game - ${game.nameEn}`)}</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:${week.color};--week-accent:${week.accent}">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html">${t("数学冒险地图", "Math Adventure Map")}</a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">${week.icon} ${t(week.themeZh, week.themeEn)}</p>
+      <h1>${t("奖励游戏还锁着", "Reward Game Locked")}</h1>
+      <p>${t("完成本周挑战后，这个小游戏就会打开。", "Complete this week's challenge to unlock this game.")}</p>
+      <a class="challenge-primary" href="week-${pad(week.n)}-challenge.html">${t("去挑战", "Go to Challenge")}</a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">${week.icon} ${t(week.themeZh, week.themeEn)}</p>
+      <h1>${t(game.nameZh, game.nameEn)}</h1>
+      <p>${t(game.instructionZh, game.instructionEn)}</p>
+      <button class="challenge-primary" type="button" data-reward-start>${t("开始玩", "Start Playing")}</button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite">${t("选一个答案。", "Choose one answer.")}</p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">${JSON.stringify(data)}</script>
 </body>
 </html>`;
 }
@@ -893,6 +1162,51 @@ h3 { margin: 0 0 8px; font-size: 18px; }
   padding: 18px;
 }
 .home-mascot { font-size: 58px; grid-auto-flow: column; }
+.buddy-panel {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+  background: rgba(255,255,255,.92);
+  border: 3px solid #cfded3;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 8px 22px rgba(36,54,66,.07);
+}
+.buddy-avatar {
+  width: 120px;
+  height: 120px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 3px solid var(--week-color);
+  background: white;
+  font-size: 58px;
+}
+.buddy-slots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.buddy-slots span {
+  min-height: 56px;
+  display: grid;
+  place-items: center;
+  border: 2px dashed #9fb1a6;
+  border-radius: 8px;
+  background: white;
+  font-weight: 900;
+  text-align: center;
+}
+.buddy-status {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  border-radius: 8px;
+  border: 2px solid var(--week-color);
+  background: color-mix(in srgb, var(--week-accent) 24%, white);
+  padding: 8px 12px;
+  font-size: 17px;
+  font-weight: 950;
+}
 .avatar { position: relative; width: 128px; height: 128px; display: grid; place-items: center; background: #fff; border: 3px solid var(--week-color); border-radius: 50%; margin-bottom: 8px; }
 .avatar-face { font-size: 58px; }
 .avatar-item { position: absolute; right: 8px; top: 6px; font-size: 34px; }
@@ -906,6 +1220,18 @@ h3 { margin: 0 0 8px; font-size: 18px; }
   border-radius: 8px;
   background: white;
   font-weight: 900;
+}
+.mini-complete {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 10px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--week-color);
+  color: white;
+  font-size: 16px;
+  font-weight: 950;
+  cursor: pointer;
 }
 .parent-note, .task-section, .adult-support, .bonus-card, .week-map {
   margin-top: 18px;
@@ -934,6 +1260,39 @@ h3 { margin: 0 0 8px; font-size: 18px; }
 .week-icon { font-size: 34px; }
 .week-tile strong { font-size: 24px; }
 .week-tile small { color: var(--muted); font-weight: 800; }
+.skill-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+}
+.skill-strip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+  padding: 6px 8px;
+  border: 2px solid color-mix(in srgb, var(--week-color) 35%, white);
+  border-radius: 8px;
+  background: white;
+  font-weight: 900;
+}
+.skill-strip b { font-size: 18px; }
+.skill-strip small { color: var(--ink); }
+.skill-strip i {
+  width: 14px;
+  height: 2px;
+  background: var(--week-color);
+  display: inline-block;
+}
+.skill-strip.compact { margin-top: 10px; }
+.week-progress {
+  border-radius: 8px;
+  background: #fff;
+  border: 2px dashed #cbd8d0;
+  padding: 8px 10px;
+  font-weight: 850;
+}
 .week-actions, .print-action-buttons, .compiled-tools { display: flex; flex-wrap: wrap; gap: 10px; }
 .week-actions a, .print-action-buttons a, .compiled-cover button {
   border-radius: 8px;
@@ -960,6 +1319,45 @@ h3 { margin: 0 0 8px; font-size: 18px; }
   box-shadow: 0 8px 22px rgba(36,54,66,.07);
 }
 .print-actions p { max-width: 760px; margin: 0; font-size: 17px; }
+.flow-reminder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+.flow-reminder span {
+  border: 2px solid var(--week-color);
+  border-radius: 8px;
+  background: white;
+  padding: 8px 10px;
+  font-weight: 950;
+}
+.task-group {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 3px solid color-mix(in srgb, var(--week-color) 28%, white);
+  background: color-mix(in srgb, var(--week-accent) 10%, white);
+  break-inside: avoid;
+}
+.task-group-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.task-group-head span {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--week-color);
+  font-size: 24px;
+}
+.task-group-head h3 { margin: 0; font-size: 24px; }
+.task-group-head p { margin: 2px 0 0; color: var(--muted); font-size: 16px; font-weight: 850; }
 .problem-card {
   min-height: 330px;
   background: var(--card);
@@ -1159,7 +1557,7 @@ h3 { margin: 0 0 8px; font-size: 18px; }
   border-top: 2px solid #cfd9d2;
   padding-top: 8px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1.2fr;
+  grid-template-columns: 1fr 1fr 1.2fr .95fr;
   gap: 10px;
   font-size: 13px;
 }
@@ -1171,7 +1569,7 @@ h3 { margin: 0 0 8px; font-size: 18px; }
     linear-gradient(160deg, color-mix(in srgb, var(--week-color) 12%, white), #fff8e8 52%, color-mix(in srgb, var(--week-accent) 20%, white));
 }
 .challenge-shell { width: min(900px, calc(100% - 28px)); margin: 0 auto; padding: 24px 0 48px; }
-.challenge-start, .challenge-card, .challenge-results, .reward-game {
+.challenge-start, .challenge-card, .challenge-results {
   background: rgba(255,255,255,.94);
   border: 3px solid color-mix(in srgb, var(--week-color) 50%, white);
   border-radius: 8px;
@@ -1191,7 +1589,10 @@ h3 { margin: 0 0 8px; font-size: 18px; }
   padding: 12px;
   background: #fbfefd;
 }
-.challenge-primary, .reward-button, .game-controls button {
+.challenge-primary, .reward-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 48px;
   border: 2px solid var(--ink);
   border-radius: 8px;
@@ -1201,8 +1602,15 @@ h3 { margin: 0 0 8px; font-size: 18px; }
   font-size: 17px;
   font-weight: 950;
   cursor: pointer;
+  text-decoration: none;
 }
-.challenge-primary:disabled, .reward-button:disabled, .game-controls button:disabled { opacity: .55; cursor: not-allowed; }
+.home-link:focus-visible, .lang-toggle:focus-visible, .page-nav a:focus-visible, .page-nav button:focus-visible,
+.week-actions a:focus-visible, .print-action-buttons a:focus-visible, .challenge-primary:focus-visible,
+.reward-button:focus-visible, .reward-choices button:focus-visible, .mini-complete:focus-visible {
+  outline: 4px solid var(--week-accent);
+  outline-offset: 3px;
+}
+.challenge-primary:disabled, .reward-button:disabled { opacity: .55; cursor: not-allowed; }
 .is-hidden { display: none !important; }
 .challenge-status {
   display: flex;
@@ -1299,20 +1707,23 @@ h3 { margin: 0 0 8px; font-size: 18px; }
 }
 .parent-summary { margin-top: 18px; }
 .missed-list { display: grid; gap: 8px; padding-left: 0; list-style: none; }
-.reward-game { margin-top: 18px; text-align: center; }
-.reward-game canvas {
-  width: 200px;
-  height: 320px;
-  max-width: 100%;
-  background: #111827;
-  border: 4px solid var(--ink);
-  border-radius: 8px;
-  image-rendering: pixelated;
+.reward-choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
-.game-controls { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
-.game-tip { color: var(--muted); font-weight: 850; }
+.reward-choices button {
+  min-height: 64px;
+  border: 3px solid var(--week-color);
+  border-radius: 8px;
+  background: white;
+  font-size: 24px;
+  font-weight: 950;
+  cursor: pointer;
+}
+.reward-choices button:disabled { opacity: .65; cursor: default; }
 @media (max-width: 820px) {
-  .home-hero, .adventure-hero, .week-grid, .task-grid, .support-grid, .print-actions, .compiled-page-head, .compiled-problem-grid, .compiled-guide, .challenge-start-grid, .challenge-answer, .result-top { grid-template-columns: 1fr; }
+  .home-hero, .adventure-hero, .week-grid, .task-grid, .support-grid, .print-actions, .compiled-page-head, .compiled-problem-grid, .compiled-guide, .challenge-start-grid, .challenge-answer, .result-top, .reward-choices { grid-template-columns: 1fr; }
   h1 { font-size: 36px; }
   h2 { font-size: 26px; }
   .challenge-prompt { font-size: 24px; }
@@ -1322,6 +1733,14 @@ h3 { margin: 0 0 8px; font-size: 18px; }
 @media (prefers-reduced-motion: no-preference) {
   .avatar-item { animation: bob 2.8s ease-in-out infinite; }
   @keyframes bob { 50% { transform: translateY(-5px); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
 }`;
 
 const printCss = `@page { margin: 11mm; }
@@ -1341,6 +1760,13 @@ body { color: #111; font-size: 11pt; }
 h1 { font-size: 26pt; }
 h2 { font-size: 17pt; }
 .parent-note, .task-section, .adult-support, .bonus-card { margin-top: 5mm; padding: 5mm; border: 1.5pt solid #333; }
+.skill-strip, .flow-reminder { gap: 2mm; }
+.skill-strip span, .flow-reminder span { border: 1pt solid #222; background: white !important; padding: 1.5mm 2mm; }
+.task-group { border: 1.5pt solid #333; background: white !important; padding: 3mm; margin-top: 4mm; break-inside: avoid; page-break-inside: avoid; }
+.task-group-head { margin-bottom: 3mm; }
+.task-group-head span { border: 1pt solid #222; background: white !important; }
+.task-group-head h3 { font-size: 14pt; }
+.task-group-head p { margin: 0; font-size: 9pt; color: #333; }
 .task-grid { grid-template-columns: 1fr 1fr; gap: 5mm; }
 .problem-card { min-height: 70mm; padding: 4mm; border: 1.5pt solid #333; break-inside: avoid; page-break-inside: avoid; }
 .problem-number { background: #111 !important; color: white !important; }
@@ -1415,12 +1841,13 @@ h2 { font-size: 17pt; }
 }
 .compiled-bonus .visual, .compiled-bonus .bonus-scene { min-height: 0; font-size: 16pt; }
 .compiled-guide {
-  grid-template-columns: 1fr 1fr 1.15fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 3mm;
   margin-top: 3mm;
   padding-top: 2mm;
   border-top: 1pt solid #222;
   font-size: 8.5pt;
+  line-height: 1.25;
 }
 .compiled-guide p, .compiled-guide ul { margin: 1mm 0 0; }
 @media print { body[data-lang="zh"] .lang.en, body[data-lang="en"] .lang.zh { display: none !important; } }`;
@@ -1428,7 +1855,17 @@ h2 { font-size: 17pt; }
 const script = `(() => {
   const langKey = "grade1-math-adventure-lang";
   const body = document.body;
-  const saved = localStorage.getItem(langKey);
+  const storage = {
+    get(key) {
+      try { return localStorage.getItem(key); }
+      catch (_) { return null; }
+    },
+    set(key, value) {
+      try { localStorage.setItem(key, value); }
+      catch (_) {}
+    }
+  };
+  const saved = storage.get(langKey);
   if (saved === "zh" || saved === "en") {
     body.dataset.lang = saved;
     document.documentElement.lang = saved === "zh" ? "zh-CN" : "en";
@@ -1441,18 +1878,148 @@ const script = `(() => {
       const next = body.dataset.lang === "zh" ? "en" : "zh";
       body.dataset.lang = next;
       document.documentElement.lang = next === "zh" ? "zh-CN" : "en";
-      localStorage.setItem(langKey, next);
+      storage.set(langKey, next);
     });
   });
 
+  const completeButtons = document.querySelectorAll("[data-complete-day]");
+  const stampBoxes = document.querySelectorAll("[data-stamp-box]");
+  function updateCompleteState(isComplete) {
+    if (!isComplete) return;
+    completeButtons.forEach((completeButton) => {
+      completeButton.innerHTML = bilingual("完成章已盖！", "Marked complete!");
+    });
+    stampBoxes.forEach((stampBox) => {
+      stampBox.innerHTML = bilingual("今日印章到手！", "Today's stamp earned!");
+    });
+  }
+  if (body.dataset.week && body.dataset.day) {
+    updateCompleteState(storage.get("grade1-week-" + body.dataset.week + "-day-" + body.dataset.day + "-complete") === "1");
+  }
+  completeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const week = body.dataset.week;
+      const day = body.dataset.day;
+      if (!week || !day) return;
+      storage.set("grade1-week-" + week + "-day-" + day + "-complete", "1");
+      updateCompleteState(true);
+    });
+  });
+
+  document.querySelectorAll("[data-week-progress]").forEach((node) => {
+    const week = node.dataset.weekProgress;
+    let days = 0;
+    for (let d = 1; d <= 5; d++) {
+      if (storage.get("grade1-week-" + week + "-day-" + d + "-complete") === "1") days += 1;
+    }
+    const challenge = storage.get("grade1-week-" + week + "-challenge-complete") === "1";
+    node.innerHTML = bilingual("进度：" + days + "/5 天" + (challenge ? " · 挑战完成" : ""), "Progress: " + days + "/5 days" + (challenge ? " · challenge done" : ""));
+  });
+
+  document.querySelectorAll("[data-buddy-status]").forEach((node) => {
+    let completedDays = 0;
+    let completedChallenges = 0;
+    for (let w = 1; w <= 12; w++) {
+      for (let d = 1; d <= 5; d++) {
+        if (storage.get("grade1-week-" + w + "-day-" + d + "-complete") === "1") completedDays += 1;
+      }
+      if (storage.get("grade1-week-" + w + "-challenge-complete") === "1") completedChallenges += 1;
+    }
+    node.innerHTML = bilingual("已收集：" + completedDays + "枚日印章 · " + completedChallenges + "个挑战游戏", "Collected: " + completedDays + " day stamps · " + completedChallenges + " challenge games");
+  });
+
+  document.querySelectorAll("[data-game-link]").forEach((link) => {
+    const week = link.dataset.gameLink;
+    const unlocked = storage.get("grade1-week-" + week + "-challenge-complete") === "1";
+    const nameZh = link.dataset.gameNameZh || "奖励游戏";
+    const nameEn = link.dataset.gameNameEn || "Reward Game";
+    if (unlocked) {
+      link.innerHTML = bilingual("🎮 " + nameZh, "🎮 " + nameEn);
+    } else {
+      link.innerHTML = bilingual("🔒 " + nameZh, "🔒 " + nameEn);
+    }
+  });
+
+  function initRewardGame(game) {
+    const locked = document.querySelector("[data-game-locked]");
+    const ready = document.querySelector("[data-game-ready]");
+    const play = document.querySelector("[data-reward-play]");
+    const results = document.querySelector("[data-reward-results]");
+    const start = document.querySelector("[data-reward-start]");
+    const progress = document.querySelector("[data-reward-progress]");
+    const scoreNode = document.querySelector("[data-reward-score]");
+    const promptNode = document.querySelector("[data-reward-prompt]");
+    const visualNode = document.querySelector("[data-reward-visual]");
+    const choicesNode = document.querySelector("[data-reward-choices]");
+    const feedback = document.querySelector("[data-reward-feedback]");
+    if (!ready || !start) return;
+    const unlocked = storage.get("grade1-week-" + game.week + "-challenge-complete") === "1";
+    if (unlocked) {
+      locked.classList.add("is-hidden");
+      ready.classList.remove("is-hidden");
+    }
+    let index = 0;
+    let score = 0;
+    function renderRound() {
+      const round = game.rounds[index];
+      progress.innerHTML = bilingual("第 " + (index + 1) + " / " + game.rounds.length + " 轮", "Round " + (index + 1) + " of " + game.rounds.length);
+      scoreNode.innerHTML = bilingual("星星 " + score, "Stars " + score);
+      promptNode.innerHTML = bilingual(round.promptZh, round.promptEn);
+      visualNode.innerHTML = round.visual;
+      feedback.innerHTML = bilingual("选一个答案。", "Choose one answer.");
+      choicesNode.innerHTML = round.choices.map((choice) => '<button type="button" data-choice="' + choice.value + '">' + bilingual(choice.zh, choice.en) + '</button>').join("");
+      choicesNode.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const correct = normalize(button.dataset.choice) === normalize(round.answer);
+          if (correct) {
+            score += 1;
+            feedback.innerHTML = bilingual("答对啦！", "Nice match!");
+            choicesNode.querySelectorAll("button").forEach((b) => b.disabled = true);
+            setTimeout(() => {
+              index += 1;
+              if (index >= game.rounds.length) finishGame();
+              else renderRound();
+            }, 650);
+          } else {
+            feedback.innerHTML = bilingual("差一点，换一个试试。", "Almost. Try another one.");
+            button.disabled = true;
+          }
+        });
+      });
+    }
+    function finishGame() {
+      play.classList.add("is-hidden");
+      results.innerHTML = '<div class="result-top"><div class="praise-gif">' + game.icon + '</div><div><p class="eyebrow">' + bilingual(game.themeZh, game.themeEn) + '</p><h1>' + bilingual("游戏完成！", "Game Complete!") + '</h1><p>' + bilingual("你收集了 " + score + " 颗星星。", "You collected " + score + " stars.") + '</p></div></div><button class="reward-button" type="button" data-replay-game>' + bilingual("再玩一次", "Play Again") + '</button>';
+      results.classList.remove("is-hidden");
+      results.querySelector("[data-replay-game]").addEventListener("click", () => {
+        results.classList.add("is-hidden");
+        index = 0;
+        score = 0;
+        play.classList.remove("is-hidden");
+        renderRound();
+      });
+    }
+    start.addEventListener("click", () => {
+      ready.classList.add("is-hidden");
+      play.classList.remove("is-hidden");
+      index = 0;
+      score = 0;
+      renderRound();
+    });
+  }
+
   const dataNode = document.getElementById("challengeData");
-  if (!dataNode) return;
+  const gameDataNode = document.getElementById("rewardGameData");
+  if (!dataNode && !gameDataNode) return;
+  if (gameDataNode) {
+    initRewardGame(JSON.parse(gameDataNode.textContent));
+    if (!dataNode) return;
+  }
   const data = JSON.parse(dataNode.textContent);
   const app = document.getElementById("challengeApp");
   const startPanel = app.querySelector("[data-challenge-start]");
   const card = app.querySelector("[data-challenge-card]");
   const results = app.querySelector("[data-results]");
-  const gamePanel = app.querySelector("[data-game]");
   const progress = app.querySelector("[data-progress]");
   const timer = app.querySelector("[data-timer]");
   const meter = app.querySelector("[data-meter]");
@@ -1462,9 +2029,6 @@ const script = `(() => {
   const form = app.querySelector("[data-answer-form]");
   const input = app.querySelector("[data-answer-input]");
   const startButton = app.querySelector("[data-start-challenge]");
-  const gameButton = app.querySelector("[data-game-start]");
-  const gameInfo = app.querySelector("[data-game-info]");
-  const canvas = app.querySelector("[data-game-canvas]");
 
   let index = 0;
   let startedAt = 0;
@@ -1529,8 +2093,9 @@ const script = `(() => {
 
   function revisitSuggestion(missed) {
     if (!missed.length) return bilingual("保持手感：下周继续先看图、再说想法。", "Keep the rhythm: next week, look first and explain your thinking.");
-    const concepts = [...new Set(missed.map((m) => body.dataset.lang === "en" ? m.conceptEn : m.conceptZh))].slice(0, 3).join("、");
-    return bilingual("建议回看：" + concepts + "。用小物品摆一摆会更稳。", "Revisit: " + concepts + ". Building with small objects will help.");
+    const zhConcepts = [...new Set(missed.map((m) => m.conceptZh))].slice(0, 3).join("、");
+    const enConcepts = [...new Set(missed.map((m) => m.conceptEn))].slice(0, 3).join(", ");
+    return bilingual("建议回看：" + zhConcepts + "。用小物品摆一摆会更稳。", "Revisit: " + enConcepts + ". Building with small objects will help.");
   }
 
   function finishChallenge() {
@@ -1542,6 +2107,7 @@ const script = `(() => {
     const correct = responses.filter((r) => r.correct).length;
     const missed = responses.filter((r) => !r.correct);
     const passed = correct >= data.threshold;
+    storage.set("grade1-week-" + data.week + "-challenge-complete", "1");
     const praiseZh = passed ? "红星到手！你又勇敢又认真。" : "完成就是进步！小伙伴为你鼓掌。";
     const praiseEn = passed ? "Red star earned! Brave and careful work." : "Finishing is progress! Your buddy is cheering.";
     const missedHtml = missed.length
@@ -1557,7 +2123,7 @@ const script = `(() => {
       '<div class="score-line">' + (passed ? '<span class="red-star">★</span>' : "") + correct + " / " + data.questions.length + '</div>' +
       '<p><strong>' + bilingual("总时间：", "Total time: ") + '</strong>' + fmt(totalSeconds) + '</p>' +
       '<div class="avatar-reward">' + data.icon + " " + bilingual("小伙伴获得：" + data.rewardZh, "Buddy reward: " + data.rewardEn) + '</div>' +
-      '<button class="reward-button" type="button" data-unlock-game>' + bilingual("解锁奖励小游戏", "Unlock Mini Reward Game") + '</button>' +
+      '<a class="reward-button" href="week-' + String(data.week).padStart(2, "0") + '-game.html">' + bilingual("解锁奖励小游戏", "Unlock Mini Reward Game") + '</a>' +
       '<section class="parent-summary"><h2>' + bilingual("家长小结", "Parent Summary") + '</h2>' +
         '<p><strong>' + bilingual("检查内容：", "Concepts checked: ") + '</strong>' + bilingual(data.conceptsZh, data.conceptsEn) + '</p>' +
         '<p><strong>' + bilingual("完成情况：", "Completion: ") + '</strong>' + responses.length + " / " + data.questions.length + '</p>' +
@@ -1566,11 +2132,6 @@ const script = `(() => {
         '<p><strong>' + bilingual("建议：", "Suggestion: ") + '</strong>' + revisitSuggestion(missed) + '</p>' +
       '</section>';
     results.classList.remove("is-hidden");
-    results.querySelector("[data-unlock-game]").addEventListener("click", () => {
-      gamePanel.classList.remove("is-hidden");
-      gamePanel.scrollIntoView({ behavior: "smooth", block: "start" });
-      updateGamePlays();
-    });
   }
 
   form.addEventListener("submit", (event) => {
@@ -1591,129 +2152,6 @@ const script = `(() => {
     else showQuestion();
   });
   startButton.addEventListener("click", startChallenge);
-
-  const gameKey = "grade1-week-" + data.week + "-reward-plays";
-  const ctx = canvas.getContext("2d");
-  const cols = 10;
-  const rows = 16;
-  const size = 20;
-  const colors = ["#ef476f", "#ffd166", "#06d6a0", "#118ab2", "#f78c6b"];
-  const shapes = [
-    [[1,1,1,1]],
-    [[1,1],[1,1]],
-    [[0,1,0],[1,1,1]],
-    [[1,0,0],[1,1,1]],
-    [[0,0,1],[1,1,1]]
-  ];
-  let board, piece, gameTimer, dropTimer, gameEndsAt, gameScore;
-
-  function playsUsed() {
-    return Number(localStorage.getItem(gameKey) || "0");
-  }
-  function updateGamePlays() {
-    const left = Math.max(0, 2 - playsUsed());
-    if (piece) {
-      gameInfo.textContent = text("游戏进行中", "Game in progress");
-      gameButton.disabled = true;
-      return;
-    }
-    gameInfo.textContent = text("还可以玩 " + left + " 次", left + " play(s) left");
-    gameButton.disabled = left <= 0;
-  }
-  function newPiece() {
-    const shape = shapes[Math.floor(Math.random() * shapes.length)].map((r) => r.slice());
-    return { shape, x: 3, y: 0, color: colors[Math.floor(Math.random() * colors.length)] };
-  }
-  function collide(p, offX, offY, shape) {
-    const s = shape || p.shape;
-    for (let y = 0; y < s.length; y++) {
-      for (let x = 0; x < s[y].length; x++) {
-        if (!s[y][x]) continue;
-        const nx = p.x + x + offX;
-        const ny = p.y + y + offY;
-        if (nx < 0 || nx >= cols || ny >= rows || (ny >= 0 && board[ny][nx])) return true;
-      }
-    }
-    return false;
-  }
-  function merge() {
-    piece.shape.forEach((row, y) => row.forEach((cell, x) => {
-      if (cell && piece.y + y >= 0) board[piece.y + y][piece.x + x] = piece.color;
-    }));
-    for (let y = rows - 1; y >= 0; y--) {
-      if (board[y].every(Boolean)) {
-        board.splice(y, 1);
-        board.unshift(Array(cols).fill(null));
-        gameScore += 10;
-        y += 1;
-      }
-    }
-    piece = newPiece();
-    if (collide(piece, 0, 0)) endGame();
-  }
-  function rotate(shape) {
-    return shape[0].map((_, i) => shape.map((row) => row[i]).reverse());
-  }
-  function drawCell(x, y, color) {
-    ctx.fillStyle = color;
-    ctx.fillRect(x * size + 1, y * size + 1, size - 2, size - 2);
-  }
-  function drawGame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#111827";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    board.forEach((row, y) => row.forEach((color, x) => { if (color) drawCell(x, y, color); }));
-    if (piece) piece.shape.forEach((row, y) => row.forEach((cell, x) => { if (cell) drawCell(piece.x + x, piece.y + y, piece.color); }));
-    ctx.fillStyle = "white";
-    ctx.font = "12px Arial";
-    ctx.fillText(text("分数 ", "Score ") + gameScore, 8, 16);
-    ctx.fillText(text("时间 ", "Time ") + Math.max(0, Math.ceil((gameEndsAt - Date.now()) / 1000)), 136, 16);
-  }
-  function step() {
-    if (!piece) return;
-    if (!collide(piece, 0, 1)) piece.y += 1;
-    else merge();
-    drawGame();
-  }
-  function endGame() {
-    clearInterval(dropTimer);
-    clearInterval(gameTimer);
-    piece = null;
-    drawGame();
-    gameInfo.textContent = text("游戏结束，分数 " + gameScore, "Game over, score " + gameScore);
-    gameButton.disabled = playsUsed() >= 2;
-  }
-  function startGame() {
-    if (playsUsed() >= 2) return;
-    localStorage.setItem(gameKey, String(playsUsed() + 1));
-    board = Array.from({ length: rows }, () => Array(cols).fill(null));
-    piece = newPiece();
-    gameScore = 0;
-    gameEndsAt = Date.now() + 60000;
-    clearInterval(dropTimer);
-    clearInterval(gameTimer);
-    dropTimer = setInterval(step, 650);
-    gameTimer = setInterval(() => {
-      if (Date.now() >= gameEndsAt) endGame();
-      else drawGame();
-    }, 250);
-    updateGamePlays();
-    drawGame();
-  }
-  document.addEventListener("keydown", (event) => {
-    if (!piece || gamePanel.classList.contains("is-hidden")) return;
-    if (event.key === "ArrowLeft" && !collide(piece, -1, 0)) piece.x -= 1;
-    if (event.key === "ArrowRight" && !collide(piece, 1, 0)) piece.x += 1;
-    if (event.key === "ArrowDown") step();
-    if (event.key === "ArrowUp") {
-      const r = rotate(piece.shape);
-      if (!collide(piece, 0, 0, r)) piece.shape = r;
-    }
-    if (event.key.startsWith("Arrow")) event.preventDefault();
-    drawGame();
-  });
-  gameButton.addEventListener("click", startGame);
-  updateGamePlays();
 })();`;
 
 function write(file, contents) {
@@ -1721,6 +2159,7 @@ function write(file, contents) {
 }
 
 write("index.html", indexHtml());
+write("printable.html", legacyPrintableHtml());
 write("styles.css", styles);
 write("print.css", printCss);
 write("script.js", script);
@@ -1728,6 +2167,7 @@ write("script.js", script);
 for (const week of weeks) {
   write(`week-${pad(week.n)}-print.html`, weekPrintHtml(week));
   write(`week-${pad(week.n)}-challenge.html`, challengeHtml(week));
+  write(`week-${pad(week.n)}-game.html`, gameHtml(week));
   for (let day = 1; day <= dayCount; day += 1) {
     write(`week-${pad(week.n)}-day-${pad(day)}.html`, pageHtml(week, day));
   }
@@ -1739,17 +2179,22 @@ const readme = `# Grade 1 Math Adventure / 一年级数学冒险
 Static printable bilingual Grade 1 math program.
 
 - \`index.html\`: parent/teacher note and 12-week map.
+- \`printable.html\`: compatibility doorway for older printable links.
 - \`week-01-day-01.html\` through \`week-12-day-05.html\`: daily printable pages.
 - \`week-01-challenge.html\` through \`week-12-challenge.html\`: online weekly challenge tests with scoring and a short reward game.
+- \`week-01-game.html\` through \`week-12-game.html\`: unique unlockable weekly reward games.
 - \`week-01-print.html\` through \`week-12-print.html\`: weekly compiled print packets. Each week prints as 10 pages.
 - \`full-program-print.html\`: full 12-week compiled print packet.
 - \`styles.css\`: shared screen design system.
 - \`print.css\`: print stylesheet.
 - \`script.js\`: small language toggle.
 - \`scripts/generate-site.js\`: reusable structured day-data model plus daily and compiled-print renderers.
+- \`scripts/audit-site.js\`: static QA audit for links, page structure, print packets, challenges, and games.
+- \`QUALITY_CHECKLIST.md\`: product QA checklist for future page/content changes.
 
 Run \`node scripts/generate-site.js\` after editing the generator to rebuild all pages.
+Run \`node scripts/audit-site.js\` before publishing.
 `;
 write("README.md", readme);
 
-console.log("Generated index, shared assets, 60 daily pages, 12 weekly challenges, 12 weekly print packets, and the full-program print packet.");
+console.log("Generated index, shared assets, 60 daily pages, 12 weekly challenges, 12 reward games, 12 weekly print packets, and the full-program print packet.");

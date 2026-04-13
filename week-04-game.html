@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 4 Reward Game - Pattern Builder</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#3b7a57;--week-accent:#f29e4c">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🚂 <span class="lang zh">玩具火车镇</span><span class="lang en">Toy Train Town</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-04-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🚂 <span class="lang zh">玩具火车镇</span><span class="lang en">Toy Train Town</span></p>
+      <h1><span class="lang zh">规律小工坊</span><span class="lang en">Pattern Builder</span></h1>
+      <p><span class="lang zh">选择能接上的图案。</span><span class="lang en">Choose what continues the pattern.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":4,"titleZh":"规律小工坊","titleEn":"Pattern Builder","instructionZh":"选择能接上的图案。","instructionEn":"Choose what continues the pattern.","themeZh":"玩具火车镇","themeEn":"Toy Train Town","icon":"🚂","rounds":[{"promptZh":"少了几？","promptEn":"What is missing?","visual":"<div class=\"mini-grid\" style=\"--cols:5\"><span>6</span><span>7</span><span>?</span><span>9</span><span>10</span></div>","choices":[{"zh":"7","en":"7","value":"7"},{"zh":"8","en":"8","value":"8"},{"zh":"9","en":"9","value":"9"}],"answer":"8"},{"promptZh":"下一个？","promptEn":"What comes next?","visual":"<div class=\"pattern-row\"><span>🚂</span><span>⭐</span><span>🚂</span><span>⭐</span><span>🚂</span><span class=\"blank-tile\">?</span></div>","choices":[{"zh":"星","en":"star","value":"星"},{"zh":"车","en":"train","value":"车"}],"answer":"星"},{"promptZh":"2,4,6,?","promptEn":"2,4,6,?","visual":"<div class=\"number-path\"><span>2</span><span>4</span><span>6</span><span>?</span></div>","choices":[{"zh":"7","en":"7","value":"7"},{"zh":"8","en":"8","value":"8"},{"zh":"9","en":"9","value":"9"}],"answer":"8"},{"promptZh":"9,8,?,6","promptEn":"9,8,?,6","visual":"<div class=\"number-path\"><span>9</span><span>8</span><span>?</span><span>6</span></div>","choices":[{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"},{"zh":"7","en":"7","value":"7"}],"answer":"7"},{"promptZh":"ABAB 下一个？","promptEn":"ABAB next?","visual":"<div class=\"pattern-row\"><span>A</span><span>B</span><span>A</span><span>B</span><span class=\"blank-tile\">?</span></div>","choices":[{"zh":"A","en":"A","value":"A"},{"zh":"B","en":"B","value":"B"}],"answer":"A"},{"promptZh":"21,22,?,24","promptEn":"21,22,?,24","visual":"<div class=\"number-path\"><span>21</span><span>22</span><span>?</span><span>24</span></div>","choices":[{"zh":"22","en":"22","value":"22"},{"zh":"23","en":"23","value":"23"},{"zh":"25","en":"25","value":"25"}],"answer":"23"}]}</script>
+</body>
+</html>

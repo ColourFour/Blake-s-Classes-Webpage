@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 7 Reward Game - Shape Match Sprint</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#5784ba;--week-accent:#9ee493">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🏰 <span class="lang zh">云朵城堡</span><span class="lang en">Cloud Castle</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-07-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🏰 <span class="lang zh">云朵城堡</span><span class="lang en">Cloud Castle</span></p>
+      <h1><span class="lang zh">图形配对冲刺</span><span class="lang en">Shape Match Sprint</span></h1>
+      <p><span class="lang zh">把名称和图形配起来。</span><span class="lang en">Match the name to the shape.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":7,"titleZh":"图形配对冲刺","titleEn":"Shape Match Sprint","instructionZh":"把名称和图形配起来。","instructionEn":"Match the name to the shape.","themeZh":"云朵城堡","themeEn":"Cloud Castle","icon":"🏰","rounds":[{"promptZh":"3个角？","promptEn":"3 corners?","visual":"<div class=\"shape-set\"><span class=\"shape-token\">●</span><span class=\"shape-token\">▲</span><span class=\"shape-token\">■</span></div>","choices":[{"zh":"圆","en":"circle","value":"圆"},{"zh":"三角","en":"triangle","value":"三角"},{"zh":"方形","en":"square","value":"方形"}],"answer":"三角"},{"promptZh":"4条边？","promptEn":"4 sides?","visual":"<div class=\"shape-set\"><span class=\"shape-token\">●</span><span class=\"shape-token\">■</span><span class=\"shape-token\">▲</span></div>","choices":[{"zh":"圆","en":"circle","value":"圆"},{"zh":"方形","en":"square","value":"方形"},{"zh":"三角","en":"triangle","value":"三角"}],"answer":"方形"},{"promptZh":"像球？","promptEn":"Like a sphere?","visual":"<div class=\"shape-set\"><span class=\"shape-token\">🥫</span><span class=\"shape-token\">🎲</span><span class=\"shape-token\">⚽</span></div>","choices":[{"zh":"A","en":"A","value":"A"},{"zh":"B","en":"B","value":"B"},{"zh":"C","en":"C","value":"C"}],"answer":"C"},{"promptZh":"五边形有几个角？","promptEn":"Pentagon corners?","visual":"<div class=\"shape-set\"><span class=\"shape-token\">⬟</span></div>","choices":[{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"}],"answer":"5"},{"promptZh":"圆有角吗？","promptEn":"Circle corners?","visual":"<div class=\"shape-set\"><span class=\"shape-token\">●</span></div>","choices":[{"zh":"有","en":"yes","value":"yes"},{"zh":"没有","en":"no","value":"no"}],"answer":"no"},{"promptZh":"门像什么？","promptEn":"Door looks like?","visual":"<div class=\"shape-set\"><span class=\"shape-token\">🚪</span><span class=\"shape-token\">▭</span></div>","choices":[{"zh":"长方形","en":"rectangle","value":"长方形"},{"zh":"圆","en":"circle","value":"圆"}],"answer":"长方形"}]}</script>
+</body>
+</html>

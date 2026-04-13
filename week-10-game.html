@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 10 Reward Game - Queue Fixer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#51606f;--week-accent:#f4d35e">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🕵️ <span class="lang zh">小侦探俱乐部</span><span class="lang en">Little Detective Club</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-10-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🕵️ <span class="lang zh">小侦探俱乐部</span><span class="lang en">Little Detective Club</span></p>
+      <h1><span class="lang zh">排队修理员</span><span class="lang en">Queue Fixer</span></h1>
+      <p><span class="lang zh">把小伙伴放到正确位置。</span><span class="lang en">Put the buddy in the right place.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":10,"titleZh":"排队修理员","titleEn":"Queue Fixer","instructionZh":"把小伙伴放到正确位置。","instructionEn":"Put the buddy in the right place.","themeZh":"小侦探俱乐部","themeEn":"Little Detective Club","icon":"🕵️","rounds":[{"promptZh":"小鸭第几？","promptEn":"What number is duck?","visual":"<div class=\"queue\"><span class=\"\">○</span><span class=\"\">○</span><span class=\"\">○</span><span class=\"marked\">🐥</span><span class=\"\">○</span><span class=\"\">○</span><span class=\"\">○</span></div>","choices":[{"zh":"3","en":"3","value":"3"},{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"}],"answer":"4"},{"promptZh":"前2后3，总共？","promptEn":"2 front, 3 behind. Total?","visual":"<div class=\"queue\"><span class=\"\">○</span><span class=\"\">○</span><span class=\"marked\">🐥</span><span class=\"\">○</span><span class=\"\">○</span><span class=\"\">○</span></div>","choices":[{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"},{"zh":"7","en":"7","value":"7"}],"answer":"6"},{"promptZh":"红6蓝5共同2，总共？","promptEn":"Red 6, blue 5, both 2. Total?","visual":"<div class=\"overlap\"><span>红 6</span><b>共同 2</b><span>蓝 5</span></div>","choices":[{"zh":"9","en":"9","value":"9"},{"zh":"11","en":"11","value":"11"},{"zh":"13","en":"13","value":"13"}],"answer":"9"},{"promptZh":"第5前面几人？","promptEn":"How many before 5th?","visual":"<div class=\"queue\"><span class=\"\">○</span><span class=\"\">○</span><span class=\"\">○</span><span class=\"\">○</span><span class=\"marked\">🐥</span><span class=\"\">○</span><span class=\"\">○</span></div>","choices":[{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"}],"answer":"4"},{"promptZh":"前3后2，总共？","promptEn":"3 front, 2 behind. Total?","visual":"<div class=\"queue\"><span class=\"\">○</span><span class=\"\">○</span><span class=\"\">○</span><span class=\"marked\">🐥</span><span class=\"\">○</span><span class=\"\">○</span></div>","choices":[{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"},{"zh":"7","en":"7","value":"7"}],"answer":"6"},{"promptZh":"共同部分算几次？","promptEn":"Count overlap how many times?","visual":"<div class=\"overlap\"><span>A</span><b>共同</b><span>B</span></div>","choices":[{"zh":"1","en":"1","value":"1"},{"zh":"2","en":"2","value":"2"}],"answer":"1"}]}</script>
+</body>
+</html>

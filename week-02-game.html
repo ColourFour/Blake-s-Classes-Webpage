@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 2 Reward Game - Apple Catch</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#c0575b;--week-accent:#ffd166">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🧁 <span class="lang zh">动物烘焙坊</span><span class="lang en">Animal Bakery</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-02-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🧁 <span class="lang zh">动物烘焙坊</span><span class="lang en">Animal Bakery</span></p>
+      <h1><span class="lang zh">苹果接接乐</span><span class="lang en">Apple Catch</span></h1>
+      <p><span class="lang zh">接住等于目标的苹果。</span><span class="lang en">Catch apples that match the target.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":2,"titleZh":"苹果接接乐","titleEn":"Apple Catch","instructionZh":"接住等于目标的苹果。","instructionEn":"Catch apples that match the target.","themeZh":"动物烘焙坊","themeEn":"Animal Bakery","icon":"🧁","rounds":[{"promptZh":"3 + 2 = ?","promptEn":"3 + 2 = ?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span></div>","choices":[{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"}],"answer":"5"},{"promptZh":"7 - 3 = ?","promptEn":"7 - 3 = ?","visual":"<div class=\"dot-row\"><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot crossed\">🍪</span><span class=\"dot crossed\">🍪</span><span class=\"dot crossed\">🍪</span></div>","choices":[{"zh":"3","en":"3","value":"3"},{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"}],"answer":"4"},{"promptZh":"哪边多？","promptEn":"Which has more?","visual":"<div class=\"compare-bars\"><div><b>A</b><span style=\"--w:4\">4</span></div><div><b>B</b><span style=\"--w:6\">6</span></div></div>","choices":[{"zh":"A","en":"A","value":"A"},{"zh":"B","en":"B","value":"B"}],"answer":"B"},{"promptZh":"2 + 6 = ?","promptEn":"2 + 6 = ?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span></div>","choices":[{"zh":"7","en":"7","value":"7"},{"zh":"8","en":"8","value":"8"},{"zh":"9","en":"9","value":"9"}],"answer":"8"},{"promptZh":"9 - 4 = ?","promptEn":"9 - 4 = ?","visual":"<div class=\"dot-row\"><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot\">🍪</span><span class=\"dot crossed\">🍪</span><span class=\"dot crossed\">🍪</span><span class=\"dot crossed\">🍪</span><span class=\"dot crossed\">🍪</span></div>","choices":[{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"},{"zh":"7","en":"7","value":"7"}],"answer":"5"},{"promptZh":"变多用什么？","promptEn":"Bigger amount uses?","visual":"<div class=\"equation\"><span>变多</span><span>?</span><span>+ / -</span></div>","choices":[{"zh":"+","en":"+","value":"+"},{"zh":"-","en":"-","value":"-"}],"answer":"+"}]}</script>
+</body>
+</html>

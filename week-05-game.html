@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 5 Reward Game - Sign Switch</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#2d7d7b;--week-accent:#78c6a3">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🔬 <span class="lang zh">贴纸实验室</span><span class="lang en">Sticker Lab</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-05-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🔬 <span class="lang zh">贴纸实验室</span><span class="lang en">Sticker Lab</span></p>
+      <h1><span class="lang zh">符号换换看</span><span class="lang en">Sign Switch</span></h1>
+      <p><span class="lang zh">选 + 或 − 让等式成立。</span><span class="lang en">Choose + or - to make it true.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":5,"titleZh":"符号换换看","titleEn":"Sign Switch","instructionZh":"选 + 或 − 让等式成立。","instructionEn":"Choose + or - to make it true.","themeZh":"贴纸实验室","themeEn":"Sticker Lab","icon":"🔬","rounds":[{"promptZh":"7 ○ 2 = 9","promptEn":"7 ○ 2 = 9","visual":"<div class=\"equation\"><span>7</span><span>○</span><span>2</span><span>=</span><span>9</span></div>","choices":[{"zh":"+","en":"+","value":"+"},{"zh":"-","en":"-","value":"-"}],"answer":"+"},{"promptZh":"8 ○ 3 = 5","promptEn":"8 ○ 3 = 5","visual":"<div class=\"equation\"><span>8</span><span>○</span><span>3</span><span>=</span><span>5</span></div>","choices":[{"zh":"+","en":"+","value":"+"},{"zh":"-","en":"-","value":"-"}],"answer":"-"},{"promptZh":"□ + 3 = 8","promptEn":"□ + 3 = 8","visual":"<div class=\"equation\"><span>□</span><span>+</span><span>3</span><span>=</span><span>8</span></div>","choices":[{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"},{"zh":"6","en":"6","value":"6"}],"answer":"5"},{"promptZh":"10 ○ 4 = 6","promptEn":"10 ○ 4 = 6","visual":"<div class=\"equation\"><span>10</span><span>○</span><span>4</span><span>=</span><span>6</span></div>","choices":[{"zh":"+","en":"+","value":"+"},{"zh":"-","en":"-","value":"-"}],"answer":"-"},{"promptZh":"3 + □ = 7","promptEn":"3 + □ = 7","visual":"<div class=\"equation\"><span>3</span><span>+</span><span>□</span><span>=</span><span>7</span></div>","choices":[{"zh":"3","en":"3","value":"3"},{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"}],"answer":"4"},{"promptZh":"6 + □ = 10","promptEn":"6 + □ = 10","visual":"<div class=\"equation\"><span>6</span><span>+</span><span>□</span><span>=</span><span>10</span></div>","choices":[{"zh":"3","en":"3","value":"3"},{"zh":"4","en":"4","value":"4"},{"zh":"5","en":"5","value":"5"}],"answer":"4"}]}</script>
+</body>
+</html>

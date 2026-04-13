@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 11 Reward Game - Tens and Ones Builder</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#8a6f3d;--week-accent:#74c69d">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell reward-game-page" data-reward-game-app>
+    <section class="challenge-start" data-game-locked>
+      <p class="eyebrow">🏡 <span class="lang zh">十个一小屋</span><span class="lang en">Tens-and-Ones Cottage</span></p>
+      <h1><span class="lang zh">奖励游戏还锁着</span><span class="lang en">Reward Game Locked</span></h1>
+      <p><span class="lang zh">完成本周挑战后，这个小游戏就会打开。</span><span class="lang en">Complete this week's challenge to unlock this game.</span></p>
+      <a class="challenge-primary" href="week-11-challenge.html"><span class="lang zh">去挑战</span><span class="lang en">Go to Challenge</span></a>
+    </section>
+    <section class="challenge-start is-hidden" data-game-ready>
+      <p class="eyebrow">🏡 <span class="lang zh">十个一小屋</span><span class="lang en">Tens-and-Ones Cottage</span></p>
+      <h1><span class="lang zh">十个一建造师</span><span class="lang en">Tens and Ones Builder</span></h1>
+      <p><span class="lang zh">用十和一搭出目标数。</span><span class="lang en">Build the target with tens and ones.</span></p>
+      <button class="challenge-primary" type="button" data-reward-start><span class="lang zh">开始玩</span><span class="lang en">Start Playing</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-reward-play>
+      <div class="challenge-status"><span data-reward-progress></span><span data-reward-score></span></div>
+      <p class="challenge-prompt" data-reward-prompt></p>
+      <div class="challenge-visual" data-reward-visual></div>
+      <div class="reward-choices" data-reward-choices></div>
+      <p class="challenge-soft" data-reward-feedback aria-live="polite"><span class="lang zh">选一个答案。</span><span class="lang en">Choose one answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-reward-results></section>
+  </main>
+  <script type="application/json" id="rewardGameData">{"week":11,"titleZh":"十个一建造师","titleEn":"Tens and Ones Builder","instructionZh":"用十和一搭出目标数。","instructionEn":"Build the target with tens and ones.","themeZh":"十个一小屋","themeEn":"Tens-and-Ones Cottage","icon":"🏡","rounds":[{"promptZh":"这个数？","promptEn":"What number?","visual":"<div class=\"place-value\"><div><b><span class=\"lang zh\">十位</span><span class=\"lang en\">Tens</span></b><span class='ten-stick'></span></div><div><b><span class=\"lang zh\">个位</span><span class=\"lang en\">Ones</span></b><div class=\"dot-row\"><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span></div></div></div>","choices":[{"zh":"14","en":"14","value":"14"},{"zh":"15","en":"15","value":"15"},{"zh":"16","en":"16","value":"16"}],"answer":"15"},{"promptZh":"18 + 3","promptEn":"18 + 3","visual":"<div class=\"equation\"><span>18</span><span>+</span><span>3</span></div>","choices":[{"zh":"20","en":"20","value":"20"},{"zh":"21","en":"21","value":"21"},{"zh":"22","en":"22","value":"22"}],"answer":"21"},{"promptZh":"22 - 5","promptEn":"22 - 5","visual":"<div class=\"equation\"><span>22</span><span>-</span><span>5</span></div>","choices":[{"zh":"16","en":"16","value":"16"},{"zh":"17","en":"17","value":"17"},{"zh":"18","en":"18","value":"18"}],"answer":"17"},{"promptZh":"? - 3 = 12","promptEn":"? - 3 = 12","visual":"<div class=\"equation\"><span>?</span><span>-</span><span>3</span><span>=</span><span>12</span></div>","choices":[{"zh":"14","en":"14","value":"14"},{"zh":"15","en":"15","value":"15"},{"zh":"16","en":"16","value":"16"}],"answer":"15"},{"promptZh":"2十4一","promptEn":"2 tens 4 ones","visual":"<div class=\"place-value\"><div><b><span class=\"lang zh\">十位</span><span class=\"lang en\">Tens</span></b><span class='ten-stick'></span><span class='ten-stick'></span></div><div><b><span class=\"lang zh\">个位</span><span class=\"lang en\">Ones</span></b><div class=\"dot-row\"><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span><span class=\"dot\">●</span></div></div></div>","choices":[{"zh":"24","en":"24","value":"24"},{"zh":"42","en":"42","value":"42"},{"zh":"6","en":"6","value":"6"}],"answer":"24"},{"promptZh":"27 的个位？","promptEn":"Ones digit in 27?","visual":"<div class=\"equation\"><span>27</span></div>","choices":[{"zh":"2","en":"2","value":"2"},{"zh":"7","en":"7","value":"7"},{"zh":"9","en":"9","value":"9"}],"answer":"7"}]}</script>
+</body>
+</html>
