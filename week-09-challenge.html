@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 9 Weekly Challenge - Equal Substitution</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#32746d;--week-accent:#80ed99">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell" id="challengeApp">
+    <section class="challenge-start" data-challenge-start>
+      <p class="eyebrow">⚖️ <span class="lang zh">彩虹天平屋</span><span class="lang en">Rainbow Balance House</span></p>
+      <h1><span class="lang zh">第 9 周每周挑战</span><span class="lang en">Week 9 Weekly Challenge</span></h1>
+      <p><span class="lang zh">一次一个小题，慢慢来。计时器只是帮你知道用了多久，不会扣掉勇气分。</span><span class="lang en">One little question at a time. The timer only helps you see your pace. It does not take away bravery points.</span></p>
+      <div class="challenge-start-grid">
+        <div><strong><span class="lang zh">检查内容</span><span class="lang en">Concepts</span></strong><p><span class="lang zh">一样多、替换、等量思考</span><span class="lang en">same amount, replacing, and thinking about equality</span></p></div>
+        <div><strong><span class="lang zh">题目数量</span><span class="lang en">Questions</span></strong><p>12</p></div>
+        <div><strong><span class="lang zh">红星目标</span><span class="lang en">Red Star Goal</span></strong><p><span class="lang zh">答对9题或更多</span><span class="lang en">9 or more correct</span></p></div>
+      </div>
+      <button class="challenge-primary" type="button" data-start-challenge><span class="lang zh">开始挑战</span><span class="lang en">Start Challenge</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-challenge-card>
+      <div class="challenge-status">
+        <span data-progress><span class="lang zh">第 1 / 12 题</span><span class="lang en">Question 1 of 12</span></span>
+        <span data-timer>00:00</span>
+      </div>
+      <div class="challenge-meter"><span data-meter></span></div>
+      <div class="challenge-kind" data-kind></div>
+      <p class="challenge-prompt" data-prompt></p>
+      <div class="challenge-visual" data-visual></div>
+      <form class="challenge-answer" data-answer-form>
+        <label><span class="lang zh">我的答案</span><span class="lang en">My Answer</span><input type="text" autocomplete="off" inputmode="text" data-answer-input /></label>
+        <button class="challenge-primary" type="submit"><span class="lang zh">下一题</span><span class="lang en">Next</span></button>
+      </form>
+      <p class="challenge-soft"><span class="lang zh">想一想、指一指、再回答。</span><span class="lang en">Think, point, then answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-results></section>
+    <section class="reward-game is-hidden" data-game>
+      <div class="game-head">
+        <h2><span class="lang zh">星星方块奖励游戏</span><span class="lang en">Star Blocks Reward Game</span></h2>
+        <p><span class="lang zh">每次60秒，最多玩2次。</span><span class="lang en">60 seconds each, up to 2 plays.</span></p>
+      </div>
+      <canvas width="200" height="320" data-game-canvas></canvas>
+      <div class="game-controls">
+        <button type="button" data-game-start><span class="lang zh">开始游戏</span><span class="lang en">Start Game</span></button>
+        <span data-game-info></span>
+      </div>
+      <p class="game-tip"><span class="lang zh">键盘：← → 移动，↑ 旋转，↓ 加速。</span><span class="lang en">Keyboard: ← → move, ↑ rotate, ↓ faster.</span></p>
+    </section>
+  </main>
+  <script type="application/json" id="challengeData">{"week":9,"titleZh":"第 9 周每周挑战","titleEn":"Week 9 Weekly Challenge","topicZh":"等量代换","topicEn":"Equal Substitution","themeZh":"彩虹天平屋","themeEn":"Rainbow Balance House","icon":"⚖️","rewardZh":"彩虹徽章","rewardEn":"rainbow badge","threshold":9,"conceptsZh":"一样多、替换、等量思考","conceptsEn":"same amount, replacing, and thinking about equality","questions":[{"conceptZh":"等量代换","conceptEn":"Substitution","zh":"1苹果=2星。2苹果=几星？","en":"1 apple=2 stars. 2 apples=?","visual":"<div class=\"balance\"><div>🍎</div><div class=\"beam\">=</div><div>⭐ ⭐</div></div>","answers":["4"]},{"conceptZh":"等量","conceptEn":"Equal Amount","zh":"两边一样多吗？","en":"Are both sides equal?","visual":"<div class=\"balance\"><div>● ● ●</div><div class=\"beam\">=</div><div>● ● ●</div></div>","answers":["是","yes","y"]},{"conceptZh":"代换","conceptEn":"Substitution","zh":"◆=5，◆+2=?","en":"◆=5, ◆+2=?","visual":"<div class=\"equation\"><span>◆</span><span>=</span><span>5</span><span>◆+2=?</span></div>","answers":["7"]},{"conceptZh":"天平","conceptEn":"Balance","zh":"熊=3块。2熊=几块？","en":"Bear=3 blocks. 2 bears=?","visual":"<div class=\"balance\"><div>🐻</div><div class=\"beam\">=</div><div>■ ■ ■</div></div>","answers":["6"]},{"conceptZh":"等量","conceptEn":"Equal","zh":"哪边重？写 A/B/一样。","en":"Which is heavier? A/B/same.","visual":"<div class=\"compare-bars\"><div><b>A</b><span style=\"--w:5\">5</span></div><div><b>B</b><span style=\"--w:5\">5</span></div></div>","answers":["一样","same"]},{"conceptZh":"代换","conceptEn":"Substitution","zh":"●=4，●-1=?","en":"●=4, ●-1=?","visual":"<div class=\"equation\"><span>●</span><span>=</span><span>4</span><span>●-1=?</span></div>","answers":["3"]},{"conceptZh":"等号","conceptEn":"Equals","zh":"等号表示一样多吗？","en":"Does equals mean same amount?","visual":"<div class=\"equation\"><span>3</span><span>+</span><span>2</span><span>=</span><span>5</span></div>","answers":["是","yes","y"]},{"conceptZh":"代换","conceptEn":"Substitution","zh":"1杯=2饼。3杯=几饼？","en":"1 cup=2 cookies. 3 cups=?","visual":"<div class=\"balance\"><div>🥤</div><div class=\"beam\">=</div><div>🍪 🍪</div></div>","answers":["6"]},{"conceptZh":"等量","conceptEn":"Equal","zh":"4 和 2+2 一样吗？","en":"Are 4 and 2+2 equal?","visual":"<div class=\"equation\"><span>4</span><span>=</span><span>2</span><span>+</span><span>2</span></div>","answers":["是","yes","y"]},{"conceptZh":"代换","conceptEn":"Substitution","zh":"★=6，★+1=?","en":"★=6, ★+1=?","visual":"<div class=\"equation\"><span>★</span><span>=</span><span>6</span><span>★+1=?</span></div>","answers":["7"]},{"conceptZh":"累计复习","conceptEn":"Cumulative Review","zh":"数一数。","en":"Count.","visual":"<div class=\"dot-row\"><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span></div>","answers":["7"]},{"conceptZh":"累计复习","conceptEn":"Cumulative Review","zh":"3 + 4 = ?","en":"3 + 4 = ?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span></div>","answers":["7"]}]}</script>
+</body>
+</html>

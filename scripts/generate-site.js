@@ -287,13 +287,22 @@ function adultGuide(week, day) {
   };
 }
 
+function getDayData(week, day) {
+  return {
+    week,
+    day,
+    dayMeta: dayInfo[day - 1],
+    tasks: [...warmups(week, day), ...coreProblems(week, day), ...mixedProblems(week, day)],
+    bonus: bonus(week, day),
+    guide: adultGuide(week, day)
+  };
+}
+
 function pageHtml(week, day) {
   const file = `week-${pad(week.n)}-day-${pad(day)}.html`;
   const prev = day > 1 ? `week-${pad(week.n)}-day-${pad(day - 1)}.html` : week.n > 1 ? `week-${pad(week.n - 1)}-day-05.html` : "index.html";
   const next = day < 5 ? `week-${pad(week.n)}-day-${pad(day + 1)}.html` : week.n < 12 ? `week-${pad(week.n + 1)}-day-01.html` : "index.html";
-  const tasks = [...warmups(week, day), ...coreProblems(week, day), ...mixedProblems(week, day)];
-  const guide = adultGuide(week, day);
-  const dayMeta = dayInfo[day - 1];
+  const { tasks, guide, dayMeta, bonus: bonusTask } = getDayData(week, day);
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -341,7 +350,7 @@ function pageHtml(week, day) {
 
     <section class="bonus-card">
       <div class="bonus-label">${t("亲子加分彩蛋", "Parent-Child Wild Card")}</div>
-      ${problemInner(bonus(week, day), false)}
+      ${problemInner(bonusTask, false)}
       <div class="charm-box">${t("完成彩蛋贴纸", "Bonus Charm")}</div>
     </section>
 
@@ -384,12 +393,17 @@ function problemInner(task, includeLine) {
 }
 
 function indexHtml() {
-  const weekLinks = weeks.map(w => `<a class="week-tile" href="week-${pad(w.n)}-day-01.html" style="--week-color:${w.color};--week-accent:${w.accent}">
+  const weekLinks = weeks.map(w => `<article class="week-tile" style="--week-color:${w.color};--week-accent:${w.accent}">
     <span class="week-icon">${w.icon}</span>
     <strong>${t(`第 ${w.n} 周`, `Week ${w.n}`)}</strong>
     <span>${t(w.zh, w.en)}</span>
     <small>${t(w.themeZh, w.themeEn)}</small>
-  </a>`).join("\n      ");
+    <div class="week-actions">
+      <a href="week-${pad(w.n)}-day-01.html">${t("开始本周", "Start Week")}</a>
+      <a href="week-${pad(w.n)}-challenge.html">${t("每周挑战", "Weekly Challenge")}</a>
+      <a href="week-${pad(w.n)}-print.html">${t("打印本周", "Print This Week")}</a>
+    </div>
+  </article>`).join("\n      ");
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -414,6 +428,16 @@ function indexHtml() {
       </div>
       <div class="home-mascot"><span>🐾</span><b>+</b><span>🎒</span></div>
     </section>
+    <section class="print-actions">
+      <div>
+        <h2>${t("打印学习包", "Print Packets")}</h2>
+        <p>${t("想一次打印更多页面？这里会打开专门的打印版，不会直接打印首页。每一天会排成2页：第1页是第1–4题，第2页是第5–8题和亲子彩蛋。", "Need to print more at once? These open dedicated print-first pages instead of printing the home page. Each day becomes 2 pages: Page 1 has Questions 1-4, Page 2 has Questions 5-8 plus the parent-child wild card.")}</p>
+      </div>
+      <div class="print-action-buttons">
+        <a href="week-01-print.html">${t("打印本周", "Print This Week")}</a>
+        <a href="full-program-print.html">${t("打印完整12周", "Print Full Program")}</a>
+      </div>
+    </section>
     <section class="parent-note">
       <h2>${t("项目说明", "Program Note")}</h2>
       <p>${t("目的：用清楚、温暖、可打印的网页，帮助刚开始阅读的一年级孩子建立数感、应用题理解、规律、几何、空间和推理能力。", "Purpose: clear, warm, printable pages for an early reader to build number sense, story-problem understanding, patterns, geometry, spatial thinking, and reasoning.")}</p>
@@ -429,6 +453,363 @@ function indexHtml() {
       </div>
     </section>
   </main>
+</body>
+</html>`;
+}
+
+function compiledShell({ title, body, color = "#287c71", accent = "#f4c64d", introZh, introEn }) {
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${esc(title)}</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="print.css" media="print" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="compiled-body" style="--week-color:${color};--week-accent:${accent}">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html">${t("数学冒险地图", "Math Adventure Map")}</a>
+    <div class="compiled-tools">
+      <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+      <button class="lang-toggle" type="button" onclick="window.print()">${t("打印学习包", "Print Packet")}</button>
+    </div>
+  </header>
+  <main class="compiled-print">
+    <section class="compiled-cover no-print">
+      <p class="eyebrow">${t("专用打印版", "Dedicated Print Layout")}</p>
+      <h1>${t(introZh, introEn)}</h1>
+      <p>${t("打印时会自动按每天2页分页：第1页为第1–4题，第2页为第5–8题和亲子彩蛋。每页都保留成人引导提示。", "Printing automatically paginates each day into 2 pages: Page 1 for Questions 1-4, Page 2 for Questions 5-8 plus the parent-child wild card. Adult guidance is kept on every page.")}</p>
+      <button type="button" onclick="window.print()">${t("现在打印", "Print Now")}</button>
+    </section>
+    ${body}
+  </main>
+</body>
+</html>`;
+}
+
+function sectionName(section) {
+  return {
+    warm: ["热身", "Warm-Up"],
+    core: ["本周重点", "Main Idea"],
+    mixed: ["复习", "Review"]
+  }[section];
+}
+
+function compiledProblem(task, num) {
+  const label = sectionName(task.section);
+  return `<article class="compiled-problem">
+    <div class="compiled-problem-top">
+      <span class="compiled-number">${num}</span>
+      <span class="compiled-kind">${t(label[0], label[1])}</span>
+    </div>
+    <p class="compiled-prompt">${t(task.zh, task.en)}</p>
+    <div class="compiled-visual">${task.visual}</div>
+    <div class="compiled-answer"><span>${t("写一写 / 画一画", "Write / Draw")}</span></div>
+  </article>`;
+}
+
+function compiledGuide(guide) {
+  return `<aside class="compiled-guide">
+    <div><strong>${t("重点", "Emphasize")}</strong><p>${t(guide.emphasizeZh, guide.emphasizeEn)}</p></div>
+    <div><strong>${t("留意", "Watch")}</strong><p>${t(guide.watchZh, guide.watchEn)}</p></div>
+    <div><strong>${t("提问", "Ask")}</strong><ul>${guide.questions.map(([zh, en]) => `<li>${t(zh, en)}</li>`).join("")}</ul></div>
+  </aside>`;
+}
+
+function compiledDayPages(week, day) {
+  const data = getDayData(week, day);
+  return [0, 1].map(pageIndex => {
+    const start = pageIndex * 4;
+    const tasks = data.tasks.slice(start, start + 4);
+    const isSecondPage = pageIndex === 1;
+    return `<section class="compiled-page" style="--week-color:${week.color};--week-accent:${week.accent}">
+      <header class="compiled-page-head">
+        <div>
+          <p>${t(`第 ${week.n} 周 · 第 ${day} 天`, `Week ${week.n} · Day ${day}`)}</p>
+          <h2>${week.icon} ${t(`${week.zh} · ${data.dayMeta.zh}`, `${week.en} · ${data.dayMeta.en}`)}</h2>
+        </div>
+        <div class="compiled-page-mark">${t(`第${day}天 · 第${pageIndex + 1}/2页`, `Day ${day} · Page ${pageIndex + 1} of 2`)}</div>
+      </header>
+      <div class="compiled-problem-grid">
+        ${tasks.map((task, i) => compiledProblem(task, start + i + 1)).join("\n        ")}
+      </div>
+      ${isSecondPage ? `<section class="compiled-bonus"><strong>${t("可选亲子彩蛋", "Optional Wild Card")}</strong><p>${t(data.bonus.zh, data.bonus.en)}</p><div>${data.bonus.visual}</div></section>` : ""}
+      ${compiledGuide(data.guide)}
+    </section>`;
+  }).join("\n");
+}
+
+function weekPrintHtml(week) {
+  const body = Array.from({ length: dayCount }, (_, i) => compiledDayPages(week, i + 1)).join("\n");
+  return compiledShell({
+    title: `Week ${week.n} Print Packet - ${week.en}`,
+    body,
+    color: week.color,
+    accent: week.accent,
+    introZh: `第 ${week.n} 周打印学习包`,
+    introEn: `Week ${week.n} Print Packet`
+  });
+}
+
+function fullProgramPrintHtml() {
+  const body = weeks.map(week => `<section class="compiled-week-divider" style="--week-color:${week.color};--week-accent:${week.accent}">
+      <span>${week.icon}</span>
+      <h2>${t(`第 ${week.n} 周：${week.zh}`, `Week ${week.n}: ${week.en}`)}</h2>
+      <p>${t(week.focusZh, week.focusEn)}</p>
+    </section>
+    ${Array.from({ length: dayCount }, (_, i) => compiledDayPages(week, i + 1)).join("\n")}`).join("\n");
+  return compiledShell({
+    title: "Full Program Print Packet - Grade 1 Math Adventure",
+    body,
+    introZh: "完整12周打印学习包",
+    introEn: "Full 12-Week Print Packet"
+  });
+}
+
+function cq(conceptZh, conceptEn, zh, en, visual, answers) {
+  return { conceptZh, conceptEn, zh, en, visual, answers: answers.map(String) };
+}
+
+function challengeQuestions(week) {
+  const n = week.n;
+  const review = [
+    cq("累计复习", "Cumulative Review", "数一数。", "Count.", dots(7, "⭐"), [7]),
+    cq("累计复习", "Cumulative Review", "3 + 4 = ?", "3 + 4 = ?", groups(3, 4, "🍎", "🍎"), [7])
+  ];
+  if (n === 1) return [
+    cq("数数", "Counting", "有几颗星？", "How many stars?", dots(5, "⭐"), [5]),
+    cq("数字配数量", "Numeral to Amount", "圈出 8。", "Circle 8.", numberPath([6, 8, 9, 7]), [8]),
+    cq("比较", "Compare", "哪边更多？写 A 或 B。", "Which has more? Write A or B.", compareBars(6, 4, ["A", "B"]), ["A"]),
+    cq("缺数", "Missing Number", "少了哪个数？", "What number is missing?", numberPath([3, 4, null, 6]), [5]),
+    cq("数序", "Number Order", "10 前面是几？", "What comes before 10?", numberPath([8, 9, 10]), [9]),
+    cq("比较", "Compare", "哪边更少？写 A 或 B。", "Which has fewer? Write A or B.", compareBars(7, 9, ["A", "B"]), ["A"]),
+    cq("数量", "Quantity", "写出数量。", "Write the amount.", tenFrame(6), [6]),
+    cq("数序", "Number Order", "从 4 数到 8，空格是？", "Count 4 to 8. What is blank?", numberPath([4, 5, null, 7, 8]), [6]),
+    cq("比较", "Compare", "8 和 5，哪个大？", "8 and 5. Which is bigger?", equation([8, "?", 5]), [8]),
+    cq("数量配对", "Match Amount", "这是一组几？", "How many in this group?", dots(10, "●"), [10]),
+    ...review
+  ];
+  if (n === 2) return [
+    cq("合起来", "Join", "一共有几个？", "How many in all?", groups(3, 2, "🧁", "🧁"), [5]),
+    cq("拿走", "Take Away", "还剩几个？", "How many left?", dots(8, "🍪", 5), [5]),
+    cq("合起来", "Join", "4 + 5 = ?", "4 + 5 = ?", groups(4, 5, "🐾", "🐾"), [9]),
+    cq("拿走", "Take Away", "9 - 4 = ?", "9 - 4 = ?", dots(9, "🍩", 5), [5]),
+    cq("比较", "Compare", "A 比 B 多几？", "How many more is A than B?", compareBars(7, 4, ["A", "B"]), [3]),
+    cq("故事", "Story", "小猫有6个，又来2个。现在？", "Cat has 6. 2 more come. Now?", groups(6, 2, "🐱", "🐱"), [8]),
+    cq("故事", "Story", "有7个，吃掉1个。还剩？", "7, eat 1. Left?", dots(7, "🍪", 6), [6]),
+    cq("选择", "Choose", "变多用 + 还是 -？", "Bigger amount: + or -?", equation(["变多", "?", "+ / -"]), ["+", "加"]),
+    cq("比较", "Compare", "哪边少？写 A 或 B。", "Which has fewer? Write A or B.", compareBars(5, 8, ["A", "B"]), ["A"]),
+    cq("合起来", "Join", "2 + 6 = ?", "2 + 6 = ?", groups(2, 6, "⭐", "⭐"), [8]),
+    ...review
+  ];
+  if (n === 3) return [
+    cq("20以内加法", "Add Within 20", "12 + 4 = ?", "12 + 4 = ?", groups(12, 4, "🌼", "🌼"), [16]),
+    cq("20以内减法", "Subtract Within 20", "15 - 5 = ?", "15 - 5 = ?", dots(15, "⭐", 10), [10]),
+    cq("比较", "Compare", "14 比 9 多几？", "How many more is 14 than 9?", compareBars(14, 9, ["A", "B"]), [5]),
+    cq("故事", "Story", "有11朵，又开3朵。现在？", "11 flowers, 3 more bloom. Now?", groups(11, 3, "🌼", "🌼"), [14]),
+    cq("故事", "Story", "18颗星，藏6颗。看见？", "18 stars, 6 hide. Seen?", dots(18, "⭐", 12), [12]),
+    cq("比较", "Compare", "哪边多？写 A 或 B。", "Which has more? Write A or B.", compareBars(13, 16, ["A", "B"]), ["B"]),
+    cq("缺数", "Missing Number", "10 + □ = 16。", "10 + □ = 16.", equation([10, "+", "□", "=", 16]), [6]),
+    cq("减法", "Subtraction", "17 - 4 = ?", "17 - 4 = ?", equation([17, "-", 4, "="]), [13]),
+    cq("比较", "Compare", "16 和 12 差几？", "What is the difference between 16 and 12?", compareBars(16, 12, ["A", "B"]), [4]),
+    cq("故事", "Story", "9本书，又得5本。现在？", "9 books, get 5 more. Now?", groups(9, 5, "📚", "📚"), [14]),
+    ...review
+  ];
+  if (n === 4) return [
+    cq("数阵", "Number Grid", "缺哪个数？", "Which number is missing?", grid([6, 7, null, 9, 10]), [8]),
+    cq("规律", "Pattern", "下一个是？写 星 或 车。", "What comes next? Write star or train.", pattern(["🚂", "⭐", "🚂", "⭐", "🚂"]), ["星", "star", "⭐"]),
+    cq("数列", "Number Pattern", "每次多2，空格是？", "Add 2 each time. Blank?", numberPath([2, 4, 6, null, 10]), [8]),
+    cq("数列", "Number Pattern", "每次少1，空格是？", "Subtract 1 each time. Blank?", numberPath([9, 8, null, 6]), [7]),
+    cq("数阵", "Number Grid", "中间少了几？", "What is missing?", grid([11, 12, 13, null, 15]), [14]),
+    cq("规律", "Pattern", "下一个形状？写 圆 或 三角。", "Next shape? Write circle or triangle.", pattern(["●", "▲", "●", "▲", "●"]), ["三角", "triangle", "▲"]),
+    cq("顺序", "Order", "13 后面是几？", "What comes after 13?", numberPath([12, 13, null]), [14]),
+    cq("数列", "Pattern", "5, 10, 15, ?", "5, 10, 15, ?", numberPath([5, 10, 15, null]), [20]),
+    cq("规律", "Pattern", "ABAB 下一个？", "ABAB. What comes next?", pattern(["A", "B", "A", "B"]), ["A"]),
+    cq("数阵", "Grid", "这一行从几开始？", "What number starts this row?", grid([null, 22, 23, 24, 25]), [21]),
+    ...review
+  ];
+  if (n === 5) return [
+    cq("缺数", "Missing Number", "□ + 3 = 8。", "□ + 3 = 8.", equation(["□", "+", 3, "=", 8]), [5]),
+    cq("算符", "Operation Sign", "7 ○ 2 = 9。写 + 或 -。", "7 ○ 2 = 9. Write + or -.", equation([7, "○", 2, "=", 9]), ["+", "加"]),
+    cq("算符", "Operation Sign", "8 ○ 3 = 5。写 + 或 -。", "8 ○ 3 = 5. Write + or -.", equation([8, "○", 3, "=", 5]), ["-", "减"]),
+    cq("竖式谜", "Vertical Puzzle", "缺了几？", "What is missing?", `<div class="vertical-math"><span>4</span><span>+ □</span><strong>9</strong></div>`, [5]),
+    cq("等式", "Equation", "6 + □ = 10。", "6 + □ = 10.", equation([6, "+", "□", "=", 10]), [4]),
+    cq("等式", "Equation", "□ - 2 = 5。", "□ - 2 = 5.", equation(["□", "-", 2, "=", 5]), [7]),
+    cq("真假", "True/False", "5 + 2 = 8？写 对 或 错。", "5 + 2 = 8? Write yes or no.", equation([5, "+", 2, "=", 8]), ["错", "no", "n"]),
+    cq("算符", "Sign", "10 ○ 4 = 6。", "10 ○ 4 = 6.", equation([10, "○", 4, "=", 6]), ["-", "减"]),
+    cq("缺数", "Missing Number", "3 + □ = 7。", "3 + □ = 7.", equation([3, "+", "□", "=", 7]), [4]),
+    cq("竖式", "Vertical", "2 + □ = 8。", "2 + □ = 8.", `<div class="vertical-math"><span>2</span><span>+ □</span><strong>8</strong></div>`, [6]),
+    ...review
+  ];
+  if (n === 6) return [
+    cq("奇偶", "Odd/Even", "能两两配对吗？写 偶 或 奇。", "Can all pair up? Write even or odd.", dots(6, "🥤"), ["偶", "even"]),
+    cq("奇偶", "Odd/Even", "有一个剩下吗？写 奇 或 偶。", "One left? Write odd or even.", dots(7, "🍪"), ["奇", "odd"]),
+    cq("判断", "Identify", "8 是奇数还是偶数？", "Is 8 odd or even?", tenFrame(8), ["偶", "even"]),
+    cq("判断", "Identify", "9 是奇数还是偶数？", "Is 9 odd or even?", dots(9, "●"), ["奇", "odd"]),
+    cq("配对", "Pairing", "10 个能平均给2只熊吗？", "Can 10 share equally with 2 bears?", dots(10, "🍪"), ["能", "yes", "y"]),
+    cq("配对", "Pairing", "5 个能两两配对吗？", "Can 5 make pairs?", dots(5, "●"), ["不能", "no", "n"]),
+    cq("找数", "Find Number", "圈出偶数。写一个。", "Circle an even number. Write one.", numberPath([3, 4, 5, 7]), [4]),
+    cq("找数", "Find Number", "圈出奇数。写一个。", "Circle an odd number. Write one.", numberPath([2, 6, 9, 10]), [9]),
+    cq("规律", "Pattern", "偶数后面下一个偶数？", "Next even number?", numberPath([2, 4, 6, null]), [8]),
+    cq("配对", "Pairing", "11 两两配对，剩几个？", "Pair 11. How many left?", dots(11, "⭐"), [1]),
+    ...review
+  ];
+  if (n === 7) return [
+    cq("形状", "Shapes", "3个角的图形？", "Shape with 3 corners?", shapeSet(["●", "▲", "■"]), ["三角", "triangle", "▲"]),
+    cq("形状", "Shapes", "4条边的图形？", "Shape with 4 sides?", shapeSet(["●", "■", "▲"]), ["方形", "正方形", "square", "■"]),
+    cq("立体", "3D Shape", "哪个像球？写 A/B/C。", "Which is like a sphere? A/B/C.", shapeSet(["🥫", "🎲", "⚽"]), ["C"]),
+    cq("角", "Corners", "这个图形有几个角？", "How many corners?", shapeSet(["⬟"]), [5]),
+    cq("边", "Sides", "三角形有几条边？", "How many sides in a triangle?", shapeSet(["▲"]), [3]),
+    cq("物体匹配", "Object Match", "罐头像什么？写 圆柱。", "A can is like what? Write cylinder.", shapeSet(["🥫"]), ["圆柱", "cylinder"]),
+    cq("识别", "Identify", "圈出圆形。写 圆。", "Circle the circle. Write circle.", shapeSet(["●", "▲", "■"]), ["圆", "circle", "●"]),
+    cq("识别", "Identify", "门像什么形？", "A door is like what shape?", shapeSet(["🚪", "▭"]), ["长方形", "rectangle"]),
+    cq("角", "Corners", "圆有角吗？写 有 或 没有。", "Does a circle have corners? yes or no.", shapeSet(["●"]), ["没有", "no", "n"]),
+    cq("分类", "Sort", "哪个不是平面图形？写球。", "Which is not flat? Write ball.", shapeSet(["●", "▲", "⚽"]), ["球", "ball", "⚽"]),
+    ...review
+  ];
+  if (n === 8) return [
+    cq("方向", "Direction", "从房子向右到哪里？", "Go right from the house. Where?", mapPath(), ["树", "tree", "🌳"]),
+    cq("左右", "Left/Right", "猫左边是什么？", "What is left of the cat?", `<div class="position-row"><span>🍎</span><span class="center">🐱</span><span>🧁</span></div>`, ["苹果", "apple", "🍎"]),
+    cq("上下", "Up/Down", "星星在房子的上面还是下面？", "Is the star above or below the house?", `<div class="map-grid"><span></span><span>⭐</span><span></span><span></span><span>🏠</span><span></span></div>`, ["上", "上面", "above", "up"]),
+    cq("路线", "Path", "向右，再向下，终点？", "Right, then down. Finish?", mapPath(), ["终点", "finish", "🏁"]),
+    cq("观察", "View", "从正面看像哪个？写 A/B/C。", "Front view. A/B/C?", shapeSet(["🏠", "⬜", "🔺"]), ["A"]),
+    cq("前后", "Front/Back", "排队第1个在前还是后？", "Number 1 is front or back?", queue(5, 1), ["前", "front"]),
+    cq("方向", "Direction", "箭头 ↑ 是向哪？", "Arrow ↑ points where?", equation(["↑"]), ["上", "up"]),
+    cq("方向", "Direction", "箭头 ← 是向哪？", "Arrow ← points where?", equation(["←"]), ["左", "left"]),
+    cq("位置", "Position", "蛋糕在猫右边吗？写 是/不是。", "Is cake right of cat? yes/no.", `<div class="position-row"><span>🍎</span><span class="center">🐱</span><span>🧁</span></div>`, ["是", "yes", "y"]),
+    cq("观察", "View", "从上面看杯子像什么？", "From above, a cup looks like what?", shapeSet(["🥤", "○"]), ["圆", "circle", "○"]),
+    ...review
+  ];
+  if (n === 9) return [
+    cq("等量代换", "Substitution", "1苹果=2星。2苹果=几星？", "1 apple=2 stars. 2 apples=?", balance("🍎", "⭐ ⭐"), [4]),
+    cq("等量", "Equal Amount", "两边一样多吗？", "Are both sides equal?", balance("● ● ●", "● ● ●"), ["是", "yes", "y"]),
+    cq("代换", "Substitution", "◆=5，◆+2=?", "◆=5, ◆+2=?", equation(["◆", "=", 5, "◆+2=?"]), [7]),
+    cq("天平", "Balance", "熊=3块。2熊=几块？", "Bear=3 blocks. 2 bears=?", balance("🐻", "■ ■ ■"), [6]),
+    cq("等量", "Equal", "哪边重？写 A/B/一样。", "Which is heavier? A/B/same.", compareBars(5, 5, ["A", "B"]), ["一样", "same"]),
+    cq("代换", "Substitution", "●=4，●-1=?", "●=4, ●-1=?", equation(["●", "=", 4, "●-1=?"]), [3]),
+    cq("等号", "Equals", "等号表示一样多吗？", "Does equals mean same amount?", equation([3, "+", 2, "=", 5]), ["是", "yes", "y"]),
+    cq("代换", "Substitution", "1杯=2饼。3杯=几饼？", "1 cup=2 cookies. 3 cups=?", balance("🥤", "🍪 🍪"), [6]),
+    cq("等量", "Equal", "4 和 2+2 一样吗？", "Are 4 and 2+2 equal?", equation([4, "=", 2, "+", 2]), ["是", "yes", "y"]),
+    cq("代换", "Substitution", "★=6，★+1=?", "★=6, ★+1=?", equation(["★", "=", 6, "★+1=?"]), [7]),
+    ...review
+  ];
+  if (n === 10) return [
+    cq("排队", "Line-Up", "小鸭排第几？", "What number is duck?", queue(7, 4), [4]),
+    cq("排队", "Line-Up", "前2人，后3人，一共？", "2 in front, 3 behind. Total?", queue(6, 3), [6]),
+    cq("重叠", "Overlap", "红6蓝5，共同2，总共？", "Red 6, blue 5, both 2. Total?", `<div class="overlap"><span>红 6</span><b>共同 2</b><span>蓝 5</span></div>`, [9]),
+    cq("排队", "Line-Up", "第1个前面有几人？", "How many in front of number 1?", queue(5, 1), [0]),
+    cq("排队", "Line-Up", "第5个前面有几人？", "How many in front of number 5?", queue(7, 5), [4]),
+    cq("位置", "Position", "从左数第3个是谁？写小鸭。", "3rd from left. Write duck.", queue(6, 3), ["小鸭", "duck", "🐥"]),
+    cq("重叠", "Overlap", "A有4，B有4，共同1，总共？", "A has 4, B has 4, both 1. Total?", `<div class="overlap"><span>A 4</span><b>共同 1</b><span>B 4</span></div>`, [7]),
+    cq("排队", "Line-Up", "前3后2，一共？", "3 in front, 2 behind. Total?", queue(6, 4), [6]),
+    cq("顺序", "Order", "第2后面是第几？", "After 2nd is what number?", numberPath([1, 2, null]), [3]),
+    cq("重叠", "Overlap", "总数会加共同部分两次吗？", "Do we count overlap twice?", `<div class="overlap"><span>A</span><b>共同</b><span>B</span></div>`, ["不", "不会", "no", "n"]),
+    ...review
+  ];
+  if (n === 11) return [
+    cq("十位个位", "Tens and Ones", "这个数是多少？", "What number is this?", tensOnes(1, 5), [15]),
+    cq("进位", "Regrouping", "18 + 3 = ?", "18 + 3 = ?", equation([18, "+", 3, "="]), [21]),
+    cq("退位", "Regrouping", "22 - 5 = ?", "22 - 5 = ?", equation([22, "-", 5, "="]), [17]),
+    cq("还原", "Restore", "? - 3 = 12。", "? - 3 = 12.", equation(["?", "-", 3, "=", 12]), [15]),
+    cq("十位个位", "Place Value", "2个十和4个一。", "2 tens and 4 ones.", tensOnes(2, 4), [24]),
+    cq("进位", "Make Ten", "9 + 4 = ?", "9 + 4 = ?", groups(9, 4, "●", "●"), [13]),
+    cq("退位", "Subtract", "14 - 6 = ?", "14 - 6 = ?", equation([14, "-", 6, "="]), [8]),
+    cq("还原", "Restore", "后来有10，又来5，原来？", "Now 10, 5 came. Before?", equation(["?", "+", 5, "=", 10]), [5]),
+    cq("十位", "Tens", "30 里有几个十？", "How many tens in 30?", equation([30]), [3]),
+    cq("个位", "Ones", "27 的个位是几？", "Ones digit in 27?", equation([27]), [7]),
+    ...review
+  ];
+  return [
+    cq("逻辑", "Logic", "A>B>C，谁最多？", "A>B>C. Who has most?", equation(["A", ">", "B", ">", "C"]), ["A"]),
+    cq("图形规律", "Shape Pattern", "下一个是什么？", "What comes next?", pattern(["●", "▲", "▲", "●", "▲", "▲"]), ["圆", "circle", "●"]),
+    cq("逻辑", "Logic", "B=3，A比B多。A可能是2吗？", "B=3, A is more. Can A be 2?", equation(["A", ">", "B", "B=3"]), ["不能", "no", "n"]),
+    cq("综合", "Mixed", "8 + 5 = ?", "8 + 5 = ?", groups(8, 5, "⭐", "⭐"), [13]),
+    cq("综合", "Mixed", "16 - 7 = ?", "16 - 7 = ?", equation([16, "-", 7, "="]), [9]),
+    cq("图形", "Shapes", "4条边的图形？", "Shape with 4 sides?", shapeSet(["●", "▲", "■"]), ["方形", "正方形", "square", "■"]),
+    cq("方向", "Direction", "← 是向哪？", "← points where?", equation(["←"]), ["左", "left"]),
+    cq("等量", "Equal", "◆=4，◆+3=?", "◆=4, ◆+3=?", equation(["◆", "=", 4, "◆+3=?"]), [7]),
+    cq("排队", "Line-Up", "小鸭排第几？", "What number is duck?", queue(6, 5), [5]),
+    cq("奇偶", "Odd/Even", "9 是奇还是偶？", "Is 9 odd or even?", dots(9, "●"), ["奇", "odd"]),
+    cq("规律", "Pattern", "2,4,6,?", "2,4,6,?", numberPath([2, 4, 6, null]), [8]),
+    cq("数感", "Number Sense", "哪个大？12 或 15。", "Which is bigger? 12 or 15.", equation([12, "?", 15]), [15])
+  ];
+}
+
+function challengeHtml(week) {
+  const data = {
+    week: week.n,
+    titleZh: `第 ${week.n} 周每周挑战`,
+    titleEn: `Week ${week.n} Weekly Challenge`,
+    topicZh: week.zh,
+    topicEn: week.en,
+    themeZh: week.themeZh,
+    themeEn: week.themeEn,
+    icon: week.icon,
+    rewardZh: week.itemZh,
+    rewardEn: week.itemEn,
+    threshold: 9,
+    conceptsZh: week.focusZh,
+    conceptsEn: week.focusEn,
+    questions: challengeQuestions(week)
+  };
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${esc(`Week ${week.n} Weekly Challenge - ${week.en}`)}</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:${week.color};--week-accent:${week.accent}">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html">${t("数学冒险地图", "Math Adventure Map")}</a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell" id="challengeApp">
+    <section class="challenge-start" data-challenge-start>
+      <p class="eyebrow">${week.icon} ${t(week.themeZh, week.themeEn)}</p>
+      <h1>${t(data.titleZh, data.titleEn)}</h1>
+      <p>${t("一次一个小题，慢慢来。计时器只是帮你知道用了多久，不会扣掉勇气分。", "One little question at a time. The timer only helps you see your pace. It does not take away bravery points.")}</p>
+      <div class="challenge-start-grid">
+        <div><strong>${t("检查内容", "Concepts")}</strong><p>${t(week.focusZh, week.focusEn)}</p></div>
+        <div><strong>${t("题目数量", "Questions")}</strong><p>12</p></div>
+        <div><strong>${t("红星目标", "Red Star Goal")}</strong><p>${t("答对9题或更多", "9 or more correct")}</p></div>
+      </div>
+      <button class="challenge-primary" type="button" data-start-challenge>${t("开始挑战", "Start Challenge")}</button>
+    </section>
+    <section class="challenge-card is-hidden" data-challenge-card>
+      <div class="challenge-status">
+        <span data-progress>${t("第 1 / 12 题", "Question 1 of 12")}</span>
+        <span data-timer>00:00</span>
+      </div>
+      <div class="challenge-meter"><span data-meter></span></div>
+      <div class="challenge-kind" data-kind></div>
+      <p class="challenge-prompt" data-prompt></p>
+      <div class="challenge-visual" data-visual></div>
+      <form class="challenge-answer" data-answer-form>
+        <label>${t("我的答案", "My Answer")}<input type="text" autocomplete="off" inputmode="text" data-answer-input /></label>
+        <button class="challenge-primary" type="submit">${t("下一题", "Next")}</button>
+      </form>
+      <p class="challenge-soft">${t("想一想、指一指、再回答。", "Think, point, then answer.")}</p>
+    </section>
+    <section class="challenge-results is-hidden" data-results></section>
+    <section class="reward-game is-hidden" data-game>
+      <div class="game-head">
+        <h2>${t("星星方块奖励游戏", "Star Blocks Reward Game")}</h2>
+        <p>${t("每次60秒，最多玩2次。", "60 seconds each, up to 2 plays.")}</p>
+      </div>
+      <canvas width="200" height="320" data-game-canvas></canvas>
+      <div class="game-controls">
+        <button type="button" data-game-start>${t("开始游戏", "Start Game")}</button>
+        <span data-game-info></span>
+      </div>
+      <p class="game-tip">${t("键盘：← → 移动，↑ 旋转，↓ 加速。", "Keyboard: ← → move, ↑ rotate, ↓ faster.")}</p>
+    </section>
+  </main>
+  <script type="application/json" id="challengeData">${JSON.stringify(data)}</script>
 </body>
 </html>`;
 }
@@ -553,6 +934,32 @@ h3 { margin: 0 0 8px; font-size: 18px; }
 .week-icon { font-size: 34px; }
 .week-tile strong { font-size: 24px; }
 .week-tile small { color: var(--muted); font-weight: 800; }
+.week-actions, .print-action-buttons, .compiled-tools { display: flex; flex-wrap: wrap; gap: 10px; }
+.week-actions a, .print-action-buttons a, .compiled-cover button {
+  border-radius: 8px;
+  border: 2px solid var(--ink);
+  background: white;
+  padding: 10px 12px;
+  font-weight: 900;
+  text-align: center;
+}
+.week-actions a:last-child, .print-action-buttons a:last-child, .compiled-cover button {
+  background: var(--week-color);
+  color: white;
+}
+.print-actions {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+  background: rgba(255,255,255,.92);
+  border: 3px solid #cfded3;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 8px 22px rgba(36,54,66,.07);
+}
+.print-actions p { max-width: 760px; margin: 0; font-size: 17px; }
 .problem-card {
   min-height: 330px;
   background: var(--card);
@@ -641,10 +1048,274 @@ h3 { margin: 0 0 8px; font-size: 18px; }
 .adult-support ul { margin: 0; padding-left: 22px; }
 .support-grid > div { background: white; border: 2px solid #dfe8e2; border-radius: 8px; padding: 14px; }
 .page-nav { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 22px 0 0; }
+.compiled-body { background: #eef5ef; }
+.compiled-print { width: min(980px, calc(100% - 28px)); margin: 0 auto; padding: 24px 0 48px; }
+.compiled-cover {
+  background: white;
+  border: 3px solid var(--week-color);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+.compiled-cover p { max-width: 760px; font-size: 18px; }
+.compiled-page, .compiled-week-divider {
+  background: white;
+  border: 2px solid #cfd9d2;
+  border-radius: 8px;
+  padding: 18px;
+  margin: 18px 0;
+  box-shadow: 0 8px 22px rgba(36,54,66,.08);
+}
+.compiled-week-divider {
+  border-left: 10px solid var(--week-color);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: center;
+}
+.compiled-week-divider span { font-size: 38px; }
+.compiled-week-divider h2, .compiled-week-divider p { margin: 0; }
+.compiled-page-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: start;
+  border-bottom: 3px solid var(--week-color);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+.compiled-page-head p { margin: 0 0 4px; font-weight: 900; color: var(--week-color); }
+.compiled-page-head h2 { margin: 0; font-size: 24px; }
+.compiled-page-mark {
+  border: 2px solid var(--week-color);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-weight: 950;
+  background: color-mix(in srgb, var(--week-accent) 18%, white);
+}
+.compiled-problem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.compiled-problem {
+  border: 2px solid #b7c4bd;
+  border-radius: 8px;
+  padding: 10px;
+  min-height: 238px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.compiled-problem-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.compiled-number {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--week-color);
+  color: white;
+  font-size: 20px;
+  font-weight: 950;
+}
+.compiled-kind {
+  font-size: 13px;
+  font-weight: 950;
+  border: 1px solid #aebdca;
+  border-radius: 8px;
+  padding: 4px 7px;
+}
+.compiled-prompt { margin: 0 0 8px; min-height: 48px; font-size: 18px; font-weight: 850; line-height: 1.34; }
+.compiled-visual {
+  min-height: 82px;
+  display: grid;
+  place-items: center;
+  border: 2px dashed #b9c8d3;
+  border-radius: 8px;
+  padding: 8px;
+  background: #fbfefd;
+}
+.compiled-answer {
+  margin-top: 9px;
+  height: 36px;
+  border-bottom: 3px solid var(--line);
+  color: var(--muted);
+  font-weight: 850;
+}
+.compiled-bonus {
+  margin-top: 10px;
+  border: 2px dashed var(--week-color);
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+.compiled-bonus p { margin: 0; font-weight: 750; }
+.compiled-guide {
+  margin-top: 10px;
+  border-top: 2px solid #cfd9d2;
+  padding-top: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 10px;
+  font-size: 13px;
+}
+.compiled-guide p, .compiled-guide ul { margin: 3px 0 0; }
+.compiled-guide ul { padding-left: 18px; }
+.challenge-body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(255,255,255,.9) 0 5%, transparent 6%),
+    linear-gradient(160deg, color-mix(in srgb, var(--week-color) 12%, white), #fff8e8 52%, color-mix(in srgb, var(--week-accent) 20%, white));
+}
+.challenge-shell { width: min(900px, calc(100% - 28px)); margin: 0 auto; padding: 24px 0 48px; }
+.challenge-start, .challenge-card, .challenge-results, .reward-game {
+  background: rgba(255,255,255,.94);
+  border: 3px solid color-mix(in srgb, var(--week-color) 50%, white);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+.challenge-start p { font-size: 19px; max-width: 760px; }
+.challenge-start-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+.challenge-start-grid > div, .parent-summary, .missed-list li {
+  border: 2px solid #d7e2da;
+  border-radius: 8px;
+  padding: 12px;
+  background: #fbfefd;
+}
+.challenge-primary, .reward-button, .game-controls button {
+  min-height: 48px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: var(--week-color);
+  color: white;
+  font-size: 17px;
+  font-weight: 950;
+  cursor: pointer;
+}
+.challenge-primary:disabled, .reward-button:disabled, .game-controls button:disabled { opacity: .55; cursor: not-allowed; }
+.is-hidden { display: none !important; }
+.challenge-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 950;
+}
+.challenge-status span {
+  border: 2px solid var(--week-color);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: white;
+}
+.challenge-meter { height: 16px; border: 2px solid var(--week-color); border-radius: 999px; overflow: hidden; margin: 14px 0; background: white; }
+.challenge-meter span { display: block; height: 100%; width: 0%; background: var(--week-accent); transition: width .25s ease; }
+.challenge-kind {
+  display: inline-block;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--week-accent) 30%, white);
+  padding: 7px 10px;
+  font-weight: 950;
+  margin-bottom: 10px;
+}
+.challenge-prompt { margin: 0 0 14px; font-size: 30px; font-weight: 950; line-height: 1.22; }
+.challenge-visual {
+  min-height: 190px;
+  display: grid;
+  place-items: center;
+  border: 3px dashed #b9c8d3;
+  border-radius: 8px;
+  background: white;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.challenge-visual .dot-row { font-size: 34px; }
+.challenge-answer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+}
+.challenge-answer label { display: grid; gap: 6px; font-weight: 950; }
+.challenge-answer input {
+  width: 100%;
+  border: 3px solid var(--week-color);
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 28px;
+  font-weight: 900;
+}
+.challenge-soft { color: var(--muted); font-weight: 850; }
+.result-top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+}
+.praise-gif {
+  width: 126px;
+  height: 126px;
+  border: 3px solid var(--week-color);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--week-accent) 25%, white);
+  font-size: 58px;
+  animation: praisePop .8s steps(2, end) infinite;
+}
+@keyframes praisePop {
+  0% { transform: rotate(-3deg) scale(1); }
+  50% { transform: rotate(3deg) scale(1.06); }
+}
+.score-line { font-size: 36px; font-weight: 950; margin: 8px 0; }
+.red-star {
+  display: inline-grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #c62828;
+  color: white;
+  font-size: 38px;
+  margin-right: 8px;
+}
+.avatar-reward {
+  margin: 16px 0;
+  border: 2px dashed var(--week-color);
+  border-radius: 8px;
+  padding: 14px;
+  background: #fff;
+  font-weight: 900;
+}
+.parent-summary { margin-top: 18px; }
+.missed-list { display: grid; gap: 8px; padding-left: 0; list-style: none; }
+.reward-game { margin-top: 18px; text-align: center; }
+.reward-game canvas {
+  width: 200px;
+  height: 320px;
+  max-width: 100%;
+  background: #111827;
+  border: 4px solid var(--ink);
+  border-radius: 8px;
+  image-rendering: pixelated;
+}
+.game-controls { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+.game-tip { color: var(--muted); font-weight: 850; }
 @media (max-width: 820px) {
-  .home-hero, .adventure-hero, .week-grid, .task-grid, .support-grid { grid-template-columns: 1fr; }
+  .home-hero, .adventure-hero, .week-grid, .task-grid, .support-grid, .print-actions, .compiled-page-head, .compiled-problem-grid, .compiled-guide, .challenge-start-grid, .challenge-answer, .result-top { grid-template-columns: 1fr; }
   h1 { font-size: 36px; }
   h2 { font-size: 26px; }
+  .challenge-prompt { font-size: 24px; }
   .prompt { font-size: 20px; }
   .site-bar { align-items: stretch; }
 }
@@ -684,24 +1355,365 @@ h2 { font-size: 17pt; }
 .dot-row, .shape-set, .position-row, .queue, .bonus-scene { color: #111; }
 .ten-frame span, .mini-grid span, .number-path span, .pattern-row span, .map-grid span, .shape-token { border-color: #111; }
 .ten-frame .filled, .compare-bars span, .queue .marked, .overlap b { background: #ddd !important; }
+.compiled-body { background: white !important; }
+.compiled-print { width: 100%; padding: 0; }
+.compiled-cover, .compiled-week-divider { display: none !important; }
+.compiled-page {
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 6mm !important;
+  border: 1.5pt solid #222 !important;
+  border-radius: 0 !important;
+  min-height: calc(100vh - 22mm);
+  break-after: page;
+  page-break-after: always;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.compiled-page:last-child {
+  break-after: auto;
+  page-break-after: auto;
+}
+.compiled-page-head {
+  grid-template-columns: 1fr 42mm;
+  gap: 4mm;
+  border-bottom: 1.5pt solid #222;
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+.compiled-page-head p { margin: 0 0 1mm; color: #111; font-size: 10pt; }
+.compiled-page-head h2 { font-size: 15pt; line-height: 1.18; }
+.compiled-page-mark {
+  border: 1.2pt solid #222;
+  background: white !important;
+  color: #111;
+  padding: 2mm;
+  font-size: 10pt;
+}
+.compiled-problem-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+}
+.compiled-problem {
+  min-height: 58mm;
+  padding: 3mm;
+  border: 1.2pt solid #222;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+.compiled-number { background: #111 !important; color: white !important; width: 9mm; height: 9mm; font-size: 13pt; }
+.compiled-kind { border: 1pt solid #222; font-size: 8pt; }
+.compiled-prompt { min-height: 13mm; font-size: 12.5pt; }
+.compiled-visual { min-height: 23mm; border: 1pt dashed #444; background: white !important; padding: 2mm; }
+.compiled-answer { height: 11mm; border-bottom: 1.5pt solid #222; }
+.compiled-bonus {
+  grid-template-columns: 30mm 1fr 28mm;
+  margin-top: 3mm;
+  border: 1pt dashed #222;
+  padding: 2mm;
+  font-size: 9pt;
+}
+.compiled-bonus .visual, .compiled-bonus .bonus-scene { min-height: 0; font-size: 16pt; }
+.compiled-guide {
+  grid-template-columns: 1fr 1fr 1.15fr;
+  gap: 3mm;
+  margin-top: 3mm;
+  padding-top: 2mm;
+  border-top: 1pt solid #222;
+  font-size: 8.5pt;
+}
+.compiled-guide p, .compiled-guide ul { margin: 1mm 0 0; }
 @media print { body[data-lang="zh"] .lang.en, body[data-lang="en"] .lang.zh { display: none !important; } }`;
 
 const script = `(() => {
-  const key = "grade1-math-adventure-lang";
+  const langKey = "grade1-math-adventure-lang";
   const body = document.body;
-  const saved = localStorage.getItem(key);
+  const saved = localStorage.getItem(langKey);
   if (saved === "zh" || saved === "en") {
     body.dataset.lang = saved;
     document.documentElement.lang = saved === "zh" ? "zh-CN" : "en";
   }
+  const text = (zh, en) => body.dataset.lang === "en" ? en : zh;
+  const bilingual = (zh, en) => '<span class="lang zh">' + zh + '</span><span class="lang en">' + en + '</span>';
+
   document.querySelectorAll("[data-lang-toggle]").forEach((button) => {
     button.addEventListener("click", () => {
       const next = body.dataset.lang === "zh" ? "en" : "zh";
       body.dataset.lang = next;
       document.documentElement.lang = next === "zh" ? "zh-CN" : "en";
-      localStorage.setItem(key, next);
+      localStorage.setItem(langKey, next);
     });
   });
+
+  const dataNode = document.getElementById("challengeData");
+  if (!dataNode) return;
+  const data = JSON.parse(dataNode.textContent);
+  const app = document.getElementById("challengeApp");
+  const startPanel = app.querySelector("[data-challenge-start]");
+  const card = app.querySelector("[data-challenge-card]");
+  const results = app.querySelector("[data-results]");
+  const gamePanel = app.querySelector("[data-game]");
+  const progress = app.querySelector("[data-progress]");
+  const timer = app.querySelector("[data-timer]");
+  const meter = app.querySelector("[data-meter]");
+  const kind = app.querySelector("[data-kind]");
+  const prompt = app.querySelector("[data-prompt]");
+  const visual = app.querySelector("[data-visual]");
+  const form = app.querySelector("[data-answer-form]");
+  const input = app.querySelector("[data-answer-input]");
+  const startButton = app.querySelector("[data-start-challenge]");
+  const gameButton = app.querySelector("[data-game-start]");
+  const gameInfo = app.querySelector("[data-game-info]");
+  const canvas = app.querySelector("[data-game-canvas]");
+
+  let index = 0;
+  let startedAt = 0;
+  let ticker = null;
+  let responses = [];
+
+  function fmt(seconds) {
+    const m = Math.floor(seconds / 60).toString().padStart(2, "0");
+    const s = Math.floor(seconds % 60).toString().padStart(2, "0");
+    return m + ":" + s;
+  }
+
+  function normalize(value) {
+    return String(value)
+      .trim()
+      .toLowerCase()
+      .replace(/\\s+/g, "")
+      .replace("＋", "+")
+      .replace("－", "-")
+      .replace("加", "+")
+      .replace("减", "-")
+      .replace("不是", "no")
+      .replace("不能", "no")
+      .replace("不会", "no")
+      .replace("对", "yes")
+      .replace("是", "yes")
+      .replace("能", "yes")
+      .replace("错", "no")
+      .replace("不", "no");
+  }
+
+  function updateTimer() {
+    timer.textContent = fmt((Date.now() - startedAt) / 1000);
+  }
+
+  function showQuestion() {
+    const q = data.questions[index];
+    progress.innerHTML = bilingual("第 " + (index + 1) + " / " + data.questions.length + " 题", "Question " + (index + 1) + " of " + data.questions.length);
+    meter.style.width = (index / data.questions.length * 100) + "%";
+    kind.innerHTML = bilingual(q.conceptZh, q.conceptEn);
+    prompt.innerHTML = bilingual(q.zh, q.en);
+    visual.innerHTML = q.visual;
+    input.value = "";
+    input.focus();
+  }
+
+  function startChallenge() {
+    startPanel.classList.add("is-hidden");
+    card.classList.remove("is-hidden");
+    startedAt = Date.now();
+    responses = [];
+    index = 0;
+    updateTimer();
+    ticker = setInterval(updateTimer, 1000);
+    showQuestion();
+  }
+
+  function checkAnswer(answer, q) {
+    const got = normalize(answer);
+    return q.answers.some((a) => normalize(a) === got);
+  }
+
+  function revisitSuggestion(missed) {
+    if (!missed.length) return bilingual("保持手感：下周继续先看图、再说想法。", "Keep the rhythm: next week, look first and explain your thinking.");
+    const concepts = [...new Set(missed.map((m) => body.dataset.lang === "en" ? m.conceptEn : m.conceptZh))].slice(0, 3).join("、");
+    return bilingual("建议回看：" + concepts + "。用小物品摆一摆会更稳。", "Revisit: " + concepts + ". Building with small objects will help.");
+  }
+
+  function finishChallenge() {
+    clearInterval(ticker);
+    ticker = null;
+    meter.style.width = "100%";
+    card.classList.add("is-hidden");
+    const totalSeconds = Math.round((Date.now() - startedAt) / 1000);
+    const correct = responses.filter((r) => r.correct).length;
+    const missed = responses.filter((r) => !r.correct);
+    const passed = correct >= data.threshold;
+    const praiseZh = passed ? "红星到手！你又勇敢又认真。" : "完成就是进步！小伙伴为你鼓掌。";
+    const praiseEn = passed ? "Red star earned! Brave and careful work." : "Finishing is progress! Your buddy is cheering.";
+    const missedHtml = missed.length
+      ? missed.map((m) => '<li><strong>#' + m.number + '</strong> ' + bilingual(m.zh, m.en) + '<br><span>' + bilingual("你的答案：", "Your answer: ") + (m.answer || "-") + '</span></li>').join("")
+      : '<li>' + bilingual("没有漏掉的题。", "No missed questions.") + '</li>';
+    results.innerHTML =
+      '<div class="result-top">' +
+        '<div class="praise-gif" aria-hidden="true">' + (passed ? "🌟" : "🎈") + '</div>' +
+        '<div><p class="eyebrow">' + bilingual(data.titleZh, data.titleEn) + '</p>' +
+        '<h1>' + bilingual("挑战完成！", "Challenge Complete!") + '</h1>' +
+        '<p>' + bilingual(praiseZh, praiseEn) + '</p></div>' +
+      '</div>' +
+      '<div class="score-line">' + (passed ? '<span class="red-star">★</span>' : "") + correct + " / " + data.questions.length + '</div>' +
+      '<p><strong>' + bilingual("总时间：", "Total time: ") + '</strong>' + fmt(totalSeconds) + '</p>' +
+      '<div class="avatar-reward">' + data.icon + " " + bilingual("小伙伴获得：" + data.rewardZh, "Buddy reward: " + data.rewardEn) + '</div>' +
+      '<button class="reward-button" type="button" data-unlock-game>' + bilingual("解锁奖励小游戏", "Unlock Mini Reward Game") + '</button>' +
+      '<section class="parent-summary"><h2>' + bilingual("家长小结", "Parent Summary") + '</h2>' +
+        '<p><strong>' + bilingual("检查内容：", "Concepts checked: ") + '</strong>' + bilingual(data.conceptsZh, data.conceptsEn) + '</p>' +
+        '<p><strong>' + bilingual("完成情况：", "Completion: ") + '</strong>' + responses.length + " / " + data.questions.length + '</p>' +
+        '<p><strong>' + bilingual("用时：", "Timing: ") + '</strong>' + fmt(totalSeconds) + '</p>' +
+        '<h3>' + bilingual("需要回看的题", "Questions to Revisit") + '</h3><ul class="missed-list">' + missedHtml + '</ul>' +
+        '<p><strong>' + bilingual("建议：", "Suggestion: ") + '</strong>' + revisitSuggestion(missed) + '</p>' +
+      '</section>';
+    results.classList.remove("is-hidden");
+    results.querySelector("[data-unlock-game]").addEventListener("click", () => {
+      gamePanel.classList.remove("is-hidden");
+      gamePanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      updateGamePlays();
+    });
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const q = data.questions[index];
+    const answer = input.value.trim();
+    responses.push({
+      number: index + 1,
+      zh: q.zh,
+      en: q.en,
+      conceptZh: q.conceptZh,
+      conceptEn: q.conceptEn,
+      answer,
+      correct: checkAnswer(answer, q)
+    });
+    index += 1;
+    if (index >= data.questions.length) finishChallenge();
+    else showQuestion();
+  });
+  startButton.addEventListener("click", startChallenge);
+
+  const gameKey = "grade1-week-" + data.week + "-reward-plays";
+  const ctx = canvas.getContext("2d");
+  const cols = 10;
+  const rows = 16;
+  const size = 20;
+  const colors = ["#ef476f", "#ffd166", "#06d6a0", "#118ab2", "#f78c6b"];
+  const shapes = [
+    [[1,1,1,1]],
+    [[1,1],[1,1]],
+    [[0,1,0],[1,1,1]],
+    [[1,0,0],[1,1,1]],
+    [[0,0,1],[1,1,1]]
+  ];
+  let board, piece, gameTimer, dropTimer, gameEndsAt, gameScore;
+
+  function playsUsed() {
+    return Number(localStorage.getItem(gameKey) || "0");
+  }
+  function updateGamePlays() {
+    const left = Math.max(0, 2 - playsUsed());
+    if (piece) {
+      gameInfo.textContent = text("游戏进行中", "Game in progress");
+      gameButton.disabled = true;
+      return;
+    }
+    gameInfo.textContent = text("还可以玩 " + left + " 次", left + " play(s) left");
+    gameButton.disabled = left <= 0;
+  }
+  function newPiece() {
+    const shape = shapes[Math.floor(Math.random() * shapes.length)].map((r) => r.slice());
+    return { shape, x: 3, y: 0, color: colors[Math.floor(Math.random() * colors.length)] };
+  }
+  function collide(p, offX, offY, shape) {
+    const s = shape || p.shape;
+    for (let y = 0; y < s.length; y++) {
+      for (let x = 0; x < s[y].length; x++) {
+        if (!s[y][x]) continue;
+        const nx = p.x + x + offX;
+        const ny = p.y + y + offY;
+        if (nx < 0 || nx >= cols || ny >= rows || (ny >= 0 && board[ny][nx])) return true;
+      }
+    }
+    return false;
+  }
+  function merge() {
+    piece.shape.forEach((row, y) => row.forEach((cell, x) => {
+      if (cell && piece.y + y >= 0) board[piece.y + y][piece.x + x] = piece.color;
+    }));
+    for (let y = rows - 1; y >= 0; y--) {
+      if (board[y].every(Boolean)) {
+        board.splice(y, 1);
+        board.unshift(Array(cols).fill(null));
+        gameScore += 10;
+        y += 1;
+      }
+    }
+    piece = newPiece();
+    if (collide(piece, 0, 0)) endGame();
+  }
+  function rotate(shape) {
+    return shape[0].map((_, i) => shape.map((row) => row[i]).reverse());
+  }
+  function drawCell(x, y, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x * size + 1, y * size + 1, size - 2, size - 2);
+  }
+  function drawGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#111827";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    board.forEach((row, y) => row.forEach((color, x) => { if (color) drawCell(x, y, color); }));
+    if (piece) piece.shape.forEach((row, y) => row.forEach((cell, x) => { if (cell) drawCell(piece.x + x, piece.y + y, piece.color); }));
+    ctx.fillStyle = "white";
+    ctx.font = "12px Arial";
+    ctx.fillText(text("分数 ", "Score ") + gameScore, 8, 16);
+    ctx.fillText(text("时间 ", "Time ") + Math.max(0, Math.ceil((gameEndsAt - Date.now()) / 1000)), 136, 16);
+  }
+  function step() {
+    if (!piece) return;
+    if (!collide(piece, 0, 1)) piece.y += 1;
+    else merge();
+    drawGame();
+  }
+  function endGame() {
+    clearInterval(dropTimer);
+    clearInterval(gameTimer);
+    piece = null;
+    drawGame();
+    gameInfo.textContent = text("游戏结束，分数 " + gameScore, "Game over, score " + gameScore);
+    gameButton.disabled = playsUsed() >= 2;
+  }
+  function startGame() {
+    if (playsUsed() >= 2) return;
+    localStorage.setItem(gameKey, String(playsUsed() + 1));
+    board = Array.from({ length: rows }, () => Array(cols).fill(null));
+    piece = newPiece();
+    gameScore = 0;
+    gameEndsAt = Date.now() + 60000;
+    clearInterval(dropTimer);
+    clearInterval(gameTimer);
+    dropTimer = setInterval(step, 650);
+    gameTimer = setInterval(() => {
+      if (Date.now() >= gameEndsAt) endGame();
+      else drawGame();
+    }, 250);
+    updateGamePlays();
+    drawGame();
+  }
+  document.addEventListener("keydown", (event) => {
+    if (!piece || gamePanel.classList.contains("is-hidden")) return;
+    if (event.key === "ArrowLeft" && !collide(piece, -1, 0)) piece.x -= 1;
+    if (event.key === "ArrowRight" && !collide(piece, 1, 0)) piece.x += 1;
+    if (event.key === "ArrowDown") step();
+    if (event.key === "ArrowUp") {
+      const r = rotate(piece.shape);
+      if (!collide(piece, 0, 0, r)) piece.shape = r;
+    }
+    if (event.key.startsWith("Arrow")) event.preventDefault();
+    drawGame();
+  });
+  gameButton.addEventListener("click", startGame);
+  updateGamePlays();
 })();`;
 
 function write(file, contents) {
@@ -714,10 +1726,13 @@ write("print.css", printCss);
 write("script.js", script);
 
 for (const week of weeks) {
+  write(`week-${pad(week.n)}-print.html`, weekPrintHtml(week));
+  write(`week-${pad(week.n)}-challenge.html`, challengeHtml(week));
   for (let day = 1; day <= dayCount; day += 1) {
     write(`week-${pad(week.n)}-day-${pad(day)}.html`, pageHtml(week, day));
   }
 }
+write("full-program-print.html", fullProgramPrintHtml());
 
 const readme = `# Grade 1 Math Adventure / 一年级数学冒险
 
@@ -725,13 +1740,16 @@ Static printable bilingual Grade 1 math program.
 
 - \`index.html\`: parent/teacher note and 12-week map.
 - \`week-01-day-01.html\` through \`week-12-day-05.html\`: daily printable pages.
+- \`week-01-challenge.html\` through \`week-12-challenge.html\`: online weekly challenge tests with scoring and a short reward game.
+- \`week-01-print.html\` through \`week-12-print.html\`: weekly compiled print packets. Each week prints as 10 pages.
+- \`full-program-print.html\`: full 12-week compiled print packet.
 - \`styles.css\`: shared screen design system.
 - \`print.css\`: print stylesheet.
 - \`script.js\`: small language toggle.
-- \`scripts/generate-site.js\`: reusable content and template generator.
+- \`scripts/generate-site.js\`: reusable structured day-data model plus daily and compiled-print renderers.
 
 Run \`node scripts/generate-site.js\` after editing the generator to rebuild all pages.
 `;
 write("README.md", readme);
 
-console.log("Generated index, shared assets, and 60 daily pages.");
+console.log("Generated index, shared assets, 60 daily pages, 12 weekly challenges, 12 weekly print packets, and the full-program print packet.");

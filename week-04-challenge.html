@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 4 Weekly Challenge - Number Grids and Number Patterns</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#3b7a57;--week-accent:#f29e4c">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell" id="challengeApp">
+    <section class="challenge-start" data-challenge-start>
+      <p class="eyebrow">🚂 <span class="lang zh">玩具火车镇</span><span class="lang en">Toy Train Town</span></p>
+      <h1><span class="lang zh">第 4 周每周挑战</span><span class="lang en">Week 4 Weekly Challenge</span></h1>
+      <p><span class="lang zh">一次一个小题，慢慢来。计时器只是帮你知道用了多久，不会扣掉勇气分。</span><span class="lang en">One little question at a time. The timer only helps you see your pace. It does not take away bravery points.</span></p>
+      <div class="challenge-start-grid">
+        <div><strong><span class="lang zh">检查内容</span><span class="lang en">Concepts</span></strong><p><span class="lang zh">数阵、顺序、缺数、简单规律</span><span class="lang en">grids, order, missing numbers, and simple patterns</span></p></div>
+        <div><strong><span class="lang zh">题目数量</span><span class="lang en">Questions</span></strong><p>12</p></div>
+        <div><strong><span class="lang zh">红星目标</span><span class="lang en">Red Star Goal</span></strong><p><span class="lang zh">答对9题或更多</span><span class="lang en">9 or more correct</span></p></div>
+      </div>
+      <button class="challenge-primary" type="button" data-start-challenge><span class="lang zh">开始挑战</span><span class="lang en">Start Challenge</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-challenge-card>
+      <div class="challenge-status">
+        <span data-progress><span class="lang zh">第 1 / 12 题</span><span class="lang en">Question 1 of 12</span></span>
+        <span data-timer>00:00</span>
+      </div>
+      <div class="challenge-meter"><span data-meter></span></div>
+      <div class="challenge-kind" data-kind></div>
+      <p class="challenge-prompt" data-prompt></p>
+      <div class="challenge-visual" data-visual></div>
+      <form class="challenge-answer" data-answer-form>
+        <label><span class="lang zh">我的答案</span><span class="lang en">My Answer</span><input type="text" autocomplete="off" inputmode="text" data-answer-input /></label>
+        <button class="challenge-primary" type="submit"><span class="lang zh">下一题</span><span class="lang en">Next</span></button>
+      </form>
+      <p class="challenge-soft"><span class="lang zh">想一想、指一指、再回答。</span><span class="lang en">Think, point, then answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-results></section>
+    <section class="reward-game is-hidden" data-game>
+      <div class="game-head">
+        <h2><span class="lang zh">星星方块奖励游戏</span><span class="lang en">Star Blocks Reward Game</span></h2>
+        <p><span class="lang zh">每次60秒，最多玩2次。</span><span class="lang en">60 seconds each, up to 2 plays.</span></p>
+      </div>
+      <canvas width="200" height="320" data-game-canvas></canvas>
+      <div class="game-controls">
+        <button type="button" data-game-start><span class="lang zh">开始游戏</span><span class="lang en">Start Game</span></button>
+        <span data-game-info></span>
+      </div>
+      <p class="game-tip"><span class="lang zh">键盘：← → 移动，↑ 旋转，↓ 加速。</span><span class="lang en">Keyboard: ← → move, ↑ rotate, ↓ faster.</span></p>
+    </section>
+  </main>
+  <script type="application/json" id="challengeData">{"week":4,"titleZh":"第 4 周每周挑战","titleEn":"Week 4 Weekly Challenge","topicZh":"数阵图 + 数字规律","topicEn":"Number Grids and Number Patterns","themeZh":"玩具火车镇","themeEn":"Toy Train Town","icon":"🚂","rewardZh":"小车票","rewardEn":"little ticket","threshold":9,"conceptsZh":"数阵、顺序、缺数、简单规律","conceptsEn":"grids, order, missing numbers, and simple patterns","questions":[{"conceptZh":"数阵","conceptEn":"Number Grid","zh":"缺哪个数？","en":"Which number is missing?","visual":"<div class=\"mini-grid\" style=\"--cols:5\"><span>6</span><span>7</span><span>?</span><span>9</span><span>10</span></div>","answers":["8"]},{"conceptZh":"规律","conceptEn":"Pattern","zh":"下一个是？写 星 或 车。","en":"What comes next? Write star or train.","visual":"<div class=\"pattern-row\"><span>🚂</span><span>⭐</span><span>🚂</span><span>⭐</span><span>🚂</span><span class=\"blank-tile\">?</span></div>","answers":["星","star","⭐"]},{"conceptZh":"数列","conceptEn":"Number Pattern","zh":"每次多2，空格是？","en":"Add 2 each time. Blank?","visual":"<div class=\"number-path\"><span>2</span><span>4</span><span>6</span><span>?</span><span>10</span></div>","answers":["8"]},{"conceptZh":"数列","conceptEn":"Number Pattern","zh":"每次少1，空格是？","en":"Subtract 1 each time. Blank?","visual":"<div class=\"number-path\"><span>9</span><span>8</span><span>?</span><span>6</span></div>","answers":["7"]},{"conceptZh":"数阵","conceptEn":"Number Grid","zh":"中间少了几？","en":"What is missing?","visual":"<div class=\"mini-grid\" style=\"--cols:5\"><span>11</span><span>12</span><span>13</span><span>?</span><span>15</span></div>","answers":["14"]},{"conceptZh":"规律","conceptEn":"Pattern","zh":"下一个形状？写 圆 或 三角。","en":"Next shape? Write circle or triangle.","visual":"<div class=\"pattern-row\"><span>●</span><span>▲</span><span>●</span><span>▲</span><span>●</span><span class=\"blank-tile\">?</span></div>","answers":["三角","triangle","▲"]},{"conceptZh":"顺序","conceptEn":"Order","zh":"13 后面是几？","en":"What comes after 13?","visual":"<div class=\"number-path\"><span>12</span><span>13</span><span>?</span></div>","answers":["14"]},{"conceptZh":"数列","conceptEn":"Pattern","zh":"5, 10, 15, ?","en":"5, 10, 15, ?","visual":"<div class=\"number-path\"><span>5</span><span>10</span><span>15</span><span>?</span></div>","answers":["20"]},{"conceptZh":"规律","conceptEn":"Pattern","zh":"ABAB 下一个？","en":"ABAB. What comes next?","visual":"<div class=\"pattern-row\"><span>A</span><span>B</span><span>A</span><span>B</span><span class=\"blank-tile\">?</span></div>","answers":["A"]},{"conceptZh":"数阵","conceptEn":"Grid","zh":"这一行从几开始？","en":"What number starts this row?","visual":"<div class=\"mini-grid\" style=\"--cols:5\"><span>?</span><span>22</span><span>23</span><span>24</span><span>25</span></div>","answers":["21"]},{"conceptZh":"累计复习","conceptEn":"Cumulative Review","zh":"数一数。","en":"Count.","visual":"<div class=\"dot-row\"><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span></div>","answers":["7"]},{"conceptZh":"累计复习","conceptEn":"Cumulative Review","zh":"3 + 4 = ?","en":"3 + 4 = ?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span></div>","answers":["7"]}]}</script>
+</body>
+</html>

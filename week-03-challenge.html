@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 3 Weekly Challenge - Story Problems Within 20</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body data-lang="zh" class="challenge-body" style="--week-color:#4e72b8;--week-accent:#f7d774">
+  <header class="site-bar no-print">
+    <a class="home-link" href="index.html"><span class="lang zh">数学冒险地图</span><span class="lang en">Math Adventure Map</span></a>
+    <button class="lang-toggle" type="button" data-lang-toggle><span class="lang zh">English</span><span class="lang en">中文</span></button>
+  </header>
+  <main class="challenge-shell" id="challengeApp">
+    <section class="challenge-start" data-challenge-start>
+      <p class="eyebrow">🌙 <span class="lang zh">月亮花园</span><span class="lang en">Moon Garden</span></p>
+      <h1><span class="lang zh">第 3 周每周挑战</span><span class="lang en">Week 3 Weekly Challenge</span></h1>
+      <p><span class="lang zh">一次一个小题，慢慢来。计时器只是帮你知道用了多久，不会扣掉勇气分。</span><span class="lang en">One little question at a time. The timer only helps you see your pace. It does not take away bravery points.</span></p>
+      <div class="challenge-start-grid">
+        <div><strong><span class="lang zh">检查内容</span><span class="lang en">Concepts</span></strong><p><span class="lang zh">20以内故事题、比较和稍大的数量</span><span class="lang en">story problems within 20, comparing, and slightly larger groups</span></p></div>
+        <div><strong><span class="lang zh">题目数量</span><span class="lang en">Questions</span></strong><p>12</p></div>
+        <div><strong><span class="lang zh">红星目标</span><span class="lang en">Red Star Goal</span></strong><p><span class="lang zh">答对9题或更多</span><span class="lang en">9 or more correct</span></p></div>
+      </div>
+      <button class="challenge-primary" type="button" data-start-challenge><span class="lang zh">开始挑战</span><span class="lang en">Start Challenge</span></button>
+    </section>
+    <section class="challenge-card is-hidden" data-challenge-card>
+      <div class="challenge-status">
+        <span data-progress><span class="lang zh">第 1 / 12 题</span><span class="lang en">Question 1 of 12</span></span>
+        <span data-timer>00:00</span>
+      </div>
+      <div class="challenge-meter"><span data-meter></span></div>
+      <div class="challenge-kind" data-kind></div>
+      <p class="challenge-prompt" data-prompt></p>
+      <div class="challenge-visual" data-visual></div>
+      <form class="challenge-answer" data-answer-form>
+        <label><span class="lang zh">我的答案</span><span class="lang en">My Answer</span><input type="text" autocomplete="off" inputmode="text" data-answer-input /></label>
+        <button class="challenge-primary" type="submit"><span class="lang zh">下一题</span><span class="lang en">Next</span></button>
+      </form>
+      <p class="challenge-soft"><span class="lang zh">想一想、指一指、再回答。</span><span class="lang en">Think, point, then answer.</span></p>
+    </section>
+    <section class="challenge-results is-hidden" data-results></section>
+    <section class="reward-game is-hidden" data-game>
+      <div class="game-head">
+        <h2><span class="lang zh">星星方块奖励游戏</span><span class="lang en">Star Blocks Reward Game</span></h2>
+        <p><span class="lang zh">每次60秒，最多玩2次。</span><span class="lang en">60 seconds each, up to 2 plays.</span></p>
+      </div>
+      <canvas width="200" height="320" data-game-canvas></canvas>
+      <div class="game-controls">
+        <button type="button" data-game-start><span class="lang zh">开始游戏</span><span class="lang en">Start Game</span></button>
+        <span data-game-info></span>
+      </div>
+      <p class="game-tip"><span class="lang zh">键盘：← → 移动，↑ 旋转，↓ 加速。</span><span class="lang en">Keyboard: ← → move, ↑ rotate, ↓ faster.</span></p>
+    </section>
+  </main>
+  <script type="application/json" id="challengeData">{"week":3,"titleZh":"第 3 周每周挑战","titleEn":"Week 3 Weekly Challenge","topicZh":"加减应用·20以内","topicEn":"Story Problems Within 20","themeZh":"月亮花园","themeEn":"Moon Garden","icon":"🌙","rewardZh":"月亮发夹","rewardEn":"moon clip","threshold":9,"conceptsZh":"20以内故事题、比较和稍大的数量","conceptsEn":"story problems within 20, comparing, and slightly larger groups","questions":[{"conceptZh":"20以内加法","conceptEn":"Add Within 20","zh":"12 + 4 = ?","en":"12 + 4 = ?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span></div></span></div>","answers":["16"]},{"conceptZh":"20以内减法","conceptEn":"Subtract Within 20","zh":"15 - 5 = ?","en":"15 - 5 = ?","visual":"<div class=\"dot-row\"><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span></div>","answers":["10"]},{"conceptZh":"比较","conceptEn":"Compare","zh":"14 比 9 多几？","en":"How many more is 14 than 9?","visual":"<div class=\"compare-bars\"><div><b>A</b><span style=\"--w:14\">14</span></div><div><b>B</b><span style=\"--w:9\">9</span></div></div>","answers":["5"]},{"conceptZh":"故事","conceptEn":"Story","zh":"有11朵，又开3朵。现在？","en":"11 flowers, 3 more bloom. Now?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span><span class=\"dot\">🌼</span></div></span></div>","answers":["14"]},{"conceptZh":"故事","conceptEn":"Story","zh":"18颗星，藏6颗。看见？","en":"18 stars, 6 hide. Seen?","visual":"<div class=\"dot-row\"><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span><span class=\"dot crossed\">⭐</span></div>","answers":["12"]},{"conceptZh":"比较","conceptEn":"Compare","zh":"哪边多？写 A 或 B。","en":"Which has more? Write A or B.","visual":"<div class=\"compare-bars\"><div><b>A</b><span style=\"--w:13\">13</span></div><div><b>B</b><span style=\"--w:16\">16</span></div></div>","answers":["B"]},{"conceptZh":"缺数","conceptEn":"Missing Number","zh":"10 + □ = 16。","en":"10 + □ = 16.","visual":"<div class=\"equation\"><span>10</span><span>+</span><span>□</span><span>=</span><span>16</span></div>","answers":["6"]},{"conceptZh":"减法","conceptEn":"Subtraction","zh":"17 - 4 = ?","en":"17 - 4 = ?","visual":"<div class=\"equation\"><span>17</span><span>-</span><span>4</span><span>=</span></div>","answers":["13"]},{"conceptZh":"比较","conceptEn":"Compare","zh":"16 和 12 差几？","en":"What is the difference between 16 and 12?","visual":"<div class=\"compare-bars\"><div><b>A</b><span style=\"--w:16\">16</span></div><div><b>B</b><span style=\"--w:12\">12</span></div></div>","answers":["4"]},{"conceptZh":"故事","conceptEn":"Story","zh":"9本书，又得5本。现在？","en":"9 books, get 5 more. Now?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span><span class=\"dot\">📚</span></div></span></div>","answers":["14"]},{"conceptZh":"累计复习","conceptEn":"Cumulative Review","zh":"数一数。","en":"Count.","visual":"<div class=\"dot-row\"><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span><span class=\"dot\">⭐</span></div>","answers":["7"]},{"conceptZh":"累计复习","conceptEn":"Cumulative Review","zh":"3 + 4 = ?","en":"3 + 4 = ?","visual":"<div class=\"visual-groups\"><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span><span class=\"big-op\">+</span><span class=\"pill\"><div class=\"dot-row\"><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span><span class=\"dot\">🍎</span></div></span></div>","answers":["7"]}]}</script>
+</body>
+</html>
