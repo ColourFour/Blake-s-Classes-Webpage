@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>一年级数学冒险练习 - 第一关</title>
+<style>
+  :root{
+    --bg:#f7f3ea;
+    --paper:#ffffff;
+    --yellow:#f3cb45;
+    --blue:#4aa3f0;
+    --blue-soft:#dfeefb;
+    --text:#23374d;
+    --muted:#6b7b8c;
+    --line:#b7c5d3;
+    --tip:#f3f4f6;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    padding:24px;
+  }
+  .page{
+    max-width:1150px;
+    margin:0 auto;
+    background:var(--paper);
+    border-radius:30px;
+    padding:24px;
+    box-shadow:0 10px 30px rgba(0,0,0,.06);
+  }
+  .header{
+    position:relative;
+    background:var(--yellow);
+    border-radius:30px;
+    padding:26px 30px 30px;
+    overflow:hidden;
+  }
+  .header h1{
+    margin:0;
+    font-size:48px;
+    line-height:1.1;
+  }
+  .header p{
+    margin:12px 0 0;
+    font-size:20px;
+    line-height:1.6;
+    max-width:860px;
+  }
+  .bubble{
+    position:absolute;
+    border-radius:50%;
+    opacity:.95;
+  }
+  .b1{width:62px;height:62px;right:58px;top:22px;background:var(--blue);}
+  .b2{width:32px;height:32px;right:20px;top:36px;background:#fff;}
+  .b3{width:44px;height:44px;right:44px;top:84px;background:#fff;}
+  .b4{width:22px;height:22px;right:48px;top:146px;background:var(--blue);}
+  .tip{
+    margin-top:22px;
+    background:var(--tip);
+    border:2px solid #dde3ea;
+    color:#5d6a78;
+    border-radius:24px;
+    padding:18px 24px;
+    font-size:18px;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+    margin-top:24px;
+  }
+  .card{
+    border:3px solid #d3e3ef;
+    border-radius:28px;
+    padding:18px 18px 20px;
+    min-height:340px;
+    background:linear-gradient(180deg,#fff 0%,#fcfdff 100%);
+  }
+  .card-top{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+  }
+  .num{
+    flex:0 0 auto;
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    background:var(--blue);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:32px;
+    line-height:1;
+    margin-top:2px;
+  }
+  .q-wrap{flex:1}
+  .question{
+    font-size:24px;
+    line-height:1.55;
+    margin:0 0 14px;
+    font-weight:600;
+  }
+  .visual{
+    margin:6px 0 12px;
+    padding:14px;
+    border-radius:18px;
+    background:#f7fbff;
+    border:2px dashed #d8e8f6;
+  }
+  .visual-row{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:34px;
+    line-height:1.2;
+  }
+  .visual-note{
+    margin-top:10px;
+    color:var(--muted);
+    font-size:15px;
+  }
+  .line-label{
+    margin-top:16px;
+    color:#7c8793;
+    font-size:18px;
+  }
+  .line{
+    height:34px;
+    border-bottom:3px solid var(--line);
+  }
+  .tiny{
+    font-size:15px;
+    color:#7d8893;
+    margin-top:8px;
+  }
+  .footer{
+    text-align:center;
+    margin-top:24px;
+    color:#65717d;
+    font-size:18px;
+  }
+  .group{
+    display:inline-flex;
+    gap:4px;
+    align-items:center;
+    padding:4px 8px;
+    background:white;
+    border-radius:12px;
+    border:1px solid #e4edf5;
+  }
+  .strike{
+    text-decoration:line-through;
+    text-decoration-thickness:3px;
+    text-decoration-color:#ef6b6b;
+    opacity:.7;
+  }
+  @media print{
+    body{padding:0;background:#fff}
+    .page{box-shadow:none;border-radius:0;max-width:none}
+  }
+  @media (max-width: 900px){
+    .grid{grid-template-columns:1fr}
+    .header h1{font-size:38px}
+    .question{font-size:21px}
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="bubble b1"></div>
+      <div class="bubble b2"></div>
+      <div class="bubble b3"></div>
+      <div class="bubble b4"></div>
+      <h1>☐ 第一关：一共与剩下</h1>
+      <p>先看数量是变多还是变少。合起来通常用加法，拿走一些通常用减法。每道题都配了小图，先看图，再读题，会更容易判断。</p>
+    </div>
+
+    <div class="tip">☐ 家长提示：先问孩子“是变多了，还是变少了？”再问“图上看起来是合起来，还是拿走了？”</div>
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="num">1</div>
+          <div class="q-wrap">
+            <p class="question">小明有7个苹果，小红有5个，一共有多少个苹果？</p>
+            <div class="visual">
+              <div class="visual-row">
+                <span class="group">🍎 🍎 🍎 🍎 🍎 🍎 🍎</span>
+                <span>+</span>
+                <span class="group">🍎 🍎 🍎 🍎 🍎</span>
+              </div>
+              <div class="visual-note">看图想一想：两堆苹果是合在一起，还是拿走了？</div>
+            </div>
+          </div>
+        </div>
+        <div class="line-label">算式：</div>
+        <div class="line"></div>
+        <div class="line-label">答案：</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="num">2</div>
+          <div class="q-wrap">
+            <p class="question">盘子里有12块饼干，吃了4块，还剩多少块？</p>
+            <div class="visual">
+              <div class="visual-row">
+                <span class="group">🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪 🍪</span>
+              </div>
+              <div class="visual-row" style="margin-top:10px;">
+                <span>吃掉：</span>
+                <span class="group"><span class="strike">🍪 🍪 🍪 🍪</span></span>
+              </div>
+              <div class="visual-note">红线表示被吃掉了，数量是在变多还是变少？</div>
+            </div>
+          </div>
+        </div>
+        <div class="line-label">算式：</div>
+        <div class="line"></div>
+        <div class="line-label">答案：</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="num">3</div>
+          <div class="q-wrap">
+            <p class="question">小猫有9条鱼，小狗有6条，一共有多少条鱼？</p>
+            <div class="visual">
+              <div class="visual-row">
+                <span class="group">🐟 🐟 🐟 🐟 🐟 🐟 🐟 🐟 🐟</span>
+                <span>+</span>
+                <span class="group">🐟 🐟 🐟 🐟 🐟 🐟</span>
+              </div>
+              <div class="visual-note">两边都是“有多少”，最后问“一共有多少”。</div>
+            </div>
+          </div>
+        </div>
+        <div class="line-label">算式：</div>
+        <div class="line"></div>
+        <div class="line-label">答案：</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="num">4</div>
+          <div class="q-wrap">
+            <p class="question">有15个气球，飞走了7个，还剩多少个？</p>
+            <div class="visual">
+              <div class="visual-row">
+                <span class="group">🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈</span>
+              </div>
+              <div class="visual-row" style="margin-top:10px;">
+                <span>飞走：</span>
+                <span class="group"><span class="strike">🎈 🎈 🎈 🎈 🎈 🎈 🎈</span></span>
+              </div>
+              <div class="visual-note">“飞走了”表示少了一些，所以不是合起来。</div>
+            </div>
+          </div>
+        </div>
+        <div class="line-label">算式：</div>
+        <div class="line"></div>
+        <div class="line-label">答案：</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="num">5</div>
+          <div class="q-wrap">
+            <p class="question">小兔有8个萝卜，小羊有3个，一共有多少个萝卜？</p>
+            <div class="visual">
+              <div class="visual-row">
+                <span class="group">🥕 🥕 🥕 🥕 🥕 🥕 🥕 🥕</span>
+                <span>+</span>
+                <span class="group">🥕 🥕 🥕</span>
+              </div>
+              <div class="visual-note">两个小动物的萝卜合起来，一共是多少？</div>
+            </div>
+          </div>
+        </div>
+        <div class="line-label">算式：</div>
+        <div class="line"></div>
+        <div class="line-label">答案：</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="num">6</div>
+          <div class="q-wrap">
+            <p class="question">篮子里有14个鸡蛋，用了5个，还剩多少个？</p>
+            <div class="visual">
+              <div class="visual-row">
+                <span class="group">🥚 🥚 🥚 🥚 🥚 🥚 🥚 🥚 🥚 🥚 🥚 🥚 🥚 🥚</span>
+              </div>
+              <div class="visual-row" style="margin-top:10px;">
+                <span>用了：</span>
+                <span class="group"><span class="strike">🥚 🥚 🥚 🥚 🥚</span></span>
+              </div>
+              <div class="visual-note">“用了”也是少了一部分，所以常常用减法。</div>
+            </div>
+          </div>
+        </div>
+        <div class="line-label">算式：</div>
+        <div class="line"></div>
+        <div class="line-label">答案：</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="num">7</div>
+          <div class="q-wrap">
+            <p class="question">小明有6本书，又买了4本，现在一共有多少本？</p>
+            <div class="visual">
+              <div class="visual-row">
+                <span class="group">📘 📘 📘 📘 📘 📘</span>
+                <span>+</span>
+                <span class="group">📗 📗 📗 📗</span>
+              </div>
+              <div class="visual-note">“又买了”表示又增加了一些，数量变多了。</div>
+            </div>
+          </div>
+        </div>
+        <div class="line-label">算式：</div>
+        <div class="line"></div>
+        <div class="line-label">答案：</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="num">8</div>
+          <div class="q-wrap">
+            <p class="question">树上有13只鸟，飞走了6只，还剩多少只？</p>
+            <div class="visual">
+              <div class="visual-row">
+                <span class="group">🐦 🐦 🐦 🐦 🐦 🐦 🐦 🐦 🐦 🐦 🐦 🐦 🐦</span>
+              </div>
+              <div class="visual-row" style="margin-top:10px;">
+                <span>飞走：</span>
+                <span class="group"><span class="strike">🐦 🐦 🐦 🐦 🐦 🐦</span></span>
+              </div>
+              <div class="visual-note">看图先想：原来有一些，后来飞走一些，最后会变少。</div>
+            </div>
+          </div>
+        </div>
+        <div class="line-label">算式：</div>
+        <div class="line"></div>
+        <div class="line-label">答案：</div>
+        <div class="line"></div>
+      </div>
+
+    </div>
+
+    <div class="footer">读题三步：先看变多还是变少 → 再看图上是合起来还是拿走了 → 最后写算式</div>
+  </div>
+</body>
+</html>

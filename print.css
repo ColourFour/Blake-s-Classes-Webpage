@@ -1,0 +1,32 @@
+@page { margin: 11mm; }
+html, body { background: white !important; }
+body { color: #111; font-size: 11pt; }
+.no-print, .site-bar, .page-nav { display: none !important; }
+.home, .worksheet { width: 100%; padding: 0; }
+.home-hero, .adventure-hero, .parent-note, .task-section, .adult-support, .bonus-card, .week-map, .problem-card {
+  box-shadow: none !important;
+  background: white !important;
+}
+.adventure-hero {
+  grid-template-columns: 1fr 45mm;
+  padding: 8mm;
+  border: 2pt solid #222;
+}
+h1 { font-size: 26pt; }
+h2 { font-size: 17pt; }
+.parent-note, .task-section, .adult-support, .bonus-card { margin-top: 5mm; padding: 5mm; border: 1.5pt solid #333; }
+.task-grid { grid-template-columns: 1fr 1fr; gap: 5mm; }
+.problem-card { min-height: 70mm; padding: 4mm; border: 1.5pt solid #333; break-inside: avoid; page-break-inside: avoid; }
+.problem-number { background: #111 !important; color: white !important; }
+.prompt { min-height: 16mm; font-size: 14pt; }
+.visual { min-height: 30mm; border: 1.5pt dashed #555; background: white !important; }
+.answer-line { height: 12mm; border-bottom: 1.5pt solid #222; }
+.avatar { border-color: #222; }
+.stamp-box, .charm-box { border: 1.5pt dashed #222; min-height: 18mm; }
+.adult-support { break-inside: avoid; page-break-inside: avoid; }
+.support-grid { grid-template-columns: 1fr 1fr; gap: 4mm; }
+.support-grid > div { border: 1pt solid #333; }
+.dot-row, .shape-set, .position-row, .queue, .bonus-scene { color: #111; }
+.ten-frame span, .mini-grid span, .number-path span, .pattern-row span, .map-grid span, .shape-token { border-color: #111; }
+.ten-frame .filled, .compare-bars span, .queue .marked, .overlap b { background: #ddd !important; }
+@media print { body[data-lang="zh"] .lang.en, body[data-lang="en"] .lang.zh { display: none !important; } }
