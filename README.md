@@ -75,3 +75,9 @@ Fixes: help now models a target without advancing; recognition requires selectin
 Run `node scripts/audit-child-flow.js` in addition to the existing checks. It exercises 866 recognition/build screens across all 60 chapters, repeated help, wrong answers, missing speech support, completion, and duplicate rewards. Browser checks include English matching and word building, Chinese recognition, repeated help, reload/resume, mobile layout, game-help pause, and return to the story.
 
 Limits: guided selection is participation, not proof of independent reading. Oral language, retelling, and handwriting still need a grown-up. Audio depends on installed device voices. This was a simulated behavior audit, not observation of a child using the site. Earned games remain available, and no timer or punitive relocking was introduced.
+
+## Picture-first entry
+
+`picture-home.js` and `picture-home.css` provide the child-facing presentation. Two large generated picture buttons start or resume English (Bunny) and Chinese (Panda) directly. The welcome screen is a character picture with an arrow, and lesson directions speak on entry. Navigation, next/help/listen/save actions, story choices, and chapter stepping stones use pictures or icons; accessible text labels remain. The curriculum, earned rewards, and storage format are unchanged. Adult explanations remain in expandable notes and the grown-up dialog. Browser speech requires a suitable installed voice.
+
+The artwork is stored in `assets/picture-entrances.jpg`; it was generated with the built-in ImageGen tool. Run `node scripts/audit-picture-home.js` to check both picture entry points, language routing, welcome presentation, and save-to-home behavior. Browser preview was unavailable during this update; no visual browser verification is claimed for this release.
