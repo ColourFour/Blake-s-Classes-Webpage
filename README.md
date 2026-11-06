@@ -34,6 +34,21 @@ Audio uses installed American English/Mandarin browser voices. There is no micro
 
 Original math materials remain at `math.html`; the math generator continues to write that file without overwriting the reading homepage.
 
+## Story games
+
+Each completed chapter contributes its unique piece to a ten-piece collection. The tenth piece triggers an assembly animation and reveals a replayable game. Assisted completion counts, revisits never duplicate pieces, and losing a game never changes reading progress. Previously completed chapters also count automatically.
+
+| Story | Game |
+| --- | --- |
+| English 1 | Bunny Flight — flap through flower gates |
+| English 2 | Picnic Catch — catch falling fruit |
+| English 3 | Rainbow Run — jump over garden blocks |
+| Chinese 1 | Blossom Pairs — find six matching picture pairs |
+| Chinese 2 | Cloud Stack — stack ten blocks |
+| Chinese 3 | Gem Bounce — bounce a ball into gems |
+
+`arcade.js` contains the original canvas/DOM games. The action games offer a gentle setting, and all games support pause, restart, and replay. Touch and keyboard controls are available; optional synthesized sound defaults off. Leaving the tab pauses play. Scores are stored separately in `reading-garden-arcade-v1`. No countdowns, ads, purchases, or online services are used. Animation respects reduced-motion preferences.
+
 ## Checks
 
 Run from this directory:
@@ -41,8 +56,12 @@ Run from this directory:
 ```
 node --check reading.js
 node --check curriculum.js
+node --check arcade.js
+node scripts/audit-arcade.js
 node scripts/audit-reading.js
 node scripts/audit-site.js
 ```
 
 Reading checks cover all 60 chapters, alphabet coverage, target counts and lengths, cumulative passage vocabulary, required activity stages, local assets, American spelling, absence of time estimates, legacy state migration, and unavailable storage. Browser QA covers word-building mistakes/corrections, hints, audio controls, chapter completion, drawing return, reload/resume, and bilingual navigation. Browser speech pronunciation must still be reviewed on the child's own device.
+
+Game checks cover six catalogs, unlock guards, all game outcomes, pause/restart/close, and local scores. Browser checks cover nine-to-ten-piece completion, replay access after reload, all six game interfaces, and mobile layout.
