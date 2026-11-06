@@ -95,3 +95,9 @@ The artwork is stored in `assets/picture-entrances.jpg`; it was generated with t
 This increases the effort needed to succeed through random clicking, but cannot prove reading or prevent lucky guesses. The checks measure successful selections/reconstruction within these activities, not independent reading proficiency. Device voices are still required for spoken models; a grown-up can supply them when unavailable. Existing earned pieces and chapters are preserved.
 
 Run `node scripts/audit-practice-loop.js`. It covers watching/copying without credit, two correct checks, resetting after a wrong answer or Help, changing answer positions, rapid-click rejection, cancellation, and English/Chinese/build sequences. Browser connection was unavailable during this iteration; no visual verification is claimed.
+
+## Full-page activities for iPad
+
+Lessons, games, and grown-up information now use normal document sections, not dialogs or overlays. `page-views.js` switches the visible page and preserves close/cleanup events; `page-router.js` gives each activity an address such as `#/read/en-1/1/3`. Refresh and browser Back restore reached activities. A manually edited address cannot jump ahead of saved/visited progress. The drawing round trip and game return preserve their parent flow.
+
+`activity-pages.css` provides generous touch targets, portrait/landscape rules, safe-area spacing, one document scroll surface, and a sticky top navigation bar. Pinch zoom remains available. Run `node scripts/audit-pages.js` for page lifecycle, routing, restoration, and URL skip protection; the existing reading and practice checks also pass. Browser connection was unavailable, so iPad/Safari visual and device verification has not been performed.

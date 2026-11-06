@@ -2,9 +2,10 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const nodes=new Map(),storage=new Map();let scheduled=0,canceled=0;
 const context=new Proxy({createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]||(()=>{})});
-function node(){return {classList:{add(){},remove(){}},checked:true,hidden:false,disabled:false,textContent:'',children:[],events:{},setAttribute(){},addEventListener(k,f){this.events[k]=f},closest(){return this},getContext(){return context},showModal(){this.open=true},close(){this.open=false;this.events.close?.()},focus(){},replaceChildren(){this.children=[]},append(n){this.children.push(n)}};}
+function node(){return {dataset:{},classList:{add(){},remove(){}},checked:true,hidden:false,disabled:false,textContent:'',children:[],events:{},setAttribute(){},addEventListener(k,f){this.events[k]=f},closest(){return this},getContext(){return context},showModal(){this.open=true},close(){this.open=false;this.events.close?.()},focus(){},replaceChildren(){this.children=[]},append(n){this.children.push(n)}};}
 const document={getElementById(id){if(!nodes.has(id))nodes.set(id,node());return nodes.get(id)},createElement:node,addEventListener(){}};
 const sandbox={window:{addEventListener(){}},document,localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},performance:{now:()=>0},requestAnimationFrame:()=>++scheduled,cancelAnimationFrame:()=>canceled++};
+sandbox.PageViews={open:id=>document.getElementById(id).showModal(),close:id=>document.getElementById(id).close()};
 let code=fs.readFileSync(path.join(__dirname,'../arcade.js'),'utf8').replace('return {catalog,open};','return {catalog,open,start,pause,action,update,flip,stop,get:()=>g};');vm.runInNewContext(code,sandbox);const a=sandbox.window.StoryArcade;
 assert.equal(Object.keys(a.catalog).length,6);for(const c of Object.values(a.catalog)){assert.equal(c.pieces.length,10);assert.equal(c.name.length,2);}
 for(const count of [0,9])assert.equal(a.open('en-1',()=>count===10,'en'),false);assert.equal(a.open('missing',()=>true,'en'),false);
