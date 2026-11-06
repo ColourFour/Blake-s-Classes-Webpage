@@ -15,12 +15,13 @@ function count(haystack, needle) {
 
 const htmlFiles = [
   "index.html",
+  "math.html",
   "printable.html",
   "full-program-print.html",
   ...fs.readdirSync(".").filter((file) => /^week-.*\.html$/.test(file)).sort()
 ];
 
-const home = read("index.html");
+const home = read("math.html");
 if (!home.includes("data-buddy-status")) fail("index.html is missing buddy reward status");
 for (let week = 1; week <= 12; week += 1) {
   const id = String(week).padStart(2, "0");
@@ -91,3 +92,4 @@ for (const file of ["script.js", "styles.css", "scripts/generate-site.js", ...ht
 if (!process.exitCode) {
   console.log(`Audit passed for ${htmlFiles.length} HTML files.`);
 }
+

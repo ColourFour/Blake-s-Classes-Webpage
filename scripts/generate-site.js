@@ -2158,7 +2158,7 @@ function write(file, contents) {
   fs.writeFileSync(path.join(root, file), contents, "utf8");
 }
 
-write("index.html", indexHtml());
+write("math.html", indexHtml());
 write("printable.html", legacyPrintableHtml());
 write("styles.css", styles);
 write("print.css", printCss);
@@ -2195,6 +2195,6 @@ Static printable bilingual Grade 1 math program.
 Run \`node scripts/generate-site.js\` after editing the generator to rebuild all pages.
 Run \`node scripts/audit-site.js\` before publishing.
 `;
-write("README.md", readme);
+// The reading homepage and README are maintained separately.
 
 console.log("Generated index, shared assets, 60 daily pages, 12 weekly challenges, 12 reward games, 12 weekly print packets, and the full-program print packet.");
