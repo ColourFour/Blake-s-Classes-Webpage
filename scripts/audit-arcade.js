@@ -2,15 +2,16 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
 const nodes=new Map(),storage=new Map();let scheduled=0,canceled=0;
 const context=new Proxy({createLinearGradient:()=>({addColorStop(){}})},{get:(o,k)=>o[k]||(()=>{})});
-function node(){return {checked:true,hidden:false,disabled:false,textContent:'',children:[],events:{},setAttribute(){},addEventListener(k,f){this.events[k]=f},closest(){return this},getContext(){return context},showModal(){this.open=true},close(){this.open=false;this.events.close?.()},focus(){},replaceChildren(){this.children=[]},append(n){this.children.push(n)}};}
+function node(){return {classList:{add(){},remove(){}},checked:true,hidden:false,disabled:false,textContent:'',children:[],events:{},setAttribute(){},addEventListener(k,f){this.events[k]=f},closest(){return this},getContext(){return context},showModal(){this.open=true},close(){this.open=false;this.events.close?.()},focus(){},replaceChildren(){this.children=[]},append(n){this.children.push(n)}};}
 const document={getElementById(id){if(!nodes.has(id))nodes.set(id,node());return nodes.get(id)},createElement:node,addEventListener(){}};
 const sandbox={window:{addEventListener(){}},document,localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},performance:{now:()=>0},requestAnimationFrame:()=>++scheduled,cancelAnimationFrame:()=>canceled++};
 let code=fs.readFileSync(path.join(__dirname,'../arcade.js'),'utf8').replace('return {catalog,open};','return {catalog,open,start,pause,action,update,flip,stop,get:()=>g};');vm.runInNewContext(code,sandbox);const a=sandbox.window.StoryArcade;
 assert.equal(Object.keys(a.catalog).length,6);for(const c of Object.values(a.catalog)){assert.equal(c.pieces.length,10);assert.equal(c.name.length,2);}
 for(const count of [0,9])assert.equal(a.open('en-1',()=>count===10,'en'),false);assert.equal(a.open('missing',()=>true,'en'),false);
 function begin(id){assert.equal(a.open(id,()=>true,'en'),true);a.start();assert.equal(a.get().mode,'playing');return a.get();}
-let g=begin('en-1');a.action();assert.ok(g.vy<0);a.pause();assert.equal(g.mode,'paused');a.pause();assert.equal(g.mode,'playing');g.y=390;a.update(.01);assert.equal(g.mode,'ended');a.start();assert.equal(a.get().mode,'playing');
+let g=begin('en-1');a.action();assert.ok(g.vy<0);a.pause();assert.equal(g.mode,'paused');a.pause();assert.equal(g.mode,'playing');g.y=390;a.update(.01);assert.equal(g.mode,'playing');assert.equal(g.lives,4);g.lives=1;g.y=390;a.update(.01);assert.equal(g.mode,'ended');a.start();assert.equal(a.get().mode,'playing');
 g=begin('en-1');g.objects=[{x:119,gap:210,passed:false}];a.update(0);assert.equal(g.score,1);
+g=begin('en-1');g.score=9;g.objects=[{x:119,gap:210,passed:false}];a.update(0);assert.equal(g.mode,'won');
 g=begin('en-2');g.spawn=99;g.objects=Array.from({length:20},()=>({x:g.player,y:350}));a.update(0);assert.equal(g.mode,'won');assert.equal(g.score,20);
 g=begin('en-2');g.spawn=99;g.lives=1;g.objects=[{x:0,y:426}];a.update(0);assert.equal(g.mode,'ended');
 g=begin('en-3');a.action();assert.ok(g.vy<0);g.vy=0;g.y=307;g.objects=[{x:100,w:40,h:40,passed:false}];a.update(0);assert.equal(g.mode,'ended');

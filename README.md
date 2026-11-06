@@ -65,3 +65,13 @@ node scripts/audit-site.js
 Reading checks cover all 60 chapters, alphabet coverage, target counts and lengths, cumulative passage vocabulary, required activity stages, local assets, American spelling, absence of time estimates, legacy state migration, and unavailable storage. Browser QA covers word-building mistakes/corrections, hints, audio controls, chapter completion, drawing return, reload/resume, and bilingual navigation. Browser speech pronunciation must still be reviewed on the child's own device.
 
 Game checks cover six catalogs, unlock guards, all game outcomes, pause/restart/close, and local scores. Browser checks cover nine-to-ten-piece completion, replay access after reload, all six game interfaces, and mobile layout.
+
+## Child-perspective adversarial audit
+
+The 2026-11-06 audit tested a beginning reader who wants to reach games quickly. It found skip buttons on recognition/building tasks, self-reported recall without an interaction, text-heavy adult instructions, intimidating long step counts, controls pushed off-screen by letter spacing, and one-collision flight rounds.
+
+Fixes: help now models a target without advancing; recognition requires selecting it and word-building requires placing each sound-spelling. Incorrect tiles are rejected immediately with guidance. Recall uses supported recognition rather than an unverified “I tried” button. Every lesson has spoken directions and expandable adult notes. Activity groups contain at most five screens, with optional save/rest checkpoints; all original chapter material and saved positions are retained. Compact layouts keep primary controls visible. Games have spoken directions, a story-return control, and a prominent return option after a round. Flight has hearts and a ten-gate finish.
+
+Run `node scripts/audit-child-flow.js` in addition to the existing checks. It exercises 866 recognition/build screens across all 60 chapters, repeated help, wrong answers, missing speech support, completion, and duplicate rewards. Browser checks include English matching and word building, Chinese recognition, repeated help, reload/resume, mobile layout, game-help pause, and return to the story.
+
+Limits: guided selection is participation, not proof of independent reading. Oral language, retelling, and handwriting still need a grown-up. Audio depends on installed device voices. This was a simulated behavior audit, not observation of a child using the site. Earned games remain available, and no timer or punitive relocking was introduced.

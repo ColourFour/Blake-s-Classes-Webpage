@@ -6,3 +6,8 @@
 .assembled .game-mosaic{position:relative;overflow:hidden}.assembled .game-mosaic::after{content:attr(data-icon);position:absolute;inset:0;display:grid;place-items:center;font-size:88px;background:linear-gradient(120deg,#d7efdce8,#ece0fae8);border-radius:16px;border:2px solid #b7ce9d}.assembled.celebrating .game-mosaic::after{animation:portal 1.8s both}@media(prefers-reduced-motion:reduce){.assembled.celebrating .game-mosaic::after{animation:none}}
 
 #arcadeCanvas{display:block;width:min(100%,65dvh);margin-inline:auto}
+
+.choices .guided{outline:4px solid #d8ad36;outline-offset:3px;background:#fff0b7}#lessonBody details{font-size:14px;color:#4d6156;margin:16px 0}#lessonBody summary{cursor:pointer;padding:10px}#lessonDirections,#arcadeHelp{font-size:15px;padding:10px 14px;margin-top:8px}#arcadeDialog #arcadeCanvas{width:min(100%,56dvh)}
+#lessonBody .big-symbol{margin:10px 0;line-height:1.15;font-size:clamp(64px,12vh,96px)}#lessonTitle{font-size:25px;margin:12px 0}#lessonBody .choices{margin:16px 0}#lessonBody .example{font-size:19px}
+
+#lessonDialog progress{margin:8px 0}#lessonDirections{margin:0;white-space:nowrap}.lesson-footer{margin-top:12px;padding-top:10px}#lessonDialog .dialog-top{gap:6px}#stepLabel{font-size:12px}
