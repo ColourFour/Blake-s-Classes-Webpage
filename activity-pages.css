@@ -4,3 +4,12 @@
 #arcadeDialog.activity-screen{max-width:1100px;padding:24px;min-height:100dvh}#arcadeDialog #arcadeCanvas{display:block;width:min(100%,72vh,720px);height:auto;margin:16px auto;max-height:none}#arcadeDialog .arcade-buttons{gap:16px;padding:12px 0 max(16px,env(safe-area-inset-bottom))}#arcadeDialog .arcade-buttons button{min-height:64px;min-width:82px;font-size:21px}#memoryBoard{max-width:700px;margin:20px auto}#parentDialog.activity-screen{max-width:950px}#parentBody{font-size:18px;line-height:1.65}button{touch-action:manipulation}html{scroll-padding-top:90px}
 @media(min-width:700px) and (orientation:landscape){.activity-screen{padding-top:12px}.activity-screen #lessonBody{padding-top:4px;padding-bottom:6px}.activity-screen .practice-demo{padding:14px;margin:5px 0}.activity-screen .practice-phase{margin:4px 0}.activity-screen #lessonActions{padding:8px 14px}.activity-screen .lesson-footer{margin-top:6px}.activity-screen #lessonTitle{margin:3px 0}#arcadeDialog #arcadeCanvas{width:min(100%,72vh,640px)}}
 @media(max-width:600px){.activity-screen,#arcadeDialog.activity-screen{padding:10px 14px;min-height:100dvh}.activity-screen>.dialog-top{gap:8px;min-height:58px}.activity-screen>.dialog-top button{min-width:52px;min-height:52px;font-size:24px;padding:6px 10px}.activity-screen #stepLabel{font-size:12px}.activity-screen #lessonBody .choices{gap:12px}.activity-screen #lessonBody .choices button{min-width:72px;min-height:76px;font-size:34px}.activity-screen #lessonActions{gap:14px}.activity-screen #lessonActions button{min-width:76px;min-height:62px}.activity-screen .practice-phase{font-size:28px}.activity-screen #feedback{font-size:16px}.activity-screen #lessonTitle{font-size:19px}.activity-screen .practice-demo{padding:14px}.activity-screen #lessonBody{padding-inline:8px}.activity-screen .reading-text{font-size:24px}}
+
+/* Keep punctuation and reading order intact when a child taps a word to hear it. */
+.reading-text .spoken-word {
+  font:inherit; color:inherit; line-height:inherit; min-height:44px; padding:0 .08em;
+  border:0; border-radius:4px; background:transparent;
+  text-decoration:underline dotted #769789; text-underline-offset:.22em;
+}
+.reading-text .playing-word,.reading-text .spoken-word:focus-visible,.reading-text .spoken-word:active {background:#ffeba6}
+.reading-text[lang="zh-CN"] .spoken-word {min-width:1.55em}

@@ -1,0 +1,228 @@
+Lesson word recordings
+
+All clips are derived from human recordings. Source attribution, source terms and original clip links are listed below. Adaptations include trimming, volume matching and mono MP3 encoding. Isolated syllable excerpts and homophonous source characters are noted by their original label. Each recording retains its source license.
+
+License texts and credits
+GPL version 3 or later: ../star-audio/GPL-3.0.txt
+Curious Learning: ../star-audio/Curious-Learning-LICENSE.txt
+https://creativecommons.org/licenses/by/2.0/fr/
+https://creativecommons.org/licenses/by/3.0/us/
+https://creativecommons.org/licenses/by-sa/3.0/us/
+https://creativecommons.org/licenses/by-sa/4.0/
+https://creativecommons.org/licenses/by/4.0/
+
+en / a — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-a-unstressed.flac
+en / am — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-am.flac
+en / an — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-an-unstressed.flac
+en / apple — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/apple.ogg
+en / at — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-at.flac
+en / back — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/back.ogg
+en / bag — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/bag.ogg
+en / bat — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/bat.ogg
+en / bath — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/bath.ogg
+en / bed — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/bed.ogg
+en / bell — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/bell.ogg
+en / best — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-best.flac
+en / big — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/big.ogg
+en / blend — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-blend.flac
+en / bug — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/bug.ogg
+en / bun — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/bun.ogg
+en / camp — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/camp.ogg
+en / can — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/can.ogg
+en / cap — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/cap.ogg
+en / cat — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/cat.ogg
+en / chat — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/chat.ogg
+en / chick — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/chick.ogg
+en / chin — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/chin.ogg
+en / chop — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/chop.ogg
+en / clap — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/clap.ogg
+en / crisp — Vealhurl, Lingua Libre | CC BY-SA 4.0 | first syllable of “crispy” | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-crispy.wav
+en / cup — Curious Learning, Feed the Monster | CC BY | https://github.com/curiouslearning/ftm-languagepacks/blob/435296e948fcfc224e280d05565f7ff3a4d43fb7/USENGLISH/sounds/words/cup.wav
+en / dig — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/dig.ogg
+en / dip — Vealhurl, Lingua Libre | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:LL-Q1860_(eng)-Vealhurl-dip.wav
+en / dish — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/dish.ogg
+en / dog — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/dog.ogg
+en / duck — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/duck.ogg
+en / egg — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/egg.ogg
+en / fan — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/fan.ogg
+en / fish — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/fish.ogg
+en / flag — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/flag.ogg
+en / flat — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/flat.ogg
+en / fox — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/fox.ogg
+en / frog — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/frog.ogg
+en / fun — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/fun.ogg
+en / glad — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-glad.flac
+en / go — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-go.flac
+en / grand — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-grand.flac
+en / hand — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/hand.ogg
+en / hat — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/hat.ogg
+en / help — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-help.flac
+en / hen — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/hen.ogg
+en / hit — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/hit.ogg
+en / hop — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/hop.ogg
+en / hot — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/hot.ogg
+en / in — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-in.flac
+en / is — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-is.flac
+en / it — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-it.flac
+en / jet — Curious Learning, Feed the Monster | CC BY | https://github.com/curiouslearning/ftm-languagepacks/blob/435296e948fcfc224e280d05565f7ff3a4d43fb7/USENGLISH/sounds/words/jet.wav
+en / kit — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-kit.flac
+en / leg — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/leg.ogg
+en / lip — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/lip.ogg
+en / list — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-list.flac
+en / log — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/log.ogg
+en / lost — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-lost.flac
+en / man — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/man.ogg
+en / map — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/map.ogg
+en / mat — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/mat.ogg
+en / milk — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/milk.ogg
+en / moth — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-moth.flac
+en / much — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-much.flac
+en / mud — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/mud.ogg
+en / nap — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/nap.ogg
+en / nest — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/nest.ogg
+en / net — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/net.ogg
+en / nut — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/nut.ogg
+en / on — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/on.ogg
+en / pan — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/pan.ogg
+en / pen — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/pen.ogg
+en / pet — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/pet.ogg
+en / pig — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/pig.ogg
+en / pin — Curious Learning, Feed the Monster | CC BY | https://github.com/curiouslearning/ftm-languagepacks/blob/435296e948fcfc224e280d05565f7ff3a4d43fb7/USENGLISH/sounds/words/pin.WAV
+en / plan — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-plan.flac
+en / plant — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/plant.ogg
+en / pond — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/pond.ogg
+en / pot — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/pot.ogg
+en / pup — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-pup.flac
+en / queen — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/queen.ogg
+en / rag — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/rag.ogg
+en / red — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/red.ogg
+en / rest — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-rest.flac
+en / rich — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-rich.flac
+en / ring — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-ring.flac
+en / rug — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/rug.ogg
+en / run — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/run.ogg
+en / sand — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/sand.ogg
+en / sat — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/sat.ogg
+en / shell — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/shell.ogg
+en / ship — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/ship.ogg
+en / shop — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/shop.ogg
+en / sing — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/sing.ogg
+en / sit — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/sit.ogg
+en / skip — Commander Keane (2019) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:En-au-skip.ogg
+en / sled — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/sled.ogg
+en / sock — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/sock.ogg
+en / spin — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-spin.flac
+en / stamp — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/stamp.ogg
+en / stand — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/stand.ogg
+en / step — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/step.ogg
+en / stop — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/stop.ogg
+en / sun — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/sun.ogg
+en / swim — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/swim.ogg
+en / tap — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-tap.flac
+en / tent — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/tent.ogg
+en / that — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-that.flac
+en / the — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-the-stressed.flac
+en / thick — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/thick.ogg
+en / thin — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | first word of “thin-skinned” | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-thin-skinned.flac
+en / this — Judith Franck, Association Shtooka (2009) | CC BY 3.0 US | excerpt of “What’s this?” | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-balm-judith/flac/eng-6466358d.flac
+en / tin — Joshua Shreve <j.a.shreve@gmail.com> 2019 / GPL V3+ | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/tin.ogg
+en / tip — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-tip.flac
+en / top — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/top.ogg
+en / up — Curious Learning, Feed the Monster | CC BY | https://github.com/curiouslearning/ftm-languagepacks/blob/435296e948fcfc224e280d05565f7ff3a4d43fb7/AUSTRAILIANENGLISH/sounds/letters/up.wav
+en / us — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-us.flac
+en / van — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/van.ogg
+en / wet — http://www.art4apps.org/ Creative Common License BY-SA | https://github.com/KDE/gcompris-data/blob/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices/en_US/words/wet.ogg
+en / wish — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-wish.flac
+en / yes — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-yes.flac
+en / zip — Betsy Megas (Dvortygirl), Shtooka packaging by Nicolas Vion | Creative Commons Attribution / ShareAlike (source collection) | https://fsi-languages.yojik.eu/audiocollections/detailled/eng-wcp-us/flac/En-us-zip.flac
+zh / 一 — Yue Tan (2009) | CC BY-SA 3.0 US | 一 (yī) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-900e06fe.flac
+zh / 三 — Yue Tan (2009) | CC BY-SA 3.0 US | 三 (sān) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-e9d2be5a.flac
+zh / 上 — Yue Tan (2009) | CC BY-SA 3.0 US | 上 (shàng) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-70dbefe0.flac
+zh / 下 — Yue Tan (2009) | CC BY-SA 3.0 US | 下 (xià) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-07dcdf76.flac
+zh / 不 — Yue Tan (2009) | CC BY-SA 3.0 US | 不 (bù) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-eebf7a43.flac
+zh / 个 — Yue Tan (2009) | CC BY-SA 3.0 US | 个 (gè) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-4bb5cf28.flac
+zh / 中 — Yue Tan (2009) | CC BY-SA 3.0 US | 中 (zhōng) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-d5d15a8b.flac
+zh / 也 — Yue Tan (2009) | CC BY-SA 3.0 US | 也 (yě) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-041d3a4a.flac
+zh / 书 — Yue Tan (2009) | CC BY-SA 3.0 US | 书 (shū) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-5b18b242.flac
+zh / 了 — Wei Gao and Nicolas Vion (2006) | CC BY 2.0 FR | 了 (le) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-balm-hsk1/flac/cmn-628ff6f9.flac
+zh / 二 — Yue Tan (2009) | CC BY-SA 3.0 US | 二 (èr) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-ab8e2857.flac
+zh / 人 — Yue Tan (2009) | CC BY-SA 3.0 US | 人 (rén) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-6434bdce.flac
+zh / 们 — Yue Tan (2009) | CC BY-SA 3.0 US | 们 (men) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-89fb39de.flac
+zh / 会 — Yue Tan (2009) | CC BY-SA 3.0 US | 会 (huì) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-09003a80.flac
+zh / 你 — Yue Tan (2009) | CC BY-SA 3.0 US | 你 (nǐ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-d617d273.flac
+zh / 你好 — Congcong, Association Shtooka (2010) | CC BY 3.0 US | 你好 (nǐhǎo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-balm-congcong/flac/cmn-50a2b841.flac
+zh / 关 — Yue Tan (2009) | CC BY-SA 3.0 US | 关 (guān) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-44f44561.flac
+zh / 写 — Yue Tan (2009) | CC BY-SA 3.0 US | 写 (xiě) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-b462df74.flac
+zh / 去 — Yue Tan (2009) | CC BY-SA 3.0 US | 去 (qù) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-a9db1498.flac
+zh / 友 — Yue Tan (2009) | CC BY-SA 3.0 US | 有 (yǒu) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-1bbe8b92.flac
+zh / 口 — Yue Tan (2009) | CC BY-SA 3.0 US | 口 (kǒu) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-a3acbd8f.flac
+zh / 只 — Wei Gao and Nicolas Vion (2006) | CC BY 2.0 FR | 只 (zhī) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-balm-hsk1/flac/cmn-05dec1b1.flac
+zh / 吃 — Yue Tan (2009) | CC BY-SA 3.0 US | 吃 (chī) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-559893d9.flac
+zh / 和 — Yue Tan (2009) | CC BY-SA 3.0 US | 和 (hé) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-f711ecca.flac
+zh / 回 — Yue Tan (2009) | CC BY-SA 3.0 US | 回 (huí) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-d56a26cb.flac
+zh / 土 — Yue Tan (2009) | CC BY-SA 3.0 US | 土 (tǔ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-ed2c809a.flac
+zh / 在 — Yue Tan (2009) | CC BY-SA 3.0 US | 在 (zài) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-55912595.flac
+zh / 外 — Yue Tan (2009) | CC BY-SA 3.0 US | 外 (wài) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-836f84c5.flac
+zh / 大 — Yue Tan (2009) | CC BY-SA 3.0 US | 大 (dà) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-d2b184ff.flac
+zh / 大人 — Yue Tan (2009) | CC BY-SA 3.0 US | 大人 (dàren) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-392557a4.flac
+zh / 天 — Yue Tan (2009) | CC BY-SA 3.0 US | 天 (tiān) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-3509a9f8.flac
+zh / 好 — Yue Tan (2009) | CC BY-SA 3.0 US | 好 (hǎo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-36c84cc4.flac
+zh / 妈 — Yue Tan (2009) | CC BY-SA 3.0 US | 妈妈 (māma) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-94d6dd46.flac
+zh / 妈妈 — Yue Tan (2009) | CC BY-SA 3.0 US | 妈妈 (māma) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-94d6dd46.flac
+zh / 家 — Yue Tan (2009) | CC BY-SA 3.0 US | 家 (jiā) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-42ee4c87.flac
+zh / 小 — Yue Tan (2009) | CC BY-SA 3.0 US | 小 (xiǎo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-c9aafb50.flac
+zh / 山 — Yue Tan (2009) | CC BY-SA 3.0 US | 山 (shān) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-11d0d7ba.flac
+zh / 山水 — Yue Tan (2009) | CC BY-SA 3.0 US | 山水 (shānshuǐ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-fa8456f6.flac
+zh / 开 — Yue Tan (2009) | CC BY-SA 3.0 US | 开 (kāi) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-f5a0a9cd.flac
+zh / 想 — Yue Tan (2009) | CC BY-SA 3.0 US | 想 (xiǎng) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-10e85cbe.flac
+zh / 我 — Yue Tan (2009) | CC BY-SA 3.0 US | 我 (wǒ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-267cc491.flac
+zh / 我们 — Yue Tan (2009) | CC BY-SA 3.0 US | 我们 (wǒmen) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-830fc462.flac
+zh / 手 — Yue Tan (2009) | CC BY-SA 3.0 US | 手 (shǒu) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-c2050caa.flac
+zh / 日 — Yue Tan (2009) | CC BY-SA 3.0 US | 日 (rì) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-ca923eba.flac
+zh / 是 — Yue Tan (2009) | CC BY-SA 3.0 US | 是 (shì) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-addfcb6b.flac
+zh / 月 — Yue Tan (2009) | CC BY-SA 3.0 US | 月 (yuè) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-6cb9bb04.flac
+zh / 有 — Yue Tan (2009) | CC BY-SA 3.0 US | 有 (yǒu) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-1bbe8b92.flac
+zh / 朋 — Yue Tan (2009) | CC BY-SA 3.0 US | 棚 (péng) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-c7dee070.flac
+zh / 朋友 — Yue Tan (2009) | CC BY-SA 3.0 US | 朋友 (péngyou) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-36296e70.flac
+zh / 木 — Yue Tan (2009) | CC BY-SA 3.0 US | 木 (mù) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-57d79bcc.flac
+zh / 本 — Yue Tan (2009) | CC BY-SA 3.0 US | 本 (běn) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-50ba5fd5.flac
+zh / 来 — Yue Tan (2009) | CC BY-SA 3.0 US | 来 (lái) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-307dd630.flac
+zh / 林 — Yue Tan (2009) | CC BY-SA 3.0 US | 邻 (lín) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-0c74a2f0.flac
+zh / 树 — Yue Tan (2009) | CC BY-SA 3.0 US | 树 (shù) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-7b216a3b.flac
+zh / 森 — Yue Tan (2009) | CC BY-SA 3.0 US | 森林 (sēnlín) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-c72adf2d.flac
+zh / 水 — Yue Tan (2009) | CC BY-SA 3.0 US | 水 (shuǐ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-7ae7ac2d.flac
+zh / 没 — Yue Tan (2009) | CC BY-SA 3.0 US | 没 (méi) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-250c2a44.flac
+zh / 火 — Yue Tan (2009) | CC BY-SA 3.0 US | 火 (huǒ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-3070cc5d.flac
+zh / 爱 — Yue Tan (2009) | CC BY-SA 3.0 US | 爱 (ài) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-1cd08e6e.flac
+zh / 爸 — Yue Tan (2009) | CC BY-SA 3.0 US | 坝 (bà) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-1a39d0f7.flac
+zh / 爸爸 — Yue Tan (2009) | CC BY-SA 3.0 US | 爸爸 (bàba) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-799ef867.flac
+zh / 狗 — Yue Tan (2009) | CC BY-SA 3.0 US | 狗 (gǒu) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-e5f05850.flac
+zh / 猫 — Yue Tan (2009) | CC BY-SA 3.0 US | 猫 (māo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-85deb210.flac
+zh / 田 — Yue Tan (2009) | CC BY-SA 3.0 US | 田 (tián) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-8da0e3a5.flac
+zh / 画 — Yue Tan (2009) | CC BY-SA 3.0 US | 画 (huà) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-1a723a2d.flac
+zh / 白 — Yue Tan (2009) | CC BY-SA 3.0 US | 白 (bái) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-46bfe155.flac
+zh / 的 — Yue Tan (2009) | CC BY-SA 3.0 US | 的 (de) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-32973a9e.flac
+zh / 目 — Yue Tan (2009) | CC BY-SA 3.0 US | 目 (mù) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-f037c209.flac
+zh / 看 — Yue Tan (2009) | CC BY-SA 3.0 US | 看 (kàn) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-f4728089.flac
+zh / 看见 — Yue Tan (2009) | CC BY-SA 3.0 US | 看见 (kànjiàn) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-48256932.flac
+zh / 石 — Yue Tan (2009) | CC BY-SA 3.0 US | 十 (shí) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-44fa9ee9.flac
+zh / 笔 — Yue Tan (2009) | CC BY-SA 3.0 US | 笔 (bǐ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-a63cbb8f.flac
+zh / 米 — Yue Tan (2009) | CC BY-SA 3.0 US | 米 (mǐ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-fc5a62f8.flac
+zh / 米饭 — Yue Tan (2009) | CC BY-SA 3.0 US | 米饭 (mǐfàn) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-45c7369f.flac
+zh / 红 — Yue Tan (2009) | CC BY-SA 3.0 US | 红 (hóng) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-751e9bc1.flac
+zh / 纸 — Yue Tan (2009) | CC BY-SA 3.0 US | 纸 (zhǐ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-887c62bb.flac
+zh / 绿 — Yue Tan (2009) | CC BY-SA 3.0 US | 绿 (lǜ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-0f03c659.flac
+zh / 花 — Yue Tan (2009) | CC BY-SA 3.0 US | 花 (huā) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-25baabd1.flac
+zh / 草 — Yue Tan (2009) | CC BY-SA 3.0 US | 草 (cǎo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-42f98588.flac
+zh / 要 — Yue Tan (2009) | CC BY-SA 3.0 US | 要 (yào) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-3a52f0d3.flac
+zh / 见 — Yue Tan (2009) | CC BY-SA 3.0 US | 见 (jiàn) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-2349c192.flac
+zh / 读 — Yue Tan (2009) | CC BY-SA 3.0 US | 读 (dú) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-2d9c9228.flac
+zh / 读书 — Yue Tan (2009) | CC BY-SA 3.0 US | 读书 (dúshū) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-d78892c0.flac
+zh / 走 — Yue Tan (2009) | CC BY-SA 3.0 US | 走 (zǒu) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-0a63b17b.flac
+zh / 这 — Yue Tan (2009) | CC BY-SA 3.0 US | 这 (zhè) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-b23ec19d.flac
+zh / 那 — Yue Tan (2009) | CC BY-SA 3.0 US | 那 (nà) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-1f183aa6.flac
+zh / 都 — Yue Tan (2009) | CC BY-SA 3.0 US | 都 (dōu) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-fc0c3684.flac
+zh / 里 — Yue Tan (2009) | CC BY-SA 3.0 US | 里 (lǐ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-c9bef3ba.flac
+zh / 门 — Yue Tan (2009) | CC BY-SA 3.0 US | 门 (mén) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-bf7f053a.flac
+zh / 饭 — Yue Tan (2009) | CC BY-SA 3.0 US | 饭 (fàn) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-2265a5c4.flac
+zh / 鸟 — Yue Tan (2009) | CC BY-SA 3.0 US | 鸟 (niǎo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-15de9858.flac
