@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#24254d">
+  <title>Alphabet Stars · Little Reading Garden</title>
+  <link rel="stylesheet" href="stars.css">
+  <script defer src="alphabet-stars.js"></script>
+</head>
+<body class="star-page">
+  <main class="night">
+    <header class="sky-bar">
+      <a class="sky-control" href="index.html" aria-label="Return to the garden">🏠</a>
+      <div class="sky-progress" role="progressbar" aria-label="Stars collected" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0"><span>★</span><progress value="0" max="6" aria-hidden="true"></progress></div>
+      <button class="sky-control" id="options" aria-label="Game settings" aria-expanded="false" aria-controls="settings">⚙</button>
+    </header>
+    <section id="settings" hidden aria-label="Game settings">
+      <fieldset><legend>Letters</legend><label><input type="radio" name="letterCase" value="lower" checked> a b c</label><label><input type="radio" name="letterCase" value="upper"> A B C</label></fieldset>
+      <fieldset><legend>Listen for</legend><label><input type="radio" name="kind" value="name" checked> Letter names</label><label><input type="radio" name="kind" value="sound"> Letter sounds</label></fieldset>
+      <fieldset><legend>Stars in the sky</legend><label><input type="radio" name="size" value="6" checked> 6</label><label><input type="radio" name="size" value="16"> 16</label><label><input type="radio" name="size" value="26"> 26</label></fieldset>
+      <button id="apply" class="big-play" aria-label="Play with these settings">▶</button>
+      <a class="credits-link" href="assets/star-audio/CREDITS.txt">Recording credits</a>
+    </section>
+    <section id="field" aria-label="Alphabet Stars">
+      <div id="board" aria-label="Letter stars"></div>
+      <div class="launch" id="launch"><span class="launch-star" aria-hidden="true">a</span><button class="big-play" id="play" aria-label="Play Alphabet Stars">▶</button></div>
+      <div class="launch" id="finish" hidden><span class="trophy" aria-hidden="true">🌟</span><button id="again" class="big-play" aria-label="Play again">↻</button></div>
+    </section>
+    <div class="sound-dock"><button class="sky-control" id="replay" hidden aria-label="Hear the letter again">🔊</button></div>
+    <p id="sky-status" class="sr-only" role="status"></p>
+  </main>
+</body>
+</html>

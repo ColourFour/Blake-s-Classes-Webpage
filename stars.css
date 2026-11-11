@@ -1,0 +1,95 @@
+:root {
+  --star-shape: polygon(50% 2%,65% 29%,96% 35%,75% 59%,78% 91%,50% 78%,22% 91%,25% 59%,4% 35%,35% 29%);
+  --star-fill: linear-gradient(151deg,#fff9ba 8%,#ffdc69 48%,#ffb842 85%);
+}
+.sky-entrance {
+  position:relative; display:block; height:clamp(88px,12vh,136px); margin:0 0 18px;
+  background:#292a68 url('assets/star-garden.webp') center 75% / 100% auto;
+  border:4px solid white; border-radius:28px; overflow:hidden;
+  box-shadow:0 5px 0 #c9c1da; text-decoration:none;
+}
+.sky-comet,.sky-sample i,.launch-star,.letter-star,.sky-play,.big-play,.sky-control {display:grid; place-items:center}
+.sky-comet {position:absolute;left:49%;top:50%;transform:translate(-50%,-50%);width:78px;height:78px;filter:drop-shadow(0 3px 0 #9c672c)}
+.sky-comet::before {
+  position:absolute; content:'';right:55%;top:39%;width:120%;height:24%;border-radius:80%;transform:rotate(-12deg);
+  background:linear-gradient(90deg,transparent,#ffd797);box-shadow:0 5px 0 -2px #ffb98c90;
+}
+.sky-comet b,.sky-sample i,.launch-star {
+  clip-path:var(--star-shape);background:var(--star-fill);color:#59350e;
+  font:700 40px/1 ui-rounded,'Trebuchet MS',sans-serif;text-align:center;
+}
+.sky-comet b {width:100%;height:100%;display:grid;place-items:center}
+.sky-sample i {position:absolute;width:43px;height:43px;font-size:20px;left:29%;top:40%;transform:rotate(-9deg)}
+.sky-sample i+i {width:50px;height:50px;left:66%;top:13%;font-size:24px;transform:rotate(8deg)}
+.sky-play,.big-play {border-radius:50%;background:#fffcdf;color:#3f5052;border:3px solid #fff;box-shadow:0 4px 0 #cbba94}
+.sky-play {position:absolute;right:16px;bottom:12px;width:48px;height:48px;font-size:23px}
+.sky-entrance:focus-visible,.star-page :focus-visible {outline:4px solid #ffa82d;outline-offset:3px}
+.star-page {margin:0;color:#fff9df;font:600 17px/1.35 ui-rounded,'Trebuchet MS',Arial,sans-serif;background:#272762}
+.star-page * {box-sizing:border-box}
+.star-page [hidden] {display:none!important}
+.star-page button,.star-page a {touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.star-page button {cursor:pointer;font-family:inherit}
+.night {
+  min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:stretch;overflow:hidden;
+  position:relative;isolation:isolate;padding:max(12px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
+  background:#282865 url('assets/star-garden.webp') center bottom / cover no-repeat;
+}
+.sky-bar {display:flex;align-items:center;justify-content:space-between;gap:16px;width:min(100%,1050px);margin:0 auto;position:relative;z-index:2}
+.sky-control {border:2px solid #dedfff;background:#f3f0ff;color:#35345e;width:54px;height:54px;border-radius:19px;font-size:26px;box-shadow:0 4px 0 #67679d;text-decoration:none}
+.sky-progress {display:flex;align-items:center;gap:10px;color:#ffdc66;font-size:26px}
+.sky-progress progress {width:clamp(72px,17vw,160px);height:12px;border:0;border-radius:9px;overflow:hidden;background:#54558b}
+.sky-progress progress::-webkit-progress-bar {background:#54558b}
+.sky-progress progress::-webkit-progress-value {background:#ffdd72;border-radius:8px}
+.sky-progress progress::-moz-progress-bar {background:#ffdd72}
+#field {flex:1;display:grid;place-items:center;min-height:220px;width:100%;margin:0 auto}
+#board,.launch {grid-area:1 / 1}
+#board {width:min(100%,1000px);display:grid;justify-content:center;align-content:center;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(5px,1.3vh,16px) 4px;padding:8px 0}
+#board[data-size="6"] {width:min(100%,590px);grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#board[data-size="16"] {width:min(100%,840px);grid-template-columns:repeat(6,minmax(0,1fr))}
+.letter-star {width:min(100%,12vh,114px);min-width:44px;aspect-ratio:1;justify-self:center;position:relative;isolation:isolate;padding:0;
+  border:none;background:transparent;color:#483212;font:700 clamp(22px,4.5vh,42px)/1 ui-rounded,'Trebuchet MS',sans-serif;
+  filter:drop-shadow(0 3px 0 #b37a37) drop-shadow(0 5px 6px #1412354d)}
+.letter-star::before {content:'';position:absolute;inset:0;clip-path:var(--star-shape);background:var(--star-fill);z-index:-1}
+.letter-star span {transform:translateY(-3%)}
+#board[data-size="6"] .letter-star {width:min(100%,18vh,150px);font-size:clamp(34px,7vh,57px)}
+.letter-star.hint {filter:drop-shadow(0 0 4px white) drop-shadow(0 0 12px #ffcb43)}
+.letter-star.hint::after {content:'👆';position:absolute;bottom:-10%;right:-6%;font-size:clamp(28px,4vh,46px);animation:point 1s ease-in-out infinite}
+.letter-star.miss::before {animation:puff .38s ease-out}
+.letter-star.miss::after {content:'';position:absolute;inset:12%;border:4px dotted #ffe9a4;border-radius:50%;opacity:0;animation:stardust .38s ease-out}
+@keyframes stardust {0%{opacity:.7;transform:scale(.45)}100%{opacity:0;transform:scale(1.14)}}
+.letter-star.shoot {z-index:3;animation:shoot .67s ease-in both}
+.letter-star.shoot::after {content:'';position:absolute;right:65%;width:95%;height:13%;background:linear-gradient(90deg,transparent,#fff2a3);border-radius:90%;transform:rotate(-13deg)}
+.letter-star.collected {visibility:hidden}
+.launch {display:grid;place-items:center;gap:18px}
+.launch-star {width:clamp(135px,22vh,210px);aspect-ratio:1;font-size:clamp(66px,11vh,100px);transform:rotate(-6deg)}
+.big-play {width:78px;height:78px;font-size:36px;cursor:pointer}
+.trophy {font-size:clamp(80px,15vh,150px);filter:drop-shadow(0 5px 12px #ffdd8877)}
+.sound-dock {display:flex;justify-content:center;min-height:64px;padding-bottom:6px}
+#replay {width:68px;height:58px;background:#fff9df}
+#replay.needs-tap {outline:4px solid #ffd656;outline-offset:4px}
+#settings {width:min(100%,500px);margin:auto;align-self:center;border-radius:24px;background:#fff9ec;color:#363456;padding:20px 24px;box-shadow:0 6px 0 #9993b8}
+#settings fieldset {margin:0 0 16px;padding:0;border:none;display:flex;gap:12px;flex-wrap:wrap}
+#settings legend {margin-bottom:6px;font-weight:700}
+#settings label {padding:10px 12px;display:flex;align-items:center;gap:5px;min-height:44px;background:#ece8ff;border-radius:12px;cursor:pointer}
+#settings input {accent-color:#6250a2}
+#settings .big-play {width:62px;height:62px;font-size:26px;margin:12px auto}
+.credits-link {display:block;text-align:center;color:#534973;font-size:14px;padding:10px}
+.sr-only {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@keyframes point {50%{transform:translate(-4px,-6px) scale(.94)}}
+@keyframes puff {45%{transform:scale(.74) rotate(-7deg);opacity:.55}}
+@keyframes shoot {30%{transform:translate(-5%,4%) scale(1.08)}100%{transform:translate(180%,-130%) scale(.36);opacity:0}}
+@media (orientation:portrait) {
+  #board:not([data-size="6"]) {grid-template-columns:repeat(5,minmax(0,1fr))}
+  #board[data-size="16"] {grid-template-columns:repeat(4,minmax(0,1fr))}
+  .night {background-size:auto 100%}
+}
+@media(max-width:550px) {
+  .sky-entrance {height:83px;border-radius:22px;margin-bottom:13px}
+  .sky-comet {width:65px;height:65px}.sky-sample i{left:18%}.sky-sample i+i{left:62%}
+  .sky-play {right:8px;bottom:7px;width:43px;height:43px}
+  #settings {padding:16px}.sky-control{width:48px;height:48px}
+}
+@media (prefers-reduced-motion:reduce) {
+  .letter-star.hint::after,.letter-star.shoot,.letter-star.miss::before,.letter-star.miss::after {animation:none}
+  .letter-star.shoot {opacity:.35}
+}

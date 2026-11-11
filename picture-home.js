@@ -24,7 +24,7 @@ $('homeButton').onclick=pictureHome;
 function enterPictureWorld(track){state.track=track;state.ui=track;save();render();$('start').onclick();}
 $('bunnyStart').onclick=()=>enterPictureWorld('en');$('pandaStart').onclick=()=>enterPictureWorld('zh');
 // Keep language-specific sentences on matching voices when a parent replays the welcome.
-$('welcomeSound').onclick=()=>pictureSay('Tap Bunny for English. Tap Panda for Chinese.','点兔子学英语，点熊猫学汉字。');
+$('welcomeSound').onclick=()=>pictureSay('Tap the shooting star to play with letters. Tap Bunny for English or Panda for Chinese.','点流星玩英文字母游戏，点兔子学英语，点熊猫学汉字。');
 labels.tabLearn=['🗺️','🗺️'];labels.tabGarden=['🌷','🌷'];labels.tabDraw=['🎨','🎨'];labels.parentOpen=['⚙️','⚙️'];labels.backStories=['←','←'];labels.returnLesson=['↩️','↩️'];labels.undo=['↶','↶'];labels.clear=['🧽','🧽'];labels.saveDrawing=['⬇️','⬇️'];
 for(const [id,en,zh] of [['tabLearn','Story map','故事地图'],['tabGarden','My garden','我的花园'],['tabDraw','Draw a picture','画一幅画'],['parentOpen','Grown-up settings and curriculum','家长设置和课程']])$(id).setAttribute('aria-label',tr(en,zh));
 $('tabLearn').onclick=()=>{switchTab('learn');pictureSay('Pick a picture for your story. Start with number one.','选一幅画，打开故事。从一开始。');};

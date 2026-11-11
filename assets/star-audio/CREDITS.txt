@@ -1,0 +1,20 @@
+Alphabet Stars | Recording credits
+
+Letter names
+US English: Joshua Shreve, 2019, GPL version 3 or later.
+British English: Julia Wycherley, 2011, GPL. Z always uses the American “zee.”
+Original Ogg recordings and per-file credits:
+https://github.com/KDE/gcompris-data/tree/5cfd4e4a4236701ec5e9d04a1796b6837d945403/voices
+See GPL-3.0.txt in this directory.
+
+Letter sounds
+Feed the Monster, US English and Australian English language packs, Curious Learning.
+https://github.com/curiouslearning/ftm-languagepacks/tree/435296e948fcfc224e280d05565f7ff3a4d43fb7
+Audio and graphical content are described by the project as Creative Commons Attribution:
+https://github.com/curiouslearning/FeedTheMonsterJS#readme
+https://creativecommons.org/licenses/by/4.0/
+The repository's BSD notice is included in Curious-Learning-LICENSE.txt.
+
+Adaptations for this game: trimmed edge silence, normalized volume,
+and encoded individual clips as mono MP3. File names are the displayed
+letters. The US sound clip for q comes from qu.WAV.
