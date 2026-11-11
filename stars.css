@@ -54,9 +54,35 @@
 #board[data-size="6"] .letter-star {width:min(100%,18vh,150px);font-size:clamp(34px,7vh,57px)}
 .letter-star.hint {filter:drop-shadow(0 0 4px white) drop-shadow(0 0 12px #ffcb43)}
 .letter-star.hint::after {content:'👆';position:absolute;bottom:-10%;right:-6%;font-size:clamp(28px,4vh,46px);animation:point 1s ease-in-out infinite}
-.letter-star.miss::before {animation:puff .38s ease-out}
-.letter-star.miss::after {content:'';position:absolute;inset:12%;border:4px dotted #ffe9a4;border-radius:50%;opacity:0;animation:stardust .38s ease-out}
-@keyframes stardust {0%{opacity:.7;transform:scale(.45)}100%{opacity:0;transform:scale(1.14)}}
+.letter-star.miss {
+  z-index:2; color:#592433;
+  filter:drop-shadow(0 2px 0 #673545);
+}
+.letter-star.miss::before {
+  background:#ffc4b5;
+  clip-path:polygon(50% 7%,58% 23%,77% 7%,75% 28%,97% 25%,84% 43%,100% 52%,80% 61%,92% 83%,69% 77%,66% 98%,49% 82%,31% 97%,30% 76%,6% 84%,18% 62%,0 54%,16% 42%,5% 22%,29% 29%,27% 8%,43% 23%);
+  animation:star-burst .55s ease-out both;
+}
+.letter-star.miss::after {
+  content:''; position:absolute; pointer-events:none; inset:-12%; opacity:0;
+  background:repeating-conic-gradient(from 12deg, #ffd6b4 0 6deg, transparent 6deg 45deg);
+  -webkit-mask:radial-gradient(closest-side, transparent 68%, black 70% 96%, transparent 98%);
+  mask:radial-gradient(closest-side, transparent 68%, black 70% 96%, transparent 98%);
+  animation:burst-rays .55s ease-out;
+}
+.letter-star.miss span::after {
+  content:''; position:absolute; left:76%; bottom:76%; width:.72em; height:.72em;
+  border:2px solid white; border-radius:50%; background-color:#913746;
+  background-image:linear-gradient(45deg,transparent 42%,white 43% 57%,transparent 58%),
+    linear-gradient(-45deg,transparent 42%,white 43% 57%,transparent 58%);
+  background-size:55% 55%; background-repeat:no-repeat; background-position:center;
+}
+@keyframes star-burst {
+  0% {transform:scale(.84)} 35% {transform:scale(1.12)} 100% {transform:scale(.89)}
+}
+@keyframes burst-rays {
+  0% {transform:scale(.62);opacity:0} 25% {opacity:1} 100% {transform:scale(1.12);opacity:0}
+}
 .letter-star.shoot {z-index:3;animation:shoot .67s ease-in both}
 .letter-star.shoot::after {content:'';position:absolute;right:65%;width:95%;height:13%;background:linear-gradient(90deg,transparent,#fff2a3);border-radius:90%;transform:rotate(-13deg)}
 .letter-star.collected {visibility:hidden}
@@ -76,7 +102,6 @@
 .credits-link {display:block;text-align:center;color:#534973;font-size:14px;padding:10px}
 .sr-only {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 @keyframes point {50%{transform:translate(-4px,-6px) scale(.94)}}
-@keyframes puff {45%{transform:scale(.74) rotate(-7deg);opacity:.55}}
 @keyframes shoot {30%{transform:translate(-5%,4%) scale(1.08)}100%{transform:translate(180%,-130%) scale(.36);opacity:0}}
 @media (orientation:portrait) {
   #board:not([data-size="6"]) {grid-template-columns:repeat(5,minmax(0,1fr))}

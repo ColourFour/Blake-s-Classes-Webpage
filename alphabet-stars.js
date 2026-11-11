@@ -103,11 +103,37 @@
     prompt('model');
   }
 
+  function guideRetry() {
+    phase = 'repair';
+    buttons.get(target).classList.add('hint');
+    $('sky-status').textContent = 'Listen again. Touch the glowing star.';
+    playPrompt();
+  }
+
+  function showMiss(button, restoreStar) {
+    phase = 'burst';
+    heard = false;
+    buttons.get(target).classList.remove('hint');
+    button.classList.add('miss');
+    $('sky-status').textContent = 'That was a different star.';
+    if (restoreStar && cleared.length) {
+      const restored = cleared.splice(Math.floor(Math.random() * cleared.length), 1)[0];
+      active.add(restored);
+      buttons.get(restored).classList.remove('collected');
+      buttons.get(restored).disabled = false;
+      updateProgress();
+    }
+    timer = setTimeout(guideRetry, 620);
+  }
+
   function answer(letter) {
     if (!heard || !active.has(letter)) return;
     const button = buttons.get(letter);
     if (phase === 'copy' || phase === 'repair') {
-      if (letter !== target) return;
+      if (letter !== target) {
+        if (phase === 'copy') showMiss(button, false);
+        return;
+      }
       button.classList.remove('hint');
       phase = 'transition';
       timer = setTimeout(() => prompt('find', target), 380);
@@ -117,18 +143,7 @@
     // Hard c and k represent the same isolated sound. Either is a correct choice.
     const sharedSound = settings.kind === 'sound' && 'ck'.includes(target) && 'ck'.includes(letter);
     if (letter !== target && !sharedSound) {
-      phase = 'repair';
-      button.classList.add('miss');
-      buttons.get(target).classList.add('hint');
-      if (cleared.length) {
-        const restored = cleared.splice(Math.floor(Math.random() * cleared.length), 1)[0];
-        active.add(restored);
-        buttons.get(restored).classList.remove('collected');
-        buttons.get(restored).disabled = false;
-        updateProgress();
-      }
-      $('sky-status').textContent = 'Listen again. Touch the glowing star to practice.';
-      playPrompt();
+      showMiss(button, true);
       return;
     }
     phase = 'transition';
@@ -170,6 +185,7 @@
         buttons.get(letter).classList.add('collected');
       }
       if (active.size && phase === 'transition') prompt('find');
+      else if (phase === 'burst') guideRetry();
       else if (active.size) playPrompt();
       else {
         phase = 'won';
