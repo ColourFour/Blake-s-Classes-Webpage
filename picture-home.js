@@ -22,7 +22,7 @@ const pictureBaseFinish=finish;finish=function(note){pictureBaseFinish(note);pic
 $('pauseLesson').onclick=()=>{closeLesson();pictureHome();};
 $('homeButton').onclick=pictureHome;
 function enterPictureWorld(track){state.track=track;state.ui=track;save();render();$('start').onclick();}
-$('bunnyStart').onclick=()=>enterPictureWorld('en');$('pandaStart').onclick=()=>enterPictureWorld('zh');
+$('bunnyStart').onclick=()=>enterPictureWorld('en');
 // Keep language-specific sentences on matching voices when a parent replays the welcome.
 $('welcomeSound').onclick=()=>pictureSay('Tap the shooting star to play with letters. Tap Bunny for English or Panda for Chinese.','点流星玩英文字母游戏，点兔子学英语，点熊猫学汉字。');
 labels.tabLearn=['🗺️','🗺️'];labels.tabGarden=['🌷','🌷'];labels.tabDraw=['🎨','🎨'];labels.parentOpen=['⚙️','⚙️'];labels.backStories=['←','←'];labels.returnLesson=['↩️','↩️'];labels.undo=['↶','↶'];labels.clear=['🧽','🧽'];labels.saveDrawing=['⬇️','⬇️'];

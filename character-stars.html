@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#26295b">
+  <title>月亮兔 · Chinese Character Stars</title>
+  <link rel="stylesheet" href="stars.css">
+  <link rel="stylesheet" href="character-stars.css">
+  <script defer src="character-book.js"></script>
+  <script defer src="character-practice.js"></script>
+  <script defer src="character-stars.js"></script>
+</head>
+<body class="star-page">
+<main class="night rabbit-night">
+  <header class="sky-bar">
+    <a class="sky-control" id="back" href="index.html" aria-label="回花园">🏠</a>
+    <div class="sky-progress" id="meter" hidden><span aria-hidden="true">★</span><progress aria-label="收集的星星" value="0" max="1"></progress></div>
+    <button class="sky-control" id="parents" aria-label="家长指南 · Grown-up guide">⚙</button>
+  </header>
+  <section id="map" class="moon-scene" aria-label="月亮兔的星星地图">
+    <div class="moon-emblem" aria-hidden="true"><span>☾</span><b>🐇</b></div>
+    <h1>猜猜我有多爱你</h1>
+    <div id="path" aria-label="关卡"></div>
+    <button class="big-play" id="go" aria-label="继续冒险">▶</button>
+  </section>
+  <section id="round" class="moon-scene" aria-label="汉字星星" hidden>
+    <div id="cue"></div>
+    <div id="choices" aria-label="选一颗星星"></div>
+    <button class="sky-control" id="listen" aria-label="再听一次">🔊</button>
+  </section>
+  <section id="won" class="moon-scene" hidden>
+    <div class="award" aria-hidden="true">🌟</div>
+    <div id="earned"></div>
+    <button class="big-play" id="advance" aria-label="继续">➜</button>
+  </section>
+  <section id="book" class="moon-scene" hidden>
+    <div class="award" aria-hidden="true">🐇📖</div>
+    <h1>猜猜我有多爱你</h1>
+    <div id="bookSteps"></div>
+    <div id="bookHelp" aria-label="听故事里的词语"></div>
+    <details id="readTogether" class="adult-card"><summary>👨‍👧 Read together · 亲子共读</summary>
+      <p id="readingTask"></p><button id="confirm"></button>
+    </details>
+  </section>
+  <section id="guide" class="moon-scene" hidden lang="en">
+    <article class="adult-card"><h2>Read to the moon</h2>
+      <p>Tap the glowing star together and listen. When the hand disappears, let Lily choose. If a star bursts, copy the glowing answer. She’ll meet it again on her own.</p>
+      <p>Each trail adds four characters. Crowns mix characters, pictures and words. Stars she misses return sooner. Progress and review dates stay in this browser.</p>
+      <p>After the third crown, open your copy of <i>Guess How Much I Love You</i>. Read it together in three parts. Help with unfamiliar print whenever she asks.</p>
+      <a href="index.html#/map/zh">🐼 Original Chinese story map</a>
+      <a href="assets/word-audio/CREDITS.txt">Recording credits</a>
+      <a href="https://www.littlebookdot.com/uploads/1/9/8/4/19848459/%E7%8C%9C%E7%8C%9C%E6%88%91%E6%9C%89%E5%A4%9A%E7%88%B1%E4%BD%A0.pdf">Simplified Chinese reading guide used for character selection</a>
+    </article>
+  </section>
+  <p id="status" class="sr-only" role="status"></p>
+</main>
+</body>
+</html>

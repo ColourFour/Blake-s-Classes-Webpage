@@ -1,0 +1,35 @@
+.rabbit-night {background-image:linear-gradient(#1518392e,#191c4822),url('assets/star-garden.webp')}
+.moon-scene {width:min(100%,800px);margin:auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2.3vh,26px);padding:22px 0}
+.moon-scene h1 {font:600 clamp(20px,3.2vw,30px)/1.35 "PingFang SC",sans-serif;letter-spacing:.15em;margin:0;color:#fff8db;text-shadow:0 2px 5px #282b56}
+.moon-emblem {position:relative;display:grid;place-items:center;width:130px;height:100px;isolation:isolate}
+.moon-emblem span {position:absolute;top:40%;left:50%;transform:translate(-50%,-50%) rotate(-32deg);color:#ffdc86;font:130px/1 Georgia,serif;text-shadow:0 0 25px #ffeb9759}
+.moon-emblem b {font-size:64px;margin:15px 0 0 15px;filter:drop-shadow(0 4px 5px #332853)}
+#path {display:grid;gap:12px;background:#252546e8;border:1px solid #9894bb;border-radius:28px;padding:clamp(14px,3vw,25px);box-shadow:0 6px 15px #23244360}
+.trail {display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,19px)}
+.trail::before {content:attr(data-icon);font-size:27px;margin-right:4px}
+.waypoint {position:relative;min-width:46px;height:46px;border-radius:50%;background:#565572;color:white;border:2px solid #9693ac;font-weight:700;font-size:20px}
+.waypoint:disabled {color:#d4d3e0;opacity:.68;cursor:default}
+.waypoint.past {background:#c3e9bf;color:#2d4b39;border-color:white}
+.waypoint.past::after {content:'✓';position:absolute;right:-5px;bottom:-5px;background:#284b3e;color:white;border:1px solid white;border-radius:100%;font:11px/15px sans-serif;width:15px}
+.waypoint.next,#go {outline:3px solid #ffe491;outline-offset:3px}
+.waypoint.next {background:#ffe49b;color:#3b3045}
+#bookNode {justify-self:center;min-width:96px;border-radius:18px}
+#cue {min-height:80px;display:grid;place-content:center;text-align:center;font-size:45px}
+#cue .sample {padding:4px 25px;border-radius:20px;background:#faf6df;color:#35365a;font-size:clamp(42px,7.5vh,82px)}
+#cue small {color:#fff5dc;font-size:23px;text-shadow:0 2px 3px #201f44}
+#choices {width:min(100%,790px);display:grid;align-items:center;justify-content:center;grid-template-columns:repeat(var(--columns,4),minmax(0,138px));gap:clamp(8px,1.7vw,19px)}
+#choices .letter-star {width:min(100%,15vh,125px);min-width:0;font-family:"PingFang SC","Microsoft YaHei",sans-serif;font-size:clamp(27px,5vh,49px)}
+#choices .word-star {height:clamp(70px,12vh,98px);width:100%;aspect-ratio:auto;font-size:clamp(22px,3.8vw,32px)}
+#choices .word-star::before {clip-path:none;border-radius:24px}
+#choices.words {grid-template-columns:repeat(3,minmax(0,210px))}
+#listen {width:72px;height:58px}
+#listen.needs-tap {outline:4px solid #ffe491;outline-offset:4px}
+.award {font-size:clamp(80px,12vh,140px);filter:drop-shadow(0 4px 8px #303050)}
+#earned,#bookSteps {font-size:30px;letter-spacing:.12em;color:#ffdf7e}
+.adult-card {background:#fffaea;color:#38354d;border-radius:22px;padding:18px 24px;max-width:530px;line-height:1.5}
+.adult-card h2 {margin:0}.adult-card summary,.adult-card button {cursor:pointer;padding:8px}
+.adult-card a {color:#474078;display:block;padding:8px 0}
+#confirm,#bookHelp button {border:2px solid #fff6cf;border-radius:15px;color:#382c43;background:#ffe2a1;padding:10px 16px;font-weight:bold;min-height:48px}
+#bookHelp {display:flex;gap:8px;flex-wrap:wrap;justify-content:center}#bookHelp button {font-size:20px}
+@media(max-width:500px) {#choices {gap:6px}#choices.words {grid-template-columns:minmax(160px,250px)}#choices .word-star {height:58px}.moon-scene{gap:16px}.trail::before{font-size:21px}.waypoint{min-width:44px}}
+@media(max-height:590px) and (min-width:550px) {.moon-emblem{display:none}.moon-scene{padding:8px 0;gap:10px}#path{gap:6px;padding:10px 20px}#cue{min-height:42px}.big-play{height:56px;width:56px}}

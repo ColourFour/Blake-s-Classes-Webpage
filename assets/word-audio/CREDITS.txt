@@ -226,3 +226,27 @@ zh / 里 — Yue Tan (2009) | CC BY-SA 3.0 US | 里 (lǐ) | https://fsi-language
 zh / 门 — Yue Tan (2009) | CC BY-SA 3.0 US | 门 (mén) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-bf7f053a.flac
 zh / 饭 — Yue Tan (2009) | CC BY-SA 3.0 US | 饭 (fàn) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-2265a5c4.flac
 zh / 鸟 — Yue Tan (2009) | CC BY-SA 3.0 US | 鸟 (niǎo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-15de9858.flac
+
+zh / 猜 — Yue Tan (2009), CC BY-SA 3.0 US | source 猜 (cāi) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-3d63171f.flac
+zh / 兔 — Yue Tan (2009), CC BY-SA 3.0 US | source 吐 (tù) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-d126d207.flac
+zh / 子 — Yue Tan (2009), CC BY-SA 3.0 US | source 子 (zǐ) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-bbce9ab9.flac
+zh / 多 — Yue Tan (2009), CC BY-SA 3.0 US | source 多 (duō) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-8ad9c8ee.flac
+zh / 高 — Yue Tan (2009), CC BY-SA 3.0 US | source 高 (gāo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-ea554c69.flac
+zh / 跳 — Yue Tan (2009), CC BY-SA 3.0 US | source 跳 (tiào) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-a15c8243.flac
+zh / 长 — Wei Gao and Nicolas Vion (2006), CC BY 2.0 FR | source 长 (cháng) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-balm-hsk1/flac/cmn-dbdc313e.flac
+zh / 到 — Yue Tan (2009), CC BY-SA 3.0 US | source 到 (dào) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-68536a96.flac
+zh / 亮 — Yue Tan (2009), CC BY-SA 3.0 US | source 亮 (liàng) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-7eee69b3.flac
+zh / 他 — Yue Tan (2009), CC BY-SA 3.0 US | source 他 (tā) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-4ff7e06c.flac
+zh / 再 — Yue Tan (2009), CC BY-SA 3.0 US | source 再 (zài) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-aeb80b09.flac
+zh / 说 — Yue Tan (2009), CC BY-SA 3.0 US | source 说 (shuō) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-bd238fb9.flac
+zh / 兔子 — Yue Tan (2009), CC BY-SA 3.0 US | source 兔子 (tùzi) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-f8e02128.flac
+zh / 月亮 — Yue Tan (2009), CC BY-SA 3.0 US | source 月亮 (yuèliang) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-cc6bbd58.flac
+zh / 大小 — Yue Tan (2009), CC BY-SA 3.0 US | source 大小 (dàxiǎo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-94bb113a.flac
+zh / 上下 — Yue Tan (2009), CC BY-SA 3.0 US | source 上下 (shàngxià) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-66d9ebd9.flac
+zh / 回来 — Yue Tan (2009), CC BY-SA 3.0 US | source 回来 (huílái) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-c33ea426.flac
+zh / 那里 — Yue Tan (2009), CC BY-SA 3.0 US | source 那里 (nàli) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-228e9458.flac
+zh / 这里 — Yue Tan (2009), CC BY-SA 3.0 US | source 这里 (zhèli) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-2ff5230f.flac
+zh / 天上 — Yue Tan (2009), CC BY-SA 3.0 US | source 天上 (tiānshàng) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-cd1572b9.flac
+zh / 跳高 — Yue Tan (2009), CC BY-SA 3.0 US | source 跳高 (tiàogāo) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-f3e19847.flac
+zh / 下来 — Yue Tan (2009), CC BY-SA 3.0 US | source 下来 (xiàlái) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-e9c485fa.flac
+zh / 上来 — Yue Tan (2009), CC BY-SA 3.0 US | source 上来 (shànglái) | https://fsi-languages.yojik.eu/audiocollections/detailled/cmn-caen-tan/flac/cmn-5178e29f.flac
