@@ -42,16 +42,28 @@
 .sky-progress progress::-webkit-progress-value {background:#ffdd72;border-radius:8px}
 .sky-progress progress::-moz-progress-bar {background:#ffdd72}
 #field {flex:1;display:grid;place-items:center;min-height:220px;width:100%;margin:0 auto}
-#board,.launch {grid-area:1 / 1}
-#board {width:min(100%,1000px);display:grid;justify-content:center;align-content:center;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(5px,1.3vh,16px) 4px;padding:8px 0}
-#board[data-size="6"] {width:min(100%,590px);grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-#board[data-size="16"] {width:min(100%,840px);grid-template-columns:repeat(6,minmax(0,1fr))}
+.round-sky,.launch {grid-area:1 / 1}
+.round-sky {width:min(100%,540px);text-align:center}
+#board {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,2vmin,18px);padding:10px 0}
+#board .letter-star {grid-column:span 2}
+#board .letter-star:nth-child(4) {grid-column:2 / span 2}
+.letter-reminder {width:fit-content;min-width:1.5em;margin:0 auto .2em;padding:.05em .25em;border-radius:16px;
+  color:#fff7ce;background:#292752e6;font-size:clamp(38px,8vh,76px);line-height:1.1}
+.champion-play {border:2px solid #fff0ad;border-radius:24px;padding:10px 20px;min-height:44px;
+  color:#fff7cd;background:#403466;font-size:18px;font-weight:700;box-shadow:0 3px 0 #242044}
+.alphabet-page .night {padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+.alphabet-page .sound-dock {position:fixed;z-index:3;bottom:env(safe-area-inset-bottom);left:0;right:0;
+  align-items:center;pointer-events:none}
+.alphabet-page #replay {pointer-events:auto}
+#earned-trophy {position:absolute;left:max(14px,env(safe-area-inset-left));bottom:10px;
+  display:grid;place-items:center;width:52px;height:50px;font-size:31px;border:2px solid #ffdf87;
+  border-radius:18px;background:#312c58;box-shadow:0 3px 0 #1c1939}
 .letter-star {width:min(100%,12vh,114px);min-width:44px;aspect-ratio:1;justify-self:center;position:relative;isolation:isolate;padding:0;
   border:none;background:transparent;color:#483212;font:700 clamp(22px,4.5vh,42px)/1 ui-rounded,'Trebuchet MS',sans-serif;
   filter:drop-shadow(0 3px 0 #b37a37) drop-shadow(0 5px 6px #1412354d)}
 .letter-star::before {content:'';position:absolute;inset:0;clip-path:var(--star-shape);background:var(--star-fill);z-index:-1}
 .letter-star span {transform:translateY(-3%)}
-#board[data-size="6"] .letter-star {width:min(100%,18vh,150px);font-size:clamp(34px,7vh,57px)}
+#board .letter-star {width:min(100%,18vh,150px);font-size:clamp(34px,7vh,57px)}
 .letter-star.hint {filter:drop-shadow(0 0 4px white) drop-shadow(0 0 12px #ffcb43)}
 .letter-star.hint::after {content:'👆';position:absolute;bottom:-10%;right:-6%;font-size:clamp(28px,4vh,46px);animation:point 1s ease-in-out infinite}
 .letter-star.miss {
@@ -104,8 +116,6 @@
 @keyframes point {50%{transform:translate(-4px,-6px) scale(.94)}}
 @keyframes shoot {30%{transform:translate(-5%,4%) scale(1.08)}100%{transform:translate(180%,-130%) scale(.36);opacity:0}}
 @media (orientation:portrait) {
-  #board:not([data-size="6"]) {grid-template-columns:repeat(5,minmax(0,1fr))}
-  #board[data-size="16"] {grid-template-columns:repeat(4,minmax(0,1fr))}
   .night {background-size:auto 100%}
 }
 @media(max-width:550px) {
